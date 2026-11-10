@@ -1,0 +1,392 @@
+/* ==========================================================================
+   WHATSAPP CHANNEL INTERFACE STYLES (VIEW 1)
+   ========================================================================== */
+
+.view-whatsapp {
+  background-color: #0b141a;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+  padding: 1rem 0;
+}
+
+@media (max-width: 600px) {
+  .view-whatsapp {
+    padding: 0;
+    width: 100%;
+    min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+  }
+
+  .wa-screen-frame {
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+  }
+
+  .wa-app-bar {
+    height: 56px;
+    padding: 0 0.6rem;
+  }
+
+  .wa-avatar-ring {
+    width: 36px;
+    height: 36px;
+  }
+
+  .wa-channel-title {
+    font-size: 0.88rem;
+  }
+
+  .wa-channel-meta {
+    font-size: 0.68rem;
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .wa-chat-scroll {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .wa-og-media {
+    height: 180px;
+  }
+
+  .wa-og-headline {
+    font-size: 0.98rem;
+  }
+
+  .wa-og-desc {
+    font-size: 0.78rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+
+/* WhatsApp Channel Top Header Bar */
+.wa-app-bar {
+  height: 64px;
+  background: #111b21;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(134, 150, 160, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.wa-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.wa-back-btn {
+  background: transparent;
+  border: none;
+  color: #aebac1;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.wa-avatar-ring {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a884, #052962);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.wa-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #1f2c34;
+  color: #00a884;
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+}
+
+.wa-channel-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wa-channel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #e9edef;
+}
+
+.wa-verified-badge {
+  background: #00a884;
+  color: #111b21;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.wa-channel-meta {
+  font-size: 0.72rem;
+  color: #8696a0;
+}
+
+.wa-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.wa-action-btn {
+  background: transparent;
+  border: none;
+  color: #aebac1;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.wa-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.wa-follow-btn {
+  background: rgba(0, 168, 132, 0.15) !important;
+  color: #00a884 !important;
+  font-size: 0.78rem !important;
+  font-weight: 700;
+  padding: 0.35rem 0.8rem !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0, 168, 132, 0.4) !important;
+}
+
+/* WhatsApp Doodle Wallpaper Canvas */
+.wa-chat-scroll {
+  flex: 1;
+  padding: 1.2rem 1rem;
+  overflow-y: auto;
+  position: relative;
+  /* Authentic WhatsApp Doodle Pattern */
+  background-color: #0b141a;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(17, 27, 33, 0.94), rgba(11, 20, 26, 0.98)),
+    url("data:image/svg+xml,%3Csvg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231f2c34' fill-opacity='0.22' fill-rule='evenodd'%3E%3Cpath d='M30 40c0-5.5 4.5-10 10-10h10c5.5 0 10 4.5 10 10v6c0 5.5-4.5 10-10 10H40c-5.5 0-10-4.5-10-10v-6zm5 0v6c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5v-6c0-2.8-2.2-5-5-5H40c-2.8 0-5 2.2-5 5zm95-20c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10zm0 5c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm65 85c0-8.3 6.7-15 15-15s15 6.7 15 15-6.7 15-15 15-15-6.7-15-15zm5 0c0 5.5 4.5 10 10 10s10-4.5 10-10-4.5-10-10-10-10 4.5-10 10zM50 160c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15 6.7-15 15-15zm0 5c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm110-35h15v15h-15v-15zm-90 40h20v20H70v-20zm100 50c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: local;
+}
+
+.wa-date-divider {
+  display: flex;
+  justify-content: center;
+  margin: 0.8rem 0;
+}
+
+.wa-date-divider span {
+  background: #182229;
+  color: #8696a0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.wa-pinned-banner {
+  background: rgba(31, 44, 52, 0.85);
+  border: 1px solid rgba(0, 168, 132, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  backdrop-filter: blur(8px);
+}
+
+.wa-pin-icon {
+  font-size: 1.1rem;
+}
+
+.wa-pin-text {
+  font-size: 0.8rem;
+  color: #d1d7db;
+  line-height: 1.45;
+}
+
+/* WhatsApp Channel Post Bubble */
+.wa-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.wa-post-card {
+  background: #1f2c34;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.wa-post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* OpenGraph (OG) Preview Container */
+.wa-og-box {
+  cursor: pointer;
+  background: #111b21;
+  border-radius: 10px;
+  margin: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wa-og-media {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  background: #000;
+  overflow: hidden;
+}
+
+.wa-og-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.wa-post-card:hover .wa-og-media img {
+  transform: scale(1.04);
+}
+
+.wa-video-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.4rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wa-og-box:hover .wa-video-play-overlay {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: var(--wa-teal);
+  border-color: var(--wa-teal);
+  color: #0b141a;
+}
+
+.wa-og-meta-content {
+  padding: 0.9rem;
+}
+
+.wa-og-domain {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--wa-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.3rem;
+}
+
+.wa-og-headline {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e9edef;
+  line-height: 1.35;
+  margin-bottom: 0.45rem;
+}
+
+.wa-og-desc {
+  font-size: 0.82rem;
+  color: #8696a0;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+}
+
+.wa-og-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.6rem;
+}
+
+.wa-open-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--wa-teal);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.wa-views-badge {
+  font-size: 0.72rem;
+  color: #8696a0;
+}
+
+/* Post Bottom Status: Reactions & Time */
+.wa-post-footer {
+  padding: 0.5rem 0.9rem 0.7rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wa-reactions-pill {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.25rem 0.6rem;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  color: #d1d7db;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wa-reactions-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.wa-post-timestamp {
+  font-size: 0.7rem;
+  color: #8696a0;
+}

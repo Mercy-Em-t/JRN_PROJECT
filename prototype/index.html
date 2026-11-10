@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kikao360 — Multimodal Digital News Platform (USIU JRN 3015A Prototype)</title>
+  
+  <!-- Google Fonts: Editorial Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/whatsapp.css">
+  <link rel="stylesheet" href="css/guardian.css">
+  <link rel="stylesheet" href="css/pinterest.css">
+  <link rel="stylesheet" href="css/tiktok.css">
+  <link rel="stylesheet" href="css/sphere.css">
+</head>
+<body class="theme-dark mode-whatsapp">
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING MASTER VIEW SWITCHER DOCK (Quick Access + Pinch Visual Indicator) -->
+  <!-- ========================================================================= -->
+  <header class="master-dock" id="masterDock">
+    <div class="dock-brand">
+      <span class="dock-logo">KIKAO<span class="accent-orange">360</span></span>
+      <span class="dock-tagline">USIU JRN 3015A • Assignment 2 Prototype</span>
+    </div>
+    
+    <nav class="dock-modes" aria-label="View Switcher">
+      <button class="mode-btn active" data-mode="whatsapp" onclick="switchView('whatsapp')" title="WhatsApp Channel View">
+        <span class="mode-icon">💬</span>
+        <span class="mode-label">WhatsApp Channel</span>
+      </button>
+      <button class="mode-btn" data-mode="guardian" onclick="switchView('guardian')" title="Guardian Magazine Editorial">
+        <span class="mode-icon">📰</span>
+        <span class="mode-label">The Magazine</span>
+      </button>
+      <button class="mode-btn" data-mode="pinterest" onclick="switchView('pinterest')" title="Pinterest Masonry Grid">
+        <span class="mode-icon">📌</span>
+        <span class="mode-label">Pinterest Grid</span>
+      </button>
+      <button class="mode-btn" data-mode="tiktok" onclick="switchView('tiktok')" title="TikTok Video Feed">
+        <span class="mode-icon">🎬</span>
+        <span class="mode-label">Reels / TikTok</span>
+      </button>
+      <button class="mode-btn" data-mode="sphere" onclick="switchView('sphere')" title="Inside-the-Sphere 3D Room">
+        <span class="mode-icon">🌐</span>
+        <span class="mode-label">3D Sphere Room</span>
+      </button>
+    </nav>
+    
+    <div class="dock-actions">
+      <button class="gesture-hint-btn" id="gestureHelpBtn" title="How Gestures Work">
+        <span>🤏 Pinch to switch</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- VIEW CONTAINER: Switches active view gracefully -->
+  <!-- ========================================================================= -->
+  <main class="viewport-wrapper" id="viewportWrapper">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 1: WHATSAPP CHANNEL INTERFACE (Authentic Doodle Background + OG Cards) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="view-panel view-whatsapp active" id="viewWhatsapp">
+      <div class="wa-screen-frame">
+        
+        <!-- WhatsApp Top App Bar -->
+        <header class="wa-app-bar">
+          <div class="wa-bar-left">
+            <button class="wa-back-btn" title="Back">←</button>
+            <div class="wa-avatar-ring">
+              <div class="wa-avatar">K360</div>
+            </div>
+            <div class="wa-channel-info">
+              <div class="wa-channel-title">
+                <span>Kikao360 Official</span>
+                <span class="wa-verified-badge" title="Verified Media Channel">✓</span>
+              </div>
+              <div class="wa-channel-meta">48.2K followers • Kenya's Multimodal Newsroom</div>
+            </div>
+          </div>
+          <div class="wa-bar-right">
+            <button class="wa-action-btn wa-follow-btn">Following</button>
+            <button class="wa-action-btn" title="Search">🔍</button>
+            <button class="wa-action-btn" title="More Options">⋮</button>
+          </div>
+        </header>
+
+        <!-- WhatsApp Channel Scroll Canvas (with Doodle Wallpaper) -->
+        <div class="wa-chat-scroll" id="waChatScroll">
+          
+          <!-- Channel Announcement / Pinned Notice -->
+          <div class="wa-date-divider"><span>TODAY</span></div>
+          
+          <div class="wa-pinned-banner">
+            <div class="wa-pin-icon">📌</div>
+            <div class="wa-pin-text">
+              <strong>Welcome to Kikao360 Channel:</strong> Dual-perspective investigative journalism. Tap any story card below to open the interactive magazine spread, or use the top dock to enter the 3D Sphere room!
+            </div>
+          </div>
+
+          <!-- Injected WhatsApp Post Cards (Generated from data.js) -->
+          <div class="wa-feed-list" id="waFeedList">
+            <!-- Dynamically populated by app.js -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 2: THE GUARDIAN-STYLE MAGAZINE (Editorial Layout + Mega Menu + M-Pesa) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="view-panel view-guardian" id="viewGuardian">
+      
+      <!-- Top Utility Header -->
+      <div class="gm-utility-bar">
+        <div class="gm-utility-container">
+          <div class="gm-edition-selector">
+            <span>Edition:</span>
+            <strong>Kenya (Nairobi) ▼</strong>
+          </div>
+          <div class="gm-utility-right">
+            <button class="gm-mpesa-support-btn" id="openMpesaModalBtn" onclick="openMpesaModal()">
+              <span class="mpesa-icon">📱</span> Support with M-Pesa ❯
+            </button>
+            <a href="#signin" class="gm-user-link">Sign in</a>
+            <div class="gm-search-box">
+              <input type="text" placeholder="Search Kikao360..." aria-label="Search">
+              <button>🔍</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Masthead & Primary Navigation Bar (Navy Blue #052962) -->
+      <header class="gm-masthead-bar">
+        <div class="gm-nav-container">
+          <div class="gm-brand-group">
+            <h1 class="gm-masthead-title">The Kikao360</h1>
+            <p class="gm-masthead-motto">"Comment is free, but truth is multidimensional"</p>
+          </div>
+          
+          <!-- Pillar Navigation Items -->
+          <nav class="gm-pillars" aria-label="Guardian Main Pillars">
+            <button class="gm-pillar-btn active" data-pillar="tech">
+              <span>Tech &amp; Hustle</span>
+            </button>
+            <button class="gm-pillar-btn" data-pillar="investigative">
+              <span>Investigative</span>
+            </button>
+            <button class="gm-pillar-btn" data-pillar="opinion">
+              <span>Opinion</span>
+            </button>
+            <button class="gm-pillar-btn" data-pillar="campus">
+              <span>Campus &amp; Youth</span>
+            </button>
+            <button class="gm-pillar-btn" data-pillar="lifestyle">
+              <span>Lifestyle</span>
+            </button>
+            <!-- Hamburger Menu Toggle (Transforms into X) -->
+            <button class="gm-menu-toggle-btn" id="gmMenuToggle" title="Open Full Section Menu">
+              <span class="gm-menu-icon">☰</span>
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Secondary Sub-Navigation Bar -->
+      <nav class="gm-subnav-bar" id="gmSubnav">
+        <div class="gm-subnav-container">
+          <a href="#sub1" class="active">eTIMS &amp; Tax</a>
+          <a href="#sub2">Daraja M-Pesa API</a>
+          <a href="#sub3">Venture Capital</a>
+          <a href="#sub4">Silicon Savannah</a>
+          <a href="#sub5">Sheng Culture</a>
+          <a href="#sub6">Gig Economy</a>
+          <a href="#sub7">Policy Tracker</a>
+        </div>
+      </nav>
+
+      <!-- Mega-Menu Overlay Drawer (Guardian Style: IMG_100242.jpg) -->
+      <div class="gm-megamenu-drawer" id="gmMegamenu">
+        <div class="gm-megamenu-grid">
+          <div class="gm-mega-col">
+            <h3>Tech &amp; Hustle</h3>
+            <ul>
+              <li><a href="#">M-Pesa Developer API</a></li>
+              <li><a href="#">eTIMS for Freelancers</a></li>
+              <li><a href="#">Crypto &amp; Web3 Kenya</a></li>
+              <li><a href="#">TikTok Livestream Commerce</a></li>
+              <li><a href="#">Nairobi Startup Rounds</a></li>
+            </ul>
+          </div>
+          <div class="gm-mega-col">
+            <h3>Investigative</h3>
+            <ul>
+              <li><a href="#">Cyber Cold-Chain Attacks</a></li>
+              <li><a href="#">Public Procurement Leaks</a></li>
+              <li><a href="#">Deepfakes &amp; Sheng Disinfo</a></li>
+              <li><a href="#">Environmental Watch Limuru</a></li>
+            </ul>
+          </div>
+          <div class="gm-mega-col">
+            <h3>Opinion</h3>
+            <ul>
+              <li><a href="#">The Kikao View</a></li>
+              <li><a href="#">Student Columnists</a></li>
+              <li><a href="#">Cartoons &amp; Satire</a></li>
+              <li><a href="#">AI &amp; Media Ethics</a></li>
+              <li><a href="#">Letters to Editor</a></li>
+            </ul>
+          </div>
+          <div class="gm-mega-col">
+            <h3>Campus &amp; Youth</h3>
+            <ul>
+              <li><a href="#">USIU-Africa Innovation Lab</a></li>
+              <li><a href="#">KU &amp; UoN Tech Hubs</a></li>
+              <li><a href="#">Student Gig Opportunities</a></li>
+              <li><a href="#">Campus Events &amp; Festivals</a></li>
+            </ul>
+          </div>
+          <div class="gm-mega-col">
+            <h3>Multimedia &amp; Formats</h3>
+            <ul>
+              <li><a href="#" class="highlight-link">🎬 TikTok Video Dispatches</a></li>
+              <li><a href="#" class="highlight-link">🎧 Daily 13-Min Audio Brief</a></li>
+              <li><a href="#" class="highlight-link">🌐 3D Panoramic Sphere</a></li>
+              <li><a href="#">💬 WhatsApp Channel Broadcasts</a></li>
+              <li><a href="#">📬 Bi-Weekly Newsletter</a></li>
+            </ul>
+          </div>
+          <div class="gm-mega-col corporate-col">
+            <div class="gm-mega-search">
+              <input type="text" placeholder="Search the archives...">
+              <button>Search</button>
+            </div>
+            <div class="gm-mega-biglinks">
+              <a href="#">USIU Boardroom Pitch</a>
+              <a href="#">JRN 3015A Documentation</a>
+              <a href="#">Invest In Kikao360</a>
+              <a href="#">About Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Editorial Content Canvas -->
+      <div class="gm-content-container">
+        <div class="gm-article-layout">
+          
+          <!-- Left Column: Story Header & Byline -->
+          <aside class="gm-article-sidebar">
+            <div class="gm-eyebrow" id="articleEyebrow">Tech &amp; Hustle</div>
+            <div class="gm-badge-pill" id="articleBadge">Explainer</div>
+            <div class="gm-byline-box">
+              <div class="gm-author" id="articleAuthor">Faith Mwende &amp; Brian Kipchumba</div>
+              <div class="gm-date" id="articleDate">Tue 10 Nov 2026 10.30 EAT</div>
+              <div class="gm-share-row">
+                <button class="gm-share-btn">🔗 Share</button>
+                <button class="gm-share-btn">💬 186</button>
+              </div>
+            </div>
+            
+            <!-- Quick View Mode Switcher -->
+            <div class="gm-sidebar-card">
+              <h4>Story Format</h4>
+              <p>Experience this dispatch in multiple perspectives:</p>
+              <div class="gm-format-toggles">
+                <button class="format-btn active" id="tabFormatRead">📖 Read Story</button>
+                <button class="format-btn" id="tabFormatWatch">▶ Watch Video</button>
+                <button class="format-btn" id="tabFormatListen">🎧 Listen Audio</button>
+              </div>
+            </div>
+
+            <!-- Sponsor Card (NPR Style) -->
+            <div class="gm-sponsor-box">
+              <span class="sponsor-tag">Sponsor Message</span>
+              <div class="sponsor-card">
+                <strong>Safaricom Spark Fund</strong>
+                <p>Empowering the next generation of digital media founders and software creators across Kenya.</p>
+                <span class="sponsor-badge">Partner</span>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Center Column: Editorial Narrative & Embedded Video -->
+          <article class="gm-article-body">
+            
+            <h1 class="gm-headline" id="articleHeadline">
+              The M-Pesa API Revolution: How Gen-Z Micro-Merchants Are Rewriting Kenya’s Informal Economy
+            </h1>
+            
+            <p class="gm-subdeck" id="articleSubdeck">
+              From Nairobi estates to TikTok shop livestreams, young hustlers are skipping brick-and-mortar storefronts entirely for direct mobile commerce.
+            </p>
+
+            <div class="gm-bullet-link">
+              <span class="bullet-dot">•</span>
+              <a href="#" id="articleBulletLink">Read our special investigation into eTIMS tax compliance for freelancers</a>
+            </div>
+
+            <!-- Interactive Media Embed Container (16:9 Player with runtime badge) -->
+            <div class="gm-media-player-container">
+              <div class="gm-video-wrapper">
+                <video id="gmMainVideo" controls playsinline poster="assets/IMG_093824.jpg">
+                  <source src="assets/VID_094529.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="gm-video-badge">
+                  <span class="badge-icon">▶</span>
+                  <span id="articleVideoDuration">1:15</span>
+                </div>
+              </div>
+              <figcaption class="gm-video-caption">
+                <strong>▶ Watch 60-Second Dispatch:</strong> How Nairobi micro-entrepreneurs automate M-Pesa payment notifications via custom webhook listeners.
+              </figcaption>
+            </div>
+
+            <!-- Article Body Text -->
+            <div class="gm-prose" id="articleProse">
+              <p class="lead" id="articleLead">
+                In a sunlit shared apartment along Thika Road, 22-year-old Brian Mwangi watches his dual-monitor setup chime with real-time M-Pesa confirmation pings. Without a physical storefront or a conventional corporate bank account, his custom sneaker consignment platform clears over KES 180,000 in weekly turnover—entirely powered by automated Daraja API webhooks and WhatsApp customer bots.
+              </p>
+              
+              <!-- Styled Pull-Quote (Guardian Style: CP Scott Reference) -->
+              <blockquote class="gm-pullquote">
+                <span class="quote-mark">“</span>
+                <p id="articleQuote">We don't need expensive mall leases anymore. Our phone is the cash register, the studio, and the distribution pipeline all in one.</p>
+                <cite id="articleQuoteAuthor">— Brian Mwangi, Co-founder of SneakerVault Kenya</cite>
+              </blockquote>
+
+              <p id="articleSecondary">
+                Kenya's formal banking sector is rapidly adapting to this creator-led economy. Safaricom's latest developer release opens instant micropayments, but looming regulatory questions on eTIMS integration and digital services taxation threaten to alter unit economics for over 7.4 million micro and small entrepreneurs.
+              </p>
+            </div>
+
+            <!-- Topic Discovery Pills (Guardian Style) -->
+            <div class="gm-topic-pills-row">
+              <span class="topic-label">Explore topics:</span>
+              <div class="topic-tags" id="articleTopicTags">
+                <span class="pill-tag">M-Pesa</span>
+                <span class="pill-tag">Fintech</span>
+                <span class="pill-tag">Startups</span>
+                <span class="pill-tag">Nairobi</span>
+                <span class="pill-tag">Gen-Z</span>
+              </div>
+            </div>
+
+            <!-- M-Pesa Reader Support Box (Adapted from Guardian Contribution Unit) -->
+            <section class="gm-mpesa-contribution-box">
+              <div class="mpesa-box-header">
+                <span class="mpesa-brand-flag">🇰🇪 LIPA NA M-PESA</span>
+                <h2>Support Independent Journalism in Kenya</h2>
+              </div>
+              <p>
+                Unlike corporate-backed media houses, <strong>Kikao360</strong> operates as an independent, student-powered investigative newsroom. We provide open-access reporting free from commercial paywalls because we believe quality journalism should be accessible to all Kenyans.
+              </p>
+              <div class="mpesa-highlight-quote">
+                Whether you contribute <strong>KES 100</strong>, <strong>KES 500</strong>, or <strong>KES 1,000</strong>, your support directly fuels on-the-ground investigations, data verification, and student fellowships.
+              </div>
+              <div class="mpesa-btn-row">
+                <button class="mpesa-action-btn primary" id="triggerMpesaPromptBtn" onclick="openMpesaModal()">Support with M-Pesa ❯</button>
+                <button class="mpesa-action-btn secondary">Remind me later</button>
+              </div>
+              <div class="mpesa-badges">
+                <span>Accepted: M-Pesa Paybill • Airtel Money • Visa • Mastercard</span>
+              </div>
+            </section>
+
+          </article>
+
+          <!-- Right Column: Most Viewed Leaderboard (Guardian Style: IMG_101324.jpg) -->
+          <aside class="gm-leaderboard-sidebar">
+            <div class="gm-leaderboard-header">
+              <h3>Most Viewed</h3>
+              <div class="leaderboard-tabs">
+                <button class="lb-tab active">Across Kikao360</button>
+                <button class="lb-tab">In This Pillar</button>
+              </div>
+            </div>
+            
+            <ol class="gm-leaderboard-list" id="gmLeaderboardList">
+              <!-- Dynamically populated from MOST_VIEWED -->
+            </ol>
+            
+            <!-- Campus Innovation Banner -->
+            <div class="gm-campus-ad-card">
+              <div class="card-tag">USIU-Africa Challenge</div>
+              <h4>Week 11 Investors' Boardroom</h4>
+              <p>Pitching seed funding for student media products. Check our financial plan &amp; pitch slides.</p>
+              <button class="card-btn" id="openPitchDeckBtn" onclick="openPitchDeck()">View Pitch Deck ❯</button>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 3: PINTEREST-STYLE MASONRY GRID (2-Col Mobile / Responsive Multi-Col) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="view-panel view-pinterest" id="viewPinterest">
+      <div class="pin-header-bar">
+        <div class="pin-header-left">
+          <h2>Visual Story Board</h2>
+          <p>Browse media cards, TikTok dispatches, and deep-dive articles in dynamic masonry layout.</p>
+        </div>
+        <div class="pin-category-filters" id="pinFilters">
+          <button class="pin-pill active" data-filter="all">All Stories</button>
+          <button class="pin-pill" data-filter="tech">Tech &amp; Hustle</button>
+          <button class="pin-pill" data-filter="investigative">Investigative</button>
+          <button class="pin-pill" data-filter="campus">Campus</button>
+          <button class="pin-pill" data-filter="lifestyle">Lifestyle</button>
+        </div>
+      </div>
+
+      <!-- Masonry Grid Container -->
+      <div class="pin-masonry-canvas" id="pinMasonryCanvas">
+        <!-- Injected dynamically from data.js -->
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 4: TIKTOK / REELS VERTICAL VIDEO FEED (Full-Screen Immersive Swipe) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="view-panel view-tiktok" id="viewTiktok">
+      <div class="tt-feed-container" id="ttFeedContainer">
+        <!-- Full-screen video cards generated from data.js -->
+      </div>
+      
+      <!-- Vertical Navigation Indicators -->
+      <div class="tt-scroll-nav">
+        <button class="tt-nav-arrow" id="ttPrevBtn" title="Previous Video">▲</button>
+        <button class="tt-nav-arrow" id="ttNextBtn" title="Next Video">▼</button>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 5: INSIDE-THE-SPHERE 3D PANORAMIC ROOM (CSS 3D Curvature & Orbit) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="view-panel view-sphere" id="viewSphere">
+      <div class="sphere-viewport" id="sphereViewport">
+        
+        <!-- HUD Controls & Orientation Gauge -->
+        <div class="sphere-hud">
+          <div class="hud-left">
+            <span class="hud-badge">SPATIAL 3D CANVAS</span>
+            <div class="hud-coords" id="hudCoords">RotX: -10° | RotY: 0° | Zoom: 1.0x</div>
+          </div>
+          <div class="hud-instructions">
+            <span>🖱️ Click &amp; Drag to Rotate 360° • Scroll / Pinch to Zoom • Click Card to Open</span>
+          </div>
+          <div class="hud-controls">
+            <button class="hud-btn" id="sphereResetBtn">Reset View</button>
+            <button class="hud-btn" id="sphereAutoRotateBtn">Auto-Orbit: ON</button>
+          </div>
+        </div>
+
+        <!-- 3D World Stage -->
+        <div class="sphere-world-stage">
+          <div class="sphere-room" id="sphereRoom">
+            <!-- 3D Cylinder / Spherical Cards dynamically anchored in 3D Space -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- PERSISTENT FLOATING NPR-STYLE AUDIO PLAYER DOCK (Bottom Anchored) -->
+  <!-- ========================================================================= -->
+  <footer class="npr-player-dock" id="nprPlayerDock">
+    <div class="npr-player-container">
+      
+      <!-- Audio Wave & Thumbnail -->
+      <div class="npr-track-info">
+        <button class="npr-play-btn" id="nprPlayBtn" title="Play / Pause Audio Dispatch">
+          <span class="npr-btn-icon">▶</span>
+        </button>
+        <div class="npr-wave-bars" id="nprWaveBars">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="npr-meta">
+          <div class="npr-eyebrow">KIKAO360 AUDIO DISPATCH • ON AIR NOW</div>
+          <div class="npr-headline" id="nprHeadline">The M-Pesa API Revolution: Audio Briefing (13 mins)</div>
+        </div>
+      </div>
+
+      <!-- Controls & Expansion -->
+      <div class="npr-player-actions">
+        <span class="npr-time-badge">02:45 / 13:00</span>
+        <button class="npr-speed-btn" id="nprSpeedBtn">1.0x</button>
+        <button class="npr-open-drawer-btn" id="nprDrawerBtn">
+          <span>OPEN</span> <span class="arrow-up">▲</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Expandable Audio Drawer -->
+    <div class="npr-expanded-drawer" id="nprExpandedDrawer">
+      <div class="drawer-inner">
+        <div class="drawer-header">
+          <h4>Full Audio Bulletin &amp; Transcript</h4>
+          <button class="drawer-close-btn" id="nprDrawerCloseBtn">✕</button>
+        </div>
+        <div class="drawer-body">
+          <div class="drawer-progress">
+            <div class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
+            <div class="progress-labels"><span>02:45</span><span>13:00</span></div>
+          </div>
+          <div class="drawer-transcript">
+            <p><strong>Voice Dispatch (00:00 - 03:00):</strong> "Welcome to Kikao360's morning intelligence feed. Today we break down how university founders and informal street vendors in Nairobi are integrating M-Pesa Daraja APIs to replace legacy point-of-sale terminals..."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- M-PESA CONTRIBUTION MODAL (Simulation for Kenya Market) -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="mpesaModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeMpesaModalBtn" onclick="closeMpesaModal()">✕</button>
+      <div class="modal-header">
+        <div class="mpesa-logo-badge">M-PESA</div>
+        <h3>Support Kikao360 Independent Journalism</h3>
+        <p>Your contribution directly powers student-led field investigations and verified media in Kenya.</p>
+      </div>
+      <div class="modal-body">
+        <label for="mpesaPhone">M-Pesa Phone Number</label>
+        <div class="input-with-prefix">
+          <span>+254</span>
+          <input type="tel" id="mpesaPhone" placeholder="712 345 678" value="715 478 466">
+        </div>
+        
+        <label>Select Amount (KES)</label>
+        <div class="amount-presets">
+          <button class="amount-btn active" data-amount="100">KES 100</button>
+          <button class="amount-btn" data-amount="250">KES 250</button>
+          <button class="amount-btn" data-amount="500">KES 500</button>
+          <button class="amount-btn" data-amount="1000">KES 1,000</button>
+        </div>
+        
+        <div id="mpesaStatusMsg" class="mpesa-status-box" style="display:none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-submit-btn" id="sendMpesaPromptBtn">Send STK Push Prompt ❯</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- INVESTOR PITCH DECK MODAL (Week 11 Simulation for Dr. Ruth Owino) -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="pitchDeckModal">
+    <div class="modal-card wide-card">
+      <button class="modal-close-btn" id="closePitchDeckBtn" onclick="closePitchDeck()">✕</button>
+      <div class="modal-header">
+        <div class="badge-tag">USIU-AFRICA JRN 3015A</div>
+        <h3>Week 11 Media Investors' Boardroom Pitch Deck</h3>
+        <p>10–15 Minute Venture Presentation: From Concept to Market</p>
+      </div>
+      <div class="modal-body pitch-slide-deck">
+        <div class="pitch-slide active" data-slide="1">
+          <h4>Slide 1: Problem &amp; Market Gap</h4>
+          <p>Kenyan youth (18–29) consume news in fragmented micro-bursts on WhatsApp and TikTok, but lack credible, deep-dive investigative journalism. Traditional papers like <em>Business Daily</em> neglect youth MSMEs; social feeds lack verification.</p>
+        </div>
+        <div class="pitch-slide" data-slide="2">
+          <h4>Slide 2: Solution &amp; UVP</h4>
+          <p><strong>Kikao360:</strong> The first multimodal media pipeline bridging official WhatsApp Channels with Guardian-caliber editorial depth, 3D spatial curation, and vertical video dispatches.</p>
+        </div>
+        <div class="pitch-slide" data-slide="3">
+          <h4>Slide 3: Financial Projections (in KES)</h4>
+          <p>Startup CAPEX: KES 480,000. Monthly OPEX: KES 145,000. Month 6 Projected Revenue: KES 380,000/mo (Fintech sponsorships, M-Pesa reader contributions, and branded studio activations). Break-even achieved in Month 4.</p>
+        </div>
+      </div>
+      <div class="modal-footer space-between">
+        <div class="slide-nav-indicators">
+          <button class="slide-dot active" data-target="1"></button>
+          <button class="slide-dot" data-target="2"></button>
+          <button class="slide-dot" data-target="3"></button>
+        </div>
+        <div class="slide-controls">
+          <button class="btn-subtle" id="prevSlideBtn">Previous</button>
+          <button class="btn-primary" id="nextSlideBtn">Next Slide ❯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Files -->
+  <script src="js/data.js"></script>
+  <script src="js/sphere.js"></script>
+  <script src="js/gestures.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

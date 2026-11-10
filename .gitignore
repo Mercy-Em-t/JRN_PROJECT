@@ -1,0 +1,18 @@
+# Dependencies and cache
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Raw download cache (prototype/assets contains the active web assets)
+/assets/
+
+# Logs
+*.log
