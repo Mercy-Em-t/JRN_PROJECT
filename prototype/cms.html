@@ -84,8 +84,9 @@
 
     <div class="tabs">
       <button class="tab-btn active" data-tab="tipline">🛡️ Tipline Moderation (3-Gate QA)</button>
-      <button class="tab-btn" data-tab="composer">✍️ Create &amp; Queue Story</button>
-      <button class="tab-btn" data-tab="lineup">📅 Multi-Channel Lineup</button>
+      <button class="tab-btn" data-tab="composer">✍️ Writer &amp; Converter Desk</button>
+      <button class="tab-btn" data-tab="lineup">📅 Content Calendar &amp; Pipelines</button>
+      <button class="tab-btn" data-tab="analytics">📊 Post-Pub Performance &amp; CAC</button>
     </div>
 
     <!-- TAB 1: TIPLINE MODERATION -->
@@ -120,22 +121,60 @@
           <input type="text" id="cmsHook" class="input" placeholder="e.g., No bank account? No problem.">
         </div>
         <div class="form-row">
+          <label>Assigned Writer &amp; Audio/Video Converter</label>
+          <input type="text" id="cmsAssignee" class="input" value="Writer: Faith M. | Audio/Video: Brian K.">
+        </div>
+        <div class="form-row">
           <label>Scheduled Publish Slot (EAT)</label>
           <input type="text" id="cmsSlot" class="input" value="Tomorrow 07:30 EAT (WhatsApp + Web)">
         </div>
-        <button class="btn" id="cmsAddBtn">Queue to Content Lineup ❯</button>
+        <button class="btn" id="cmsAddBtn">Send to Pending Review Pipeline ❯</button>
         <div id="cmsSavedMsg" style="margin-top:0.6rem; font-size:0.82rem; color:#6ee7b7; display:none;"></div>
       </div>
     </section>
 
-    <!-- TAB 3: LINEUP TABLE -->
+    <!-- TAB 3: LINEUP & PIPELINES TABLE -->
     <section class="panel" id="panel-lineup">
       <div class="card" style="overflow-x:auto;">
         <table>
           <thead>
-            <tr><th>Slot (EAT)</th><th>Beat</th><th>Headline / Hook</th><th>Channels</th><th>Status</th></tr>
+            <tr><th>Slot (EAT)</th><th>Beat</th><th>Headline / Hook &amp; Owner</th><th>Channels</th><th>Pipeline Stage</th><th>Action</th></tr>
           </thead>
           <tbody id="cmsLineupBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: POST-PUBLICATION PERFORMANCE & CAC -->
+    <section class="panel" id="panel-analytics">
+      <div class="grid" style="margin-bottom:1.25rem;">
+        <div class="card">
+          <div class="badge">TOTAL 30-DAY REACH</div>
+          <h3 style="font-size:1.7rem;">42,500</h3>
+          <p style="font-size:0.8rem; color:var(--muted);">Unique readers &amp; viewers across WhatsApp, Web, TikTok &amp; IG Reels</p>
+        </div>
+        <div class="card">
+          <div class="badge">TOTAL IMPRESSIONS</div>
+          <h3 style="font-size:1.7rem;">118,400</h3>
+          <p style="font-size:0.8rem; color:var(--muted);">45%+ WhatsApp open rate • 3.8 min avg Magazine session</p>
+        </div>
+        <div class="card">
+          <div class="badge">BLENDED CAC (KES)</div>
+          <h3 style="font-size:1.7rem; color:#6ee7b7;">KES 2.85</h3>
+          <p style="font-size:0.8rem; color:var(--muted);">KES 15,000 promo spend ÷ 5,260 new subscribers (Target ≤ KES 3.00)</p>
+        </div>
+      </div>
+      <div class="card" style="overflow-x:auto;">
+        <h3 style="margin-bottom:0.75rem;">Channel-by-Channel Post-Publication Breakdown</h3>
+        <table>
+          <thead>
+            <tr><th>Channel</th><th>Reach</th><th>Impressions</th><th>Promo Spend</th><th>New Subscribers</th><th>Channel CAC</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>WhatsApp Channel</strong></td><td>18,400</td><td>41,200</td><td>KES 3,000</td><td>2,100</td><td><strong>KES 1.43</strong></td></tr>
+            <tr><td><strong>TikTok &amp; IG Reels (9:16)</strong></td><td>16,800</td><td>54,600</td><td>KES 8,500</td><td>2,240</td><td><strong>KES 3.79</strong></td></tr>
+            <tr><td><strong>Magazine &amp; Audio Dock</strong></td><td>7,300</td><td>22,600</td><td>KES 3,500</td><td>920</td><td><strong>KES 3.80</strong></td></tr>
+          </tbody>
         </table>
       </div>
     </section>
@@ -199,11 +238,11 @@
       renderTips();
     };
 
-    // Content Lineup
+    // Content Lineup & 3-Stage Pipelines (Pending Review -> Pending Publication -> Published)
     const defaultLineup = [
-      { slot: 'Mon 07:30 EAT', beat: 'Business & Finance', title: 'The M-Pesa API Revolution', channels: 'WhatsApp + Web + Audio', status: 'Ready' },
-      { slot: 'Mon 13:00 EAT', beat: 'Business & Finance', title: 'Hook: KES 180K/week on WhatsApp', channels: 'TikTok + IG Reels (9:16)', status: 'Formatted' },
-      { slot: 'Wed 13:00 EAT', beat: 'Technology', title: 'Hook: Cold-Chain IoT Hacking', channels: 'TikTok + IG Reels + Web', status: 'Ready' }
+      { slot: 'Mon 07:30 EAT', beat: 'Business & Finance', title: 'The M-Pesa API Revolution (Writer: Faith M. | Audio: Brian K.)', channels: 'WhatsApp + Web + Audio', status: 'Published' },
+      { slot: 'Mon 13:00 EAT', beat: 'Business & Finance', title: 'Hook: KES 180K/week on WhatsApp (Video: 9:16 Stamped)', channels: 'TikTok + IG Reels (9:16)', status: 'Pending Publication' },
+      { slot: 'Wed 13:00 EAT', beat: 'Technology', title: 'Hook: Cold-Chain IoT Hacking (Writer: Robert B.)', channels: 'TikTok + IG Reels + Web', status: 'Pending Review' }
     ];
     const loadLineup = () => {
       try {
@@ -211,17 +250,31 @@
         return s.length ? s : defaultLineup;
       } catch { return defaultLineup; }
     };
+    window.advancePipeline = (idx) => {
+      const lineup = loadLineup();
+      const item = lineup[idx];
+      if (!item) return;
+      if (item.status === 'Pending Review') item.status = 'Pending Publication';
+      else if (item.status === 'Pending Publication') item.status = 'Published';
+      localStorage.setItem('kikao_cms_lineup', JSON.stringify(lineup));
+      renderLineup();
+    };
     const renderLineup = () => {
       const body = document.getElementById('cmsLineupBody');
-      body.innerHTML = loadLineup().map(item => `
-        <tr>
-          <td>${item.slot}</td>
-          <td>${item.beat}</td>
-          <td><strong>${item.title}</strong></td>
-          <td>${item.channels}</td>
-          <td><span class="badge">${item.status}</span></td>
-        </tr>
-      `).join('');
+      body.innerHTML = loadLineup().map((item, idx) => {
+        const isPub = item.status === 'Published';
+        const btnLabel = item.status === 'Pending Review' ? '✅ Approve' : (item.status === 'Pending Publication' ? '🚀 Publish' : '📊 Live');
+        return `
+          <tr>
+            <td>${item.slot}</td>
+            <td>${item.beat}</td>
+            <td><strong>${item.title}</strong></td>
+            <td>${item.channels}</td>
+            <td><span class="badge ${isPub ? '' : 'pending'}">${item.status}</span></td>
+            <td>${isPub ? '<span style="color:#6ee7b7; font-size:0.78rem;">Tracked</span>' : `<button class="btn" style="padding:0.3rem 0.6rem; font-size:0.74rem;" onclick="advancePipeline(${idx})">${btnLabel}</button>`}</td>
+          </tr>
+        `;
+      }).join('');
     };
 
     document.getElementById('cmsAddBtn').addEventListener('click', () => {
@@ -231,15 +284,15 @@
       lineup.unshift({
         slot: document.getElementById('cmsSlot').value.trim(),
         beat: document.getElementById('cmsBeat').value,
-        title: `${title} (Hook: ${document.getElementById('cmsHook').value.trim() || 'Breaking'})`,
-        channels: 'WhatsApp + Web + Reels',
-        status: 'Queued'
+        title: `${title} (${document.getElementById('cmsAssignee').value.trim()})`,
+        channels: 'WhatsApp + Web + Reels + Audio',
+        status: 'Pending Review'
       });
       localStorage.setItem('kikao_cms_lineup', JSON.stringify(lineup));
       renderLineup();
       const msg = document.getElementById('cmsSavedMsg');
       msg.style.display = 'block';
-      msg.textContent = '✅ Story queued to Multi-Channel Lineup!';
+      msg.textContent = '✅ Story added to Pending Review Pipeline (ready for Wednesday Editorial Meeting)!';
     });
 
     renderTips();
