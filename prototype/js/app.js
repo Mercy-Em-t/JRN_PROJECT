@@ -113,7 +113,11 @@ class KikaoApp {
         </div>
         <div class="wa-post-footer">
           <div class="wa-reactions-pill">${story.stats.reactions}</div>
-          <div class="wa-post-timestamp">${story.ogData.channelTime}</div>
+          <div style="display:flex; gap:0.4rem; align-items:center;">
+            <button type="button" class="wa-mini-btn save-story-btn" data-id="${story.id}" title="Save to Account">🔖 Save</button>
+            <button type="button" class="wa-mini-btn like-story-btn" data-id="${story.id}" title="Like Story">❤️ Like</button>
+            <span class="wa-post-timestamp">${story.ogData.channelTime}</span>
+          </div>
         </div>
       `;
 
@@ -121,6 +125,16 @@ class KikaoApp {
       card.querySelector(".wa-og-box").addEventListener("click", () => {
         this.loadStory(story.id);
         this.switchView("guardian");
+      });
+
+      card.querySelector(".save-story-btn")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.toggleUserList("kikao_saved", story.id, e.currentTarget, "🔖 Saved", "🔖 Save");
+      });
+
+      card.querySelector(".like-story-btn")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.toggleUserList("kikao_liked", story.id, e.currentTarget, "❤️ Liked", "❤️ Like");
       });
 
       list.appendChild(card);
@@ -632,6 +646,19 @@ class KikaoApp {
       }
 
       if (statusBox) {
+        // Persist to Owner CMS Tipline Queue
+        try {
+          const existingTips = JSON.parse(localStorage.getItem("kikao_tipline") || "[]");
+          existingTips.unshift({
+            id: "tip-" + Date.now(),
+            headline,
+            category,
+            location,
+            status: "Gate 1: EXIF Cleared • Pending Two-Source"
+          });
+          localStorage.setItem("kikao_tipline", JSON.stringify(existingTips));
+        } catch {}
+
         statusBox.style.display = "block";
         statusBox.innerHTML = `
           ⏳ <strong>Routing "${headline}" (${category} • ${location}) to Fact-Check Desk...</strong>
@@ -654,6 +681,84 @@ class KikaoApp {
         }, 1200);
       }
     });
+    // Account Space Tabs & Format Preference
+    document.querySelectorAll(".acct-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".acct-tab").forEach((t) => t.classList.remove("selected"));
+        tab.classList.add("selected");
+        const target = tab.getAttribute("data-acct-tab");
+        document.getElementById("acctSavedPane").style.display = target === "saved" ? "block" : "none";
+        document.getElementById("acctLikedPane").style.display = target === "liked" ? "block" : "none";
+        document.getElementById("acctAlgoPane").style.display = target === "algo" ? "block" : "none";
+      });
+    });
+
+    const fmtSelect = document.getElementById("acctFormatPref");
+    if (fmtSelect) {
+      fmtSelect.value = localStorage.getItem("kikao_format_pref") || "balanced";
+      fmtSelect.addEventListener("change", () => {
+        localStorage.setItem("kikao_format_pref", fmtSelect.value);
+      });
+    }
+    this.renderAccountModal();
+  }
+
+  toggleUserList(storageKey, storyId, btn, activeLabel, defaultLabel) {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem(storageKey) || "[]"); } catch { list = []; }
+    const idx = list.indexOf(storyId);
+    if (idx === -1) {
+      list.push(storyId);
+      btn.classList.add("active");
+      btn.textContent = activeLabel;
+    } else {
+      list.splice(idx, 1);
+      btn.classList.remove("active");
+      btn.textContent = defaultLabel;
+    }
+    localStorage.setItem(storageKey, JSON.stringify(list));
+    this.renderAccountModal();
+  }
+
+  renderAccountModal() {
+    let savedIds = [], likedIds = [], interests = [];
+    try { savedIds = JSON.parse(localStorage.getItem("kikao_saved") || "[]"); } catch {}
+    try { likedIds = JSON.parse(localStorage.getItem("kikao_liked") || "[]"); } catch {}
+    try { interests = JSON.parse(localStorage.getItem("kikao_interests") || "[]"); } catch {}
+
+    const sCount = document.getElementById("acctSavedCount");
+    const lCount = document.getElementById("acctLikedCount");
+    if (sCount) sCount.textContent = savedIds.length;
+    if (lCount) lCount.textContent = likedIds.length;
+
+    const buildList = (ids, emptyMsg) => {
+      if (!ids.length) return `<p style="font-size:0.82rem; color:#94a3b8;">${emptyMsg}</p>`;
+      return ids.map((id) => {
+        const st = STORIES.find((s) => s.id === id);
+        if (!st) return "";
+        return `
+          <div class="acct-item">
+            <div>
+              <div style="font-size:0.72rem; color:#00a884; font-weight:700;">${st.category}</div>
+              <div style="font-size:0.86rem; font-weight:700;">${st.title}</div>
+            </div>
+            <button type="button" class="btn-subtle" style="padding:0.35rem 0.7rem; font-size:0.75rem;" onclick="window.app.loadStory('${st.id}'); window.app.switchView('guardian'); closeAccountModal();">Open ❯</button>
+          </div>
+        `;
+      }).join("");
+    };
+
+    const sPane = document.getElementById("acctSavedPane");
+    const lPane = document.getElementById("acctLikedPane");
+    if (sPane) sPane.innerHTML = buildList(savedIds, "No saved stories yet. Tap 🔖 Save on any story card!");
+    if (lPane) lPane.innerHTML = buildList(likedIds, "No liked stories yet. Tap ❤️ Like on any story card!");
+
+    const beatsBox = document.getElementById("acctAlgoBeats");
+    if (beatsBox) {
+      beatsBox.innerHTML = interests.length
+        ? interests.map((b) => `<span class="interest-chip selected" style="cursor:default;">${b}</span>`).join("")
+        : `<span style="font-size:0.8rem; color:#94a3b8;">All 9 beats active (default)</span>`;
+    }
   }
 }
 
@@ -703,6 +808,17 @@ window.closeTiplineModal = function() {
   if (m) m.classList.remove("open");
 };
 
+window.openAccountModal = function() {
+  window.app?.renderAccountModal();
+  const m = document.getElementById("accountModal");
+  if (m) m.classList.add("open");
+};
+
+window.closeAccountModal = function() {
+  const m = document.getElementById("accountModal");
+  if (m) m.classList.remove("open");
+};
+
 // Safe initialization whether DOM is loading or already loaded
 function initKikao() {
   if (!window.app) {
@@ -711,6 +827,84 @@ function initKikao() {
       console.log("Kikao360 App initialized successfully!");
     } catch (e) {
       console.error("Error initializing KikaoApp:", e);
+    }
+    // Account Space Tabs & Format Preference
+    document.querySelectorAll(".acct-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".acct-tab").forEach((t) => t.classList.remove("selected"));
+        tab.classList.add("selected");
+        const target = tab.getAttribute("data-acct-tab");
+        document.getElementById("acctSavedPane").style.display = target === "saved" ? "block" : "none";
+        document.getElementById("acctLikedPane").style.display = target === "liked" ? "block" : "none";
+        document.getElementById("acctAlgoPane").style.display = target === "algo" ? "block" : "none";
+      });
+    });
+
+    const fmtSelect = document.getElementById("acctFormatPref");
+    if (fmtSelect) {
+      fmtSelect.value = localStorage.getItem("kikao_format_pref") || "balanced";
+      fmtSelect.addEventListener("change", () => {
+        localStorage.setItem("kikao_format_pref", fmtSelect.value);
+      });
+    }
+    this.renderAccountModal();
+  }
+
+  toggleUserList(storageKey, storyId, btn, activeLabel, defaultLabel) {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem(storageKey) || "[]"); } catch { list = []; }
+    const idx = list.indexOf(storyId);
+    if (idx === -1) {
+      list.push(storyId);
+      btn.classList.add("active");
+      btn.textContent = activeLabel;
+    } else {
+      list.splice(idx, 1);
+      btn.classList.remove("active");
+      btn.textContent = defaultLabel;
+    }
+    localStorage.setItem(storageKey, JSON.stringify(list));
+    this.renderAccountModal();
+  }
+
+  renderAccountModal() {
+    let savedIds = [], likedIds = [], interests = [];
+    try { savedIds = JSON.parse(localStorage.getItem("kikao_saved") || "[]"); } catch {}
+    try { likedIds = JSON.parse(localStorage.getItem("kikao_liked") || "[]"); } catch {}
+    try { interests = JSON.parse(localStorage.getItem("kikao_interests") || "[]"); } catch {}
+
+    const sCount = document.getElementById("acctSavedCount");
+    const lCount = document.getElementById("acctLikedCount");
+    if (sCount) sCount.textContent = savedIds.length;
+    if (lCount) lCount.textContent = likedIds.length;
+
+    const buildList = (ids, emptyMsg) => {
+      if (!ids.length) return `<p style="font-size:0.82rem; color:#94a3b8;">${emptyMsg}</p>`;
+      return ids.map((id) => {
+        const st = STORIES.find((s) => s.id === id);
+        if (!st) return "";
+        return `
+          <div class="acct-item">
+            <div>
+              <div style="font-size:0.72rem; color:#00a884; font-weight:700;">${st.category}</div>
+              <div style="font-size:0.86rem; font-weight:700;">${st.title}</div>
+            </div>
+            <button type="button" class="btn-subtle" style="padding:0.35rem 0.7rem; font-size:0.75rem;" onclick="window.app.loadStory('${st.id}'); window.app.switchView('guardian'); closeAccountModal();">Open ❯</button>
+          </div>
+        `;
+      }).join("");
+    };
+
+    const sPane = document.getElementById("acctSavedPane");
+    const lPane = document.getElementById("acctLikedPane");
+    if (sPane) sPane.innerHTML = buildList(savedIds, "No saved stories yet. Tap 🔖 Save on any story card!");
+    if (lPane) lPane.innerHTML = buildList(likedIds, "No liked stories yet. Tap ❤️ Like on any story card!");
+
+    const beatsBox = document.getElementById("acctAlgoBeats");
+    if (beatsBox) {
+      beatsBox.innerHTML = interests.length
+        ? interests.map((b) => `<span class="interest-chip selected" style="cursor:default;">${b}</span>`).join("")
+        : `<span style="font-size:0.8rem; color:#94a3b8;">All 9 beats active (default)</span>`;
     }
   }
 }

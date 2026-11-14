@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kikao360 — Owner CMS & Editorial Desk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b101b;
+      --surface: #121a2b;
+      --border: rgba(255,255,255,0.09);
+      --emerald: #00a884;
+      --coral: #f26419;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      padding: 1.5rem 1.25rem 3rem; line-height: 1.5;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    header {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; }
+    .logo span { color: var(--coral); }
+    .nav-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-btn {
+      text-decoration: none; color: #fff; background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border); padding: 0.45rem 0.9rem; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600;
+    }
+    .nav-btn.primary { background: var(--emerald); border-color: var(--emerald); }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .tab-btn {
+      background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+      padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.84rem; font-weight: 700; cursor: pointer;
+    }
+    .tab-btn.active { background: var(--emerald); border-color: var(--emerald); color: #fff; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem;
+    }
+    .card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.55rem;
+      border-radius: 999px; background: rgba(0,168,132,0.18); color: #6ee7b7; margin-bottom: 0.5rem;
+    }
+    .badge.pending { background: rgba(242,100,25,0.2); color: #fdba74; }
+    .form-row { margin-bottom: 0.75rem; }
+    .form-row label { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; font-weight: 600; }
+    .input {
+      width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg); color: #fff; font-size: 0.86rem;
+    }
+    .btn {
+      background: var(--emerald); color: #fff; border: none; padding: 0.55rem 1rem;
+      border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer;
+    }
+    .btn.subtle { background: rgba(255,255,255,0.08); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    th, td { text-align: left; padding: 0.7rem 0.6rem; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="logo">KIKAO<span>360</span> • Owner CMS</div>
+        <div style="font-size:0.8rem; color:var(--muted);">Editorial Queue, 3-Gate Tipline Moderation &amp; Multi-Channel Publishing</div>
+      </div>
+      <div class="nav-links">
+        <a class="nav-btn" href="samples.html">🧩 Component Samples</a>
+        <a class="nav-btn primary" href="index.html">📱 Open Live App</a>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tipline">🛡️ Tipline Moderation (3-Gate QA)</button>
+      <button class="tab-btn" data-tab="composer">✍️ Create &amp; Queue Story</button>
+      <button class="tab-btn" data-tab="lineup">📅 Multi-Channel Lineup</button>
+    </div>
+
+    <!-- TAB 1: TIPLINE MODERATION -->
+    <section class="panel active" id="panel-tipline">
+      <div class="grid" id="tiplineQueueGrid"></div>
+    </section>
+
+    <!-- TAB 2: COMPOSER -->
+    <section class="panel" id="panel-composer">
+      <div class="card" style="max-width:680px;">
+        <h3>Create Multi-Channel Dispatch (COPE Pipeline)</h3>
+        <div class="form-row">
+          <label>Headline</label>
+          <input type="text" id="cmsTitle" class="input" placeholder="e.g., How University Founders Use Daraja 3.0">
+        </div>
+        <div class="form-row">
+          <label>Category / Beat</label>
+          <select id="cmsBeat" class="input">
+            <option>Business &amp; Finance</option>
+            <option>Politics &amp; Current Affairs</option>
+            <option>Technology</option>
+            <option>Campus &amp; Youth</option>
+            <option>Entertainment</option>
+            <option>Sports</option>
+            <option>Art</option>
+            <option>Fashion</option>
+            <option>Lifestyle</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>0–3s TikTok/Reels Hook</label>
+          <input type="text" id="cmsHook" class="input" placeholder="e.g., No bank account? No problem.">
+        </div>
+        <div class="form-row">
+          <label>Scheduled Publish Slot (EAT)</label>
+          <input type="text" id="cmsSlot" class="input" value="Tomorrow 07:30 EAT (WhatsApp + Web)">
+        </div>
+        <button class="btn" id="cmsAddBtn">Queue to Content Lineup ❯</button>
+        <div id="cmsSavedMsg" style="margin-top:0.6rem; font-size:0.82rem; color:#6ee7b7; display:none;"></div>
+      </div>
+    </section>
+
+    <!-- TAB 3: LINEUP TABLE -->
+    <section class="panel" id="panel-lineup">
+      <div class="card" style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr><th>Slot (EAT)</th><th>Beat</th><th>Headline / Hook</th><th>Channels</th><th>Status</th></tr>
+          </thead>
+          <tbody id="cmsLineupBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Tipline Queue from localStorage + default sample
+    const defaultTips = [
+      {
+        id: 'tip-1',
+        headline: 'HELB Portal Outage Delaying Semester Registration',
+        category: 'Campus & Youth',
+        location: 'Nairobi (USIU / UoN)',
+        status: 'Gate 2: Two-Source Review'
+      }
+    ];
+    const loadTips = () => {
+      try {
+        const stored = JSON.parse(localStorage.getItem('kikao_tipline') || '[]');
+        return stored.length ? stored : defaultTips;
+      } catch { return defaultTips; }
+    };
+
+    const renderTips = () => {
+      const grid = document.getElementById('tiplineQueueGrid');
+      const tips = loadTips();
+      grid.innerHTML = tips.map((t, i) => `
+        <div class="card">
+          <span class="badge ${t.status.includes('Verified') ? '' : 'pending'}">${t.status}</span>
+          <h3>${t.headline}</h3>
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:0.8rem;">${t.category} • ${t.location}</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button class="btn" onclick="approveTip(${i})">✅ Approve &amp; Badge Verified</button>
+            <button class="btn subtle" onclick="rejectTip(${i})">🗑️ Archive</button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    window.approveTip = (idx) => {
+      const tips = loadTips();
+      if (tips[idx]) tips[idx].status = 'Community Dispatch — Verified';
+      localStorage.setItem('kikao_tipline', JSON.stringify(tips));
+      renderTips();
+    };
+
+    window.rejectTip = (idx) => {
+      const tips = loadTips();
+      tips.splice(idx, 1);
+      localStorage.setItem('kikao_tipline', JSON.stringify(tips));
+      renderTips();
+    };
+
+    // Content Lineup
+    const defaultLineup = [
+      { slot: 'Mon 07:30 EAT', beat: 'Business & Finance', title: 'The M-Pesa API Revolution', channels: 'WhatsApp + Web + Audio', status: 'Ready' },
+      { slot: 'Mon 13:00 EAT', beat: 'Business & Finance', title: 'Hook: KES 180K/week on WhatsApp', channels: 'TikTok + IG Reels (9:16)', status: 'Formatted' },
+      { slot: 'Wed 13:00 EAT', beat: 'Technology', title: 'Hook: Cold-Chain IoT Hacking', channels: 'TikTok + IG Reels + Web', status: 'Ready' }
+    ];
+    const loadLineup = () => {
+      try {
+        const s = JSON.parse(localStorage.getItem('kikao_cms_lineup') || '[]');
+        return s.length ? s : defaultLineup;
+      } catch { return defaultLineup; }
+    };
+    const renderLineup = () => {
+      const body = document.getElementById('cmsLineupBody');
+      body.innerHTML = loadLineup().map(item => `
+        <tr>
+          <td>${item.slot}</td>
+          <td>${item.beat}</td>
+          <td><strong>${item.title}</strong></td>
+          <td>${item.channels}</td>
+          <td><span class="badge">${item.status}</span></td>
+        </tr>
+      `).join('');
+    };
+
+    document.getElementById('cmsAddBtn').addEventListener('click', () => {
+      const title = document.getElementById('cmsTitle').value.trim();
+      if (!title) return;
+      const lineup = loadLineup();
+      lineup.unshift({
+        slot: document.getElementById('cmsSlot').value.trim(),
+        beat: document.getElementById('cmsBeat').value,
+        title: `${title} (Hook: ${document.getElementById('cmsHook').value.trim() || 'Breaking'})`,
+        channels: 'WhatsApp + Web + Reels',
+        status: 'Queued'
+      });
+      localStorage.setItem('kikao_cms_lineup', JSON.stringify(lineup));
+      renderLineup();
+      const msg = document.getElementById('cmsSavedMsg');
+      msg.style.display = 'block';
+      msg.textContent = '✅ Story queued to Multi-Channel Lineup!';
+    });
+
+    renderTips();
+    renderLineup();
+  </script>
+</body>
+</html>

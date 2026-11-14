@@ -56,9 +56,15 @@
       <button class="gesture-hint-btn" id="openOnboardingBtn" onclick="openOnboardingModal()" title="Personalize Your News Categories">
         <span>🎯 For You</span>
       </button>
-      <button class="gesture-hint-btn" id="openTiplineBtn" onclick="openTiplineModal()" title="Submit Community News Tip">
-        <span>📢 Submit Tip</span>
+      <button class="gesture-hint-btn" id="openAccountBtn" onclick="openAccountModal()" title="My Account: Saved, Liked & Algorithm">
+        <span>👤 Account</span>
       </button>
+      <button class="gesture-hint-btn" id="openTiplineBtn" onclick="openTiplineModal()" title="Submit Community News Tip">
+        <span>📢 Tip</span>
+      </button>
+      <a class="gesture-hint-btn" href="cms.html" style="text-decoration:none;" title="Owner Content Management System">
+        <span>⚙️ CMS</span>
+      </a>
       <button class="gesture-hint-btn" id="gestureHelpBtn" title="How Gestures Work">
         <span>🤏 Pinch to switch</span>
       </button>
@@ -680,6 +686,41 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="modal-submit-btn" id="submitTipBtn">Send to Fact-Check Desk ❯</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- USER ACCOUNT SPACE MODAL (Saved, Liked & Personal Algorithm Controls)      -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="accountModal">
+    <div class="modal-card wide-card">
+      <button class="modal-close-btn" id="closeAccountBtn" onclick="closeAccountModal()">✕</button>
+      <div class="modal-header">
+        <div class="badge-tag">KIKAO360 ACCOUNT SPACE</div>
+        <h3>Your Saved Stories, Likes &amp; Feed Algorithm</h3>
+        <p>Manage what you saved, revisit liked dispatches, and tune your personal news algorithm.</p>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.5rem;">
+          <button type="button" class="interest-chip selected acct-tab" data-acct-tab="saved">🔖 Saved (<span id="acctSavedCount">0</span>)</button>
+          <button type="button" class="interest-chip acct-tab" data-acct-tab="liked">❤️ Liked (<span id="acctLikedCount">0</span>)</button>
+          <button type="button" class="interest-chip acct-tab" data-acct-tab="algo">🎛️ My Algorithm</button>
+        </div>
+        <div id="acctSavedPane" class="acct-pane"></div>
+        <div id="acctLikedPane" class="acct-pane" style="display:none;"></div>
+        <div id="acctAlgoPane" class="acct-pane" style="display:none;">
+          <p style="font-size:0.82rem; color:#94a3b8; margin-bottom:0.5rem;">Active Beats in Your Feed:</p>
+          <div id="acctAlgoBeats" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.9rem;"></div>
+          <label for="acctFormatPref">Preferred Default Modality</label>
+          <select id="acctFormatPref" class="tipline-input" style="margin-bottom:0.75rem;">
+            <option value="balanced">Balanced (Read + Watch + Listen)</option>
+            <option value="video">Short-Form Video First (60s Reels/TikTok)</option>
+            <option value="read">Deep-Dive Longform First (Magazine)</option>
+            <option value="audio">Audio Commute Mode (NPR Bulletin)</option>
+          </select>
+          <button type="button" class="btn-subtle" onclick="closeAccountModal(); openOnboardingModal();">Edit My 9 Beats ❯</button>
+        </div>
       </div>
     </div>
   </div>
