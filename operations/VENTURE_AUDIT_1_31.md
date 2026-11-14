@@ -23,18 +23,20 @@ Audited using the **Media Venture Design & Validation Protocol** (from handwritt
   * **Could Have:** Inside-the-Sphere 3D spatial room.
   * **Won't Have (Day 1):** Heavy native iOS/Android app (zero-dependency web app keeps CAPEX/OPEX lean).
 * **Set-Theory Market Differentiation (Step 21f):**
-  * $U$ = All Kenyan youth & young-professional media consumers (18–38).
-  * $A$ = Existing offerings (*Business Daily*, *Pulse Kenya*, *SemaBox*).
+  * $U$ = All media features, formats, and audience needs within the Kenyan youth & young-professional digital ecosystem (18–38).
+  * $A$ = Existing media offerings (*Business Daily*, *Pulse Kenya*, *SemaBox*, legacy radio/TV).
   * $B$ = **Kikao360**.
-  * $B \cap A'$ (**Our Unique Differentiator**): Open-access, dual-perspective journalism across 9 youth beats delivered simultaneously via WhatsApp OpenGraph cards, 3D spatial web UI, and Lipa na M-Pesa micro-patronage.
-  * $A' \cap B'$ (**Unserved White Space**): Hyper-local vernacular/Sheng fact-checking bots for rural counties (future Phase 2/3 expansion).
+  * **a) $B'$ (What Kikao360 Deliberately Excludes):** Hard paywalls, print distribution, 24/7 linear TV/radio broadcast overhead, and unverified sensationalist celebrity gossip.
+  * **b) $B' \cup A$ (Competitor-Dominated + Non-Kikao360 Space):** Traditional print broadsheets, NSE corporate-only reporting, rigid monthly paywalls, and unverified entertainment clickbait—everything existing players do or that sits outside Kikao360's scope.
+  * **c) $B \cap A'$ (Our Unique Differentiator / Value Proposition):** Open-access, dual-perspective journalism across 9 youth beats delivered simultaneously via **WhatsApp OpenGraph cards**, **3D spatial web UI**, **Category Onboarding**, **3-Gate Community Tipline**, and **Lipa na M-Pesa micro-patronage**—none of which competitors combine.
+  * **d) $A' \cap B'$ (Unserved White Space / Future Expansion):** Hyper-local vernacular/Sheng voice-note fact-checking bots for rural counties and offline USSD/SMS news alerts (Phase 2/3 growth).
 
 ---
 
 ## Phase 3: Task 2 — Market Research & Moat (Steps 23–28)
 * **Audience Profiling (Step 24):** Primary (Kenyan youth 18–30) and Secondary (28–38 corporate/policy professionals) are clearly separated.
 * **Competitor Matrix (Step 25):** Strong comparison against *Business Daily*, *Pulse Kenya*, and *SemaBox*.
-* **Demand Evidence (Step 27):** `Final Exam Project.docx` adds strong stats (**39%** social vs **31%** TV, **73%** short-form video, **42%** news avoidance), **but lacks APA 7th citations**—obtain exact sources from teammates.
+* **Demand Evidence (Step 27):** ⏳ **PENDING — Needs APA 7th Citations:** `Final Exam Project.docx` adds strong stats (**39%** social vs **31%** TV, **73%** short-form video, **42%** news avoidance), **but lacks APA 7th edition sources**. Blocked from final sign-off until exact report links/authors are obtained from teammates.
 
 ---
 

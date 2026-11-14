@@ -3,12 +3,12 @@
    ========================================================================== */
 
 .view-whatsapp {
-  background-color: #0b141a;
+  background-color: var(--bg-canvas);
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
-  padding: 1rem 0;
+  padding: 1.5rem 1rem;
 }
 
 @media (max-width: 600px) {
@@ -49,7 +49,7 @@
   }
 
   .wa-chat-scroll {
-    padding: 0.6rem 0.4rem;
+    padding: 1rem 0.85rem 1.5rem;
   }
 
   .wa-og-media {
