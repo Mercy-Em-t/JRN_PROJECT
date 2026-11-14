@@ -209,8 +209,8 @@ class SphericalRoom {
     this.rotY += (this.targetRotY - this.rotY) * 0.12;
 
     if (this.room) {
-      // 3D Matrix Transform for the viewer standing inside the room
-      this.room.style.transform = `scale(${this.zoom}) rotateX(${this.rotX}deg) rotateY(${this.rotY}deg)`;
+      // Push carousel back by -radius so front-most card sits cleanly at Z=0
+      this.room.style.transform = `translateZ(-${this.radius}px) scale(${this.zoom}) rotateX(${this.rotX}deg) rotateY(${this.rotY}deg)`;
     }
 
     if (this.hudCoords) {
