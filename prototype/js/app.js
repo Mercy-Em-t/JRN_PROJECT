@@ -27,6 +27,7 @@ class KikaoApp {
     this.bindGuardianInteractions();
     this.bindAudioPlayer();
     this.bindModals();
+    this.bindOnboardingAndTipline();
   }
 
   // ==========================================================================
@@ -550,6 +551,110 @@ class KikaoApp {
       });
     });
   }
+
+  // ==========================================================================
+  // CATEGORY ONBOARDING & COMMUNITY TIPLINE (Task 1 & Task 3 Integration)
+  // ==========================================================================
+  bindOnboardingAndTipline() {
+    const onboardingModal = document.getElementById("onboardingModal");
+    const openOnboardingBtn = document.getElementById("openOnboardingBtn");
+    const saveBtn = document.getElementById("saveInterestsBtn");
+    const resetBtn = document.getElementById("resetInterestsBtn");
+    const chips = document.querySelectorAll(".interest-chip");
+
+    const loadSaved = () => {
+      try {
+        return JSON.parse(localStorage.getItem("kikao_interests") || "[]");
+      } catch {
+        return [];
+      }
+    };
+
+    const updateDockBadge = (selected) => {
+      if (openOnboardingBtn) {
+        openOnboardingBtn.innerHTML = selected.length > 0
+          ? `<span>🎯 For You (${selected.length})</span>`
+          : `<span>🎯 For You</span>`;
+      }
+    };
+
+    const syncChips = (selected) => {
+      chips.forEach((chip) => {
+        chip.classList.toggle("selected", selected.includes(chip.getAttribute("data-topic")));
+      });
+    };
+
+    let currentInterests = loadSaved();
+    syncChips(currentInterests);
+    updateDockBadge(currentInterests);
+
+    // Show onboarding automatically on first visit
+    if (!localStorage.getItem("kikao_onboarded") && onboardingModal) {
+      setTimeout(() => onboardingModal.classList.add("open"), 400);
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chip.classList.toggle("selected");
+      });
+    });
+
+    saveBtn?.addEventListener("click", () => {
+      const chosen = Array.from(document.querySelectorAll(".interest-chip.selected"))
+        .map((c) => c.getAttribute("data-topic"));
+      localStorage.setItem("kikao_interests", JSON.stringify(chosen));
+      localStorage.setItem("kikao_onboarded", "true");
+      updateDockBadge(chosen);
+      onboardingModal?.classList.remove("open");
+    });
+
+    resetBtn?.addEventListener("click", () => {
+      localStorage.setItem("kikao_interests", JSON.stringify([]));
+      localStorage.setItem("kikao_onboarded", "true");
+      syncChips([]);
+      updateDockBadge([]);
+      onboardingModal?.classList.remove("open");
+    });
+
+    // Community Tipline & 3-Gate Verification Simulation
+    const submitTipBtn = document.getElementById("submitTipBtn");
+    const statusBox = document.getElementById("tiplineStatusBox");
+
+    submitTipBtn?.addEventListener("click", () => {
+      const headline = document.getElementById("tipHeadline")?.value.trim() || "Campus Digital Service Update";
+      const category = document.getElementById("tipCategory")?.value || "Campus & Youth";
+      const location = document.getElementById("tipLocation")?.value.trim() || "Nairobi";
+      const consent = document.getElementById("tipConsent")?.checked;
+
+      if (!consent) {
+        alert("Please confirm verification & Data Protection Act consent before submitting.");
+        return;
+      }
+
+      if (statusBox) {
+        statusBox.style.display = "block";
+        statusBox.innerHTML = `
+          ⏳ <strong>Routing "${headline}" (${category} • ${location}) to Fact-Check Desk...</strong>
+          <div class="gate-steps">
+            <div class="gate-step">1. EXIF &amp; Reverse-Image Check: <em>Running...</em></div>
+            <div class="gate-step">2. Two-Source Corroboration: <em>Queued</em></div>
+            <div class="gate-step">3. Managing Editor Sign-Off: <em>Pending</em></div>
+          </div>
+        `;
+
+        setTimeout(() => {
+          statusBox.innerHTML = `
+            ✅ <strong>Tipline Logged in Verification Queue!</strong>
+            <div class="gate-steps">
+              <div class="gate-step passed">1. EXIF &amp; Reverse-Image Check: <strong>Cleared</strong></div>
+              <div class="gate-step passed">2. Two-Source Corroboration: <strong>Assigned to Desk Lead</strong></div>
+              <div class="gate-step">3. Managing Editor Sign-Off: <em>Publishes as "Community Dispatch — Verified"</em></div>
+            </div>
+          `;
+        }, 1200);
+      }
+    });
+  }
 }
 
 // Global helpers so buttons always work directly
@@ -576,6 +681,26 @@ window.openPitchDeck = function() {
 window.closePitchDeck = function() {
   const pitchModal = document.getElementById("pitchDeckModal");
   if (pitchModal) pitchModal.classList.remove("open");
+};
+
+window.openOnboardingModal = function() {
+  const m = document.getElementById("onboardingModal");
+  if (m) m.classList.add("open");
+};
+
+window.closeOnboardingModal = function() {
+  const m = document.getElementById("onboardingModal");
+  if (m) m.classList.remove("open");
+};
+
+window.openTiplineModal = function() {
+  const m = document.getElementById("tiplineModal");
+  if (m) m.classList.add("open");
+};
+
+window.closeTiplineModal = function() {
+  const m = document.getElementById("tiplineModal");
+  if (m) m.classList.remove("open");
 };
 
 // Safe initialization whether DOM is loading or already loaded

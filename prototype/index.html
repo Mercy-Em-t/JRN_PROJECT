@@ -53,6 +53,12 @@
     </nav>
     
     <div class="dock-actions">
+      <button class="gesture-hint-btn" id="openOnboardingBtn" onclick="openOnboardingModal()" title="Personalize Your News Categories">
+        <span>🎯 For You</span>
+      </button>
+      <button class="gesture-hint-btn" id="openTiplineBtn" onclick="openTiplineModal()" title="Submit Community News Tip">
+        <span>📢 Submit Tip</span>
+      </button>
       <button class="gesture-hint-btn" id="gestureHelpBtn" title="How Gestures Work">
         <span>🤏 Pinch to switch</span>
       </button>
@@ -597,6 +603,83 @@
           <button class="btn-subtle" id="prevSlideBtn">Previous</button>
           <button class="btn-primary" id="nextSlideBtn">Next Slide ❯</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CATEGORY ONBOARDING MODAL (Personalize Feed Across 9 Youth Beats)          -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="onboardingModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeOnboardingBtn" onclick="closeOnboardingModal()">✕</button>
+      <div class="modal-header">
+        <div class="badge-tag">PERSONALIZE KIKAO360</div>
+        <h3>Pick the Stories That Matter to You</h3>
+        <p>Select your favorite beats to customize your WhatsApp briefings, Magazine feed, and Pinterest grid.</p>
+      </div>
+      <div class="modal-body">
+        <div class="interest-grid" id="interestGrid">
+          <button type="button" class="interest-chip" data-topic="Politics & Current Affairs">🏛️ Politics &amp; Current Affairs</button>
+          <button type="button" class="interest-chip" data-topic="Business & Finance">💼 Business &amp; Finance</button>
+          <button type="button" class="interest-chip" data-topic="Technology">💻 Technology</button>
+          <button type="button" class="interest-chip" data-topic="Entertainment">🎬 Entertainment</button>
+          <button type="button" class="interest-chip" data-topic="Sports">⚽ Sports</button>
+          <button type="button" class="interest-chip" data-topic="Art">🎨 Art</button>
+          <button type="button" class="interest-chip" data-topic="Fashion">👗 Fashion</button>
+          <button type="button" class="interest-chip" data-topic="Lifestyle">✨ Lifestyle</button>
+          <button type="button" class="interest-chip" data-topic="Campus & Youth">🎓 Campus &amp; Youth</button>
+        </div>
+      </div>
+      <div class="modal-footer space-between">
+        <button type="button" class="btn-subtle" id="resetInterestsBtn">Show All</button>
+        <button type="button" class="modal-submit-btn" id="saveInterestsBtn">Save My Feed ❯</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- COMMUNITY TIPLINE & VERIFICATION GATE MODAL (User-Submitted News)          -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="tiplineModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeTiplineBtn" onclick="closeTiplineModal()">✕</button>
+      <div class="modal-header">
+        <div class="badge-tag">COMMUNITY TIPLINE • TASK 3 QA GATE</div>
+        <h3>Submit a News Tip or Campus Update</h3>
+        <p>All reader tips pass through Kikao360's Fact-Check Desk &amp; Two-Source Rule before publication.</p>
+      </div>
+      <div class="modal-body">
+        <div class="tipline-form-group">
+          <label for="tipHeadline">What happened? (Short Headline)</label>
+          <input type="text" id="tipHeadline" class="tipline-input" placeholder="e.g., HELB portal outage affecting semester registration at USIU/UoN">
+        </div>
+        <div class="tipline-form-group">
+          <label for="tipCategory">Category</label>
+          <select id="tipCategory" class="tipline-input">
+            <option>Campus &amp; Youth</option>
+            <option>Politics &amp; Current Affairs</option>
+            <option>Business &amp; Finance</option>
+            <option>Technology</option>
+            <option>Entertainment</option>
+            <option>Sports</option>
+            <option>Art</option>
+            <option>Fashion</option>
+            <option>Lifestyle</option>
+          </select>
+        </div>
+        <div class="tipline-form-group">
+          <label for="tipLocation">Location &amp; Primary Evidence / Source Link</label>
+          <input type="text" id="tipLocation" class="tipline-input" placeholder="e.g., Roysambu / Photo EXIF + Official Memo Link">
+        </div>
+        <label class="tipline-consent">
+          <input type="checkbox" id="tipConsent" checked>
+          <span>I confirm this tip is firsthand or sourced, and consent to Kikao360 Fact-Check Desk verification (ODPC Data Protection Act 2019).</span>
+        </label>
+        <div id="tiplineStatusBox" class="mpesa-status-box" style="display:none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-submit-btn" id="submitTipBtn">Send to Fact-Check Desk ❯</button>
       </div>
     </div>
   </div>

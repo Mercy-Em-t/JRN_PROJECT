@@ -90,68 +90,85 @@ Kikao360 targets two distinct segments within the Kenyan and East African urban 
 
 ## TASK 3: MEDIA OPERATIONS & MANAGEMENT STRUCTURE (8 MARKS)
 
-### 3.1 Proposed Organizational Structure
-Kikao360 is governed under an agile, flat management hierarchy tailored for an entrepreneurial media venture:
+### 3.1 Proposed Organizational Structure & Operating Model
+Kikao360 operates under a **Hybrid Flat-Functional + Network (Hub-and-Spoke) Structure** engineered for a lean 4-founder startup:
+* **Core Hub (4 Founders):** Flat-functional leadership where each founder owns one distinct operational pillar—eliminating middle-management bloat while preserving a strict editorial–commercial firewall.
+* **Network Spokes (Variable Contributor Pool):** Flexible campus correspondents, freelance video editors, and fact-checkers paid per published deliverable (KES 2,500/piece), allowing multi-university coverage without heavy fixed payroll.
 
+```text
+                      ┌───────────────────────────────────┐
+                      │       CEO & PUBLISHER (Lead)      │
+                      │ Strategy, Governance & Investors  │
+                      └─────────────────┬─────────────────┘
+                                        │
+        ┌───────────────────────────────┼───────────────────────────────┐
+        ▼                               ▼                               ▼
+┌───────────────────┐         ┌───────────────────┐         ┌───────────────────┐
+│  MANAGING EDITOR  │         │  HEAD OF PRODUCT  │         │   COMMERCIAL &    │
+│ & MULTIMEDIA LEAD │         │  & PLATFORM (CTO) │         │ PARTNERSHIPS DIR. │
+└─────────┬─────────┘         └─────────┬─────────┘         └─────────┬─────────┘
+          │                             │                             │
+          ▼                             ▼                             ▼
+   [NETWORK SPOKES]             [SPATIAL & WEB UI]            [REVENUE ENGINE]
+   • Campus Correspondents      • 5-Mode Web Platform         • Fintech Sponsors
+   • Fact-Check Assistants      • 3D Sphere & Gestures        • Lipa na M-Pesa
+   • Freelance Video Editors    • Cloudflare / Daraja API     • Campus Activations
 ```
-                          ┌─────────────────────────────┐
-                          │   CHIEF EXECUTIVE OFFICER   │
-                          │   & PUBLISHER (Lead)        │
-                          └──────────────┬──────────────┘
-                                         │
-    ┌──────────────────────────┬─────────┴────────────────────────┬──────────────────────────┐
-    ▼                          ▼                                  ▼                          ▼
-┌──────────────────┐  ┌──────────────────┐              ┌──────────────────┐       ┌──────────────────┐
-│ MANAGING EDITOR  │  │ HEAD OF PRODUCT  │              │ COMMERCIAL &     │       │ HEAD OF AUDIO    │
-│ & INVESTIGATIONS │  │ & 3D PLATFORM    │              │ PARTNERSHIPS     │       │ & VIDEO DISPATCH │
-└────────┬─────────┘  └────────┬─────────┘              └────────┬─────────┘       └────────┬─────────┘
-         │                     │                                 │                          │
-    ┌────┴────┐           ┌────┴────┐                       ┌────┴────┐                ┌────┴────┐
-    ▼         ▼           ▼         ▼                       ▼         ▼                ▼         ▼
-Student    Fact-Check  Frontend   Spatial UI              Fintech  Brand Activations  Video Ed.  Podcast Host
-Reporters  Desk Lead   Developer  & Graphics              Liaison  & M-Pesa Billing   (TikTok)   (NPR Dock)
-```
 
-### 3.2 Key Management Roles & Responsibilities
-1. **CEO & Publisher:** Steers overall strategic vision, regulatory engagement with the Media Council of Kenya (MCK), investor relations, and capital allocation.
-2. **Managing Editor:** Oversees journalistic ethics, assigns investigative beats, verifies source documentation, enforces fact-checking protocols, and ensures compliance with libel laws.
-3. **Head of Product & Platform (CTO):** Maintains web infrastructure, ensures sub-second loading on mobile networks, manages the 3D spherical CSS viewport, and oversees WhatsApp API webhook automation.
-4. **Commercial & Partnerships Director:** Drives revenue generation, manages M-Pesa merchant billing integrations, pitches corporate sponsors (Fintechs, Telcos), and monitors financial sustainability.
-5. **Head of Audio & Video Production:** Directs studio recordings, oversees 60-second vertical video editing for TikTok/Reels, and programs the persistent NPR-style audio stream.
+### 3.2 Key Management Roles & Staffing Responsibilities
+* **Tier 1 — Core Management Hub (4 Founders @ KES 20,000/mo stipend = KES 80,000/mo):**
+  1. **CEO & Publisher:** Steers overall strategic vision, investor relations, capital allocation, and regulatory compliance with the Media Council of Kenya (MCK), CAK, and ODPC.
+  2. **Managing Editor & Multimedia Lead:** Chairs weekly pitch meetings, enforces the Two-Source Rule and libel review, commissions campus correspondents, and oversees the 3–5 minute daily audio dispatches and 13-minute weekly flagship bulletins.
+  3. **Head of Product & Platform (CTO):** Maintains the 5-mode web platform (`index.html`, Guardian layout, Pinterest grid, 3D Sphere room), optimizes mobile load speed via Cloudflare CDN, manages WhatsApp/newsletter automation, and oversees Data Protection Act technical safeguards.
+  4. **Commercial & Partnerships Director:** Drives the 4-pillar revenue model, pitches native sponsorships (fintechs, telcos), administers **Lipa na M-Pesa (Daraja API)** reader patronage, and enforces the editorial–commercial firewall.
+* **Tier 2 — Network Spokes (Variable Pool @ KES 2,500/piece ≈ KES 25,000/mo):**
+  * **Campus Correspondents (4–6 across USIU, UoN, Strathmore, KU):** Pitch and report hyper-local student/MSME stories with primary verification documents.
+  * **Freelance Video & Motion Editors (2):** Cut raw field footage into 60-second vertical (9:16) TikTok/Reels dispatches with burned-in captions within 24 hours.
+  * **Fact-Check & Research Assistants (2):** Audit claims against public registries and compile source dossiers.
+  * **Graphic & Spatial UI Designers (1–2):** Produce shareable WhatsApp/Pinterest infographics and debunk cards.
 
-### 3.3 End-to-End Production & Distribution Workflow
-```
-[Step 1: Ingestion & Verification]
-Student reporter files pitch -> Editor verifies primary sources & documents -> Fact-check audit against public registers.
+### 3.3 End-to-End Production & Distribution Workflow (COPE Pipeline)
+Kikao360 uses a **"Create Once, Package Three Ways" (COPE)** workflow on a 48–72 hour cycle (with a <4 hour fast-track for breaking fact-checks):
+```text
+[Stage 1: Pitch & Commissioning]
+Correspondent/Editor submits pitch -> Managing Editor approves angle & confirms zero sponsor conflict.
 
-[Step 2: Multimodal Packaging]
-Content split into 3 assets:
-  a. Written article (800-1200 words + pull-quotes + infographic).
-  b. Vertical video dispatch (60s TikTok/Reels format with subtitles).
-  c. Audio voice bulletin (3-5 min broadcast snippet).
+[Stage 2: Field Reporting & Verification]
+Interviews & 4K/mobile footage captured -> Fact-Check Desk audits against Two-Source Rule & Right of Reply.
 
-[Step 3: Multi-Channel Publishing Engine]
-Simultaneous release across:
-  - Official WhatsApp Channel (OpenGraph cards with tracking links).
-  - Web Platform (Guardian Magazine layout + Pinterest grid + 3D Sphere room).
-  - TikTok & YouTube Shorts (@kikao360 native feeds).
+[Stage 3: Multimodal Packaging (3 Native Assets)]
+  a. Written Longform: 800–1,200 word article + pull-quotes + data infographic.
+  b. Short-Form Video: 60s vertical dispatch (9:16) with captions & watermark.
+  c. Audio Bulletin: 3–5 min daily dispatch (or 13-min weekly deep-dive) for NPR-style audio dock.
 
-[Step 4: Community Feedback & Reader Support]
-Audience comments monitored -> M-Pesa contributions logged -> Daily telemetry analytics reviewed.
+[Stage 4: Technical Staging & 3-Gate Sign-Off]
+CTO stages story across Web/Pinterest/3D Sphere -> Final check for mobile speed, audio levels & libel safety.
+
+[Stage 5: Synchronized Omni-Channel Distribution & Telemetry]
+Released at peak EAT windows (07:30 & 13:00 EAT; Tue/Fri Newsletter):
+  - Official WhatsApp Channel (OpenGraph cards)
+  - Web Platform (Guardian Magazine + Pinterest Grid + 3D Sphere)
+  - TikTok & YouTube Shorts (@kikao360) + Substack/Beehiiv Newsletter
+  -> M-Pesa contributions logged & 24-hour analytics fed into next pitch cycle.
 ```
 
 ### 3.4 Technology, Equipment & Infrastructure Stack
-* **Field & Production Equipment:** 2x Sony ZV-E10 mirrorless 4K cameras with 16–50mm lenses, 2x DJI Mic 2 wireless lavalier kits, 1x Røde PodMic USB, ring-lights, and smartphone gimbal stabilizers.
-* **Software & Hosting Infrastructure:** GitHub version control, Cloudflare CDN with edge caching (ensuring sub-1.5s load times across Kenyan 4G/5G mobile networks), Vercel/Netlify serverless runtime, and Daraja M-Pesa B2C/C2B API gateway.
+* **Field & Studio Hardware (Aligned with Task 4 CAPEX):** 1× **Sony ZV-E10 4K** mirrorless camera (16–50mm lens), 1× **DJI Mic 2** dual-channel wireless lavalier kit, 1× **Røde PodMic**, 1× **Godox LED** panel, smartphone gimbals/tripods (supplemented by founders' smartphones), and 1× M-series/RTX 4060 editing workstation.
+* **Platform Architecture (Validated by Working `/prototype`):** Zero-dependency **HTML5, CSS3, and ES6+ JavaScript** frontend powering a 5-mode switcher (`whatsapp`, `guardian`, `pinterest`, `tiktok`, `sphere`), hardware-accelerated CSS 3D `SphericalRoom`, `GestureController` (pinch-to-switch & 3D orbit), and persistent NPR-style audio dock—delivering sub-1.5s load times on Kenyan 4G/5G networks.
+* **Cloud, Hosting & Payments:** **GitHub** CI/CD to **Vercel/Netlify**, **Cloudflare Pro** CDN/SSL, `.co.ke` domain (KENIC), **Safaricom Daraja 3.0 API** (Lipa na M-Pesa STK Push), **Substack/Beehiiv** newsletter, and **Adobe Creative Cloud / CapCut Pro / Figma Pro** for post-production.
 
 ### 3.5 Editorial Quality Assurance (QA) Mechanisms
 * **The "Two-Source Rule":** No investigative claim is published without corroboration from at least two independent primary sources or certified public records.
-* **70/30 Human Verification Mandate:** In strict adherence to academic and industry ethics, artificial intelligence tools are limited to research summarization, grammar refinement, and audio transcription. All investigative hypotheses, on-the-ground interviews, and editorial decisions are 100% human-conducted.
+* **Mandatory Right of Reply:** Named subjects receive a documented 24–48 hour window to respond prior to publication.
+* **Three-Gate Sign-Off & Corrections Log:** Every piece clears Fact-Check Desk, Managing Editor, and CTO technical QA; factual errors receive a timestamped public correction note within 12 hours (never silent edits).
+* **70/30 Human Verification Mandate:** AI is restricted to transcription, grammar polish, and background summarization (≤30%); all reporting, interviews, and editorial verdicts are 100% human-executed.
+* **Editorial–Commercial Firewall:** Native sponsorships are visibly badged *"Sponsored / Partner Content"* and carry zero editorial veto power.
 
 ### 3.6 Legal, Ethical & Regulatory Compliance
-* **Communications Authority of Kenya (CAK):** Compliance with digital broadcast transmission standards and internet domain governance (`.co.ke` registration via KENIC).
-* **Media Council of Kenya (MCK):** Strict adherence to the *Code of Conduct for the Practice of Journalism in Kenya* (Second Schedule of the Media Council Act, 2013), protecting source confidentiality, avoiding defamation/libel, and offering immediate right of reply.
-* **Kenya Data Protection Act (2019):** Full compliance with Office of the Data Protection Commissioner (ODPC) guidelines regarding user phone numbers collected during M-Pesa transactions and WhatsApp Channel subscriber anonymity.
+* **Media Council of Kenya (MCK):** Strict adherence to the *Code of Conduct for the Practice of Journalism in Kenya* (*Media Council Act, 2013*), protecting confidential whistleblowers and avoiding hate speech.
+* **Kenya Data Protection Act (2019) & ODPC:** Data minimization and SSL/TLS encryption for phone numbers and metadata processed via **Lipa na M-Pesa** and **WhatsApp Channels**.
+* **Defamation Act (Cap 36) & Computer Misuse and Cybercrimes Act (2018):** Mitigated via Two-Source verification, Right-of-Reply logs, and pre-publication Managing Editor legal review.
+* **Communications Authority (CAK) & Kenya Copyright Act (Cap 130):** `.co.ke` KENIC compliance and exclusive use of original footage or royalty-free/licensed audio beds in TikTok/audio dispatches.
 
 ---
 
