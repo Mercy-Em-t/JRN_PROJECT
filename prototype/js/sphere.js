@@ -51,48 +51,54 @@ class SphericalRoom {
     if (!this.room || typeof STORIES === "undefined") return;
 
     this.room.innerHTML = "";
-    const total = STORIES.length;
-    const angleStep = 360 / Math.max(total, 6);
+    const pillars = 6;
+    const tiers = [-1, 0, 1]; // Top, Middle, Bottom cards per pillar
+    const tierSpacing = window.innerWidth < 640 ? 330 : 390;
+    const angleStep = 360 / pillars;
     this.angleStep = angleStep;
 
-    STORIES.forEach((story, index) => {
-      const theta = index * angleStep;
-      const phi = (index % 2 === 0) ? -4 : 6;
+    for (let p = 0; p < pillars; p++) {
+      const theta = p * angleStep;
 
-      const card = document.createElement("div");
-      card.className = "spatial-card";
-      card.setAttribute("data-story-id", story.id);
+      tiers.forEach((tier, tIdx) => {
+        const story = STORIES[(p + tIdx * 2) % STORIES.length];
+        const yOffset = tier * tierSpacing;
 
-      // True outward-facing 360° carousel cylinder
-      card.style.transform = `rotateY(${theta}deg) rotateX(${phi}deg) translateZ(${this.radius}px)`;
+        const card = document.createElement("div");
+        card.className = "spatial-card";
+        card.setAttribute("data-story-id", story.id);
 
-      card.innerHTML = `
-        <div class="spatial-card-media">
-          <img src="${story.poster}" alt="${story.title}" loading="lazy">
-          <span class="spatial-card-badge">${story.badge}</span>
-        </div>
-        <div class="spatial-card-body">
-          <span class="spatial-card-cat">${story.category}</span>
-          <h4 class="spatial-card-title">${story.title}</h4>
-          <p class="spatial-card-desc">${story.leadParagraph}</p>
-          <div class="spatial-card-cta">
-            <span>Read / Watch Story</span>
-            <span>❯</span>
+        // Vertical pillar of cards running up and down around each 60° column
+        card.style.transform = `rotateY(${theta}deg) translateY(${yOffset}px) translateZ(${this.radius}px)`;
+
+        card.innerHTML = `
+          <div class="spatial-card-media">
+            <img src="${story.poster}" alt="${story.title}" loading="lazy">
+            <span class="spatial-card-badge">${story.badge}</span>
           </div>
-        </div>
-      `;
+          <div class="spatial-card-body">
+            <span class="spatial-card-cat">${story.category}</span>
+            <h4 class="spatial-card-title">${story.title}</h4>
+            <p class="spatial-card-desc">${story.leadParagraph}</p>
+            <div class="spatial-card-cta">
+              <span>Read / Watch Story</span>
+              <span>❯</span>
+            </div>
+          </div>
+        `;
 
-      // Only open story on clean tap/click (ignore drags)
-      card.addEventListener("click", () => {
-        if (this.dragDist > 8) return;
-        if (window.app) {
-          window.app.loadStory(story.id);
-          window.app.switchView("guardian");
-        }
+        // Only open story on clean tap/click (ignore drags)
+        card.addEventListener("click", () => {
+          if (this.dragDist > 8) return;
+          if (window.app) {
+            window.app.loadStory(story.id);
+            window.app.switchView("guardian");
+          }
+        });
+
+        this.room.appendChild(card);
       });
-
-      this.room.appendChild(card);
-    });
+    }
   }
 
   bindEvents() {
