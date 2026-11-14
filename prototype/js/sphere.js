@@ -16,18 +16,20 @@ class SphericalRoom {
     this.isDragging = false;
     this.startX = 0;
     this.startY = 0;
-    this.targetRotX = -10;
+    this.dragDist = 0;
+    this.targetRotX = -4;
     this.targetRotY = 0;
+    this.angleStep = 60;
 
     this.autoRotate = true;
-    this.autoRotateSpeed = 0.25;
+    this.autoRotateSpeed = 0.18;
 
     this.init();
   }
 
   updateRadius() {
     const isMobile = window.innerWidth < 640;
-    this.radius = isMobile ? 420 : 680;
+    this.radius = isMobile ? 290 : 480;
   }
 
   init() {
@@ -50,21 +52,19 @@ class SphericalRoom {
 
     this.room.innerHTML = "";
     const total = STORIES.length;
-    // Map cards evenly around a 360 degree cylinder
     const angleStep = 360 / Math.max(total, 6);
+    this.angleStep = angleStep;
 
     STORIES.forEach((story, index) => {
       const theta = index * angleStep;
-      // Stagger elevation slightly between 2 tiers for spherical volume
-      const phi = (index % 2 === 0) ? -8 : 12;
+      const phi = (index % 2 === 0) ? -4 : 6;
 
       const card = document.createElement("div");
       card.className = "spatial-card";
       card.setAttribute("data-story-id", story.id);
 
-      // 3D positioning: Rotate by theta & phi, translate outwards to radius,
-      // and rotate 180 so card face points inwards toward viewer!
-      card.style.transform = `rotateY(${theta}deg) rotateX(${phi}deg) translateZ(-${this.radius}px) rotateY(180deg)`;
+      // True outward-facing 360° carousel cylinder
+      card.style.transform = `rotateY(${theta}deg) rotateX(${phi}deg) translateZ(${this.radius}px)`;
 
       card.innerHTML = `
         <div class="spatial-card-media">
@@ -82,8 +82,9 @@ class SphericalRoom {
         </div>
       `;
 
-      // Clicking a card zooms in and opens the full editorial view
+      // Only open story on clean tap/click (ignore drags)
       card.addEventListener("click", () => {
+        if (this.dragDist > 8) return;
         if (window.app) {
           window.app.loadStory(story.id);
           window.app.switchView("guardian");
@@ -100,6 +101,7 @@ class SphericalRoom {
     // Mouse Dragging
     this.viewport.addEventListener("mousedown", (e) => {
       this.isDragging = true;
+      this.dragDist = 0;
       this.startX = e.clientX;
       this.startY = e.clientY;
       this.room.classList.add("grabbing");
@@ -111,6 +113,7 @@ class SphericalRoom {
       if (!this.isDragging) return;
       const deltaX = e.clientX - this.startX;
       const deltaY = e.clientY - this.startY;
+      this.dragDist += Math.hypot(deltaX, deltaY);
 
       this.targetRotY += deltaX * 0.35;
       this.targetRotX -= deltaY * 0.35;
@@ -133,6 +136,7 @@ class SphericalRoom {
     this.viewport.addEventListener("touchstart", (e) => {
       if (e.touches.length === 1) {
         this.isDragging = true;
+        this.dragDist = 0;
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.autoRotate = false;
@@ -144,6 +148,7 @@ class SphericalRoom {
       if (!this.isDragging || e.touches.length !== 1) return;
       const deltaX = e.touches[0].clientX - this.startX;
       const deltaY = e.touches[0].clientY - this.startY;
+      this.dragDist += Math.hypot(deltaX, deltaY);
 
       this.targetRotY += deltaX * 0.45;
       this.targetRotX -= deltaY * 0.45;
@@ -188,7 +193,7 @@ class SphericalRoom {
     const autoBtn = document.getElementById("sphereAutoRotateBtn");
     if (autoBtn) {
       autoBtn.textContent = `Auto-Orbit: ${this.autoRotate ? 'ON' : 'OFF'}`;
-      autoBtn.style.color = this.autoRotate ? '#00f0ff' : '#ffffff';
+      autoBtn.style.color = this.autoRotate ? '#00a884' : '#ffffff';
     }
   }
 
