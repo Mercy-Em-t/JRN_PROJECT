@@ -19,6 +19,10 @@ User-submitted tips from the prototype's **📢 Submit Tip** modal or WhatsApp t
 2. **Two-Source Corroboration:** Fact-Check Desk confirms with at least one independent source/official memo.
 3. **Public Labeling:** Published as **"Community Dispatch — Verified by Kikao360"**.
 
+## 1C. Social Comment Curation & Republication Rule (Instagram / TikTok)
+- **Data Protection Act (2019):** Anonymize/blur commenter handles and avatars unless explicit consent or Community Guidelines notice applies.
+- **Defamation Act (Cap 36):** Never republish unverified accusations against named individuals or institutions—republishing a reader's libel makes Kikao360 legally liable.
+
 ## 2. Story Pitch Template (Required Before Reporting)
 ```markdown
 - **Working Headline:**

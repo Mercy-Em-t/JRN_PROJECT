@@ -121,35 +121,32 @@ Kikao360 operates under a **Hybrid Flat-Functional + Network (Hub-and-Spoke) Str
   2. **Managing Editor & Multimedia Lead:** Chairs weekly pitch meetings, enforces the Two-Source Rule and libel review, commissions campus correspondents, and oversees the 3–5 minute daily audio dispatches and 13-minute weekly flagship bulletins.
   3. **Head of Product & Platform (CTO):** Maintains the 5-mode web platform (`index.html`, Guardian layout, Pinterest grid, 3D Sphere room), optimizes mobile load speed via Cloudflare CDN, manages WhatsApp/newsletter automation, and oversees Data Protection Act technical safeguards.
   4. **Commercial & Partnerships Director:** Drives the 4-pillar revenue model, pitches native sponsorships (fintechs, telcos), administers **Lipa na M-Pesa (Daraja API)** reader patronage, and enforces the editorial–commercial firewall.
-* **Tier 2 — Network Spokes (Variable Pool @ KES 2,500/piece ≈ KES 25,000/mo):**
-  * **Campus Correspondents (4–6 across USIU, UoN, Strathmore, KU):** Pitch and report hyper-local student/MSME stories with primary verification documents.
-  * **Freelance Video & Motion Editors (2):** Cut raw field footage into 60-second vertical (9:16) TikTok/Reels dispatches with burned-in captions within 24 hours.
-  * **Fact-Check & Research Assistants (2):** Audit claims against public registries and compile source dossiers.
-  * **Graphic & Spatial UI Designers (1–2):** Produce shareable WhatsApp/Pinterest infographics and debunk cards.
+* **Tier 2 — Network Spokes & Creator Desk (Variable Pool @ KES 2,500/piece ≈ KES 25,000/mo):**
+  * **Magazine & Print Writers / Campus Correspondents (4–6 across USIU, UoN, Strathmore, KU):** Write 800–1,200w investigative articles, news bulletins, and print-ready longform scripts across 9 youth beats.
+  * **Title, Hook & Caption Specialist:** Crafts 0–3s TikTok/Reels hooks, WhatsApp 2-line teasers, and SEO headlines.
+  * **Audio & Video Converters (2):** Convert approved written bulletins into 3–5 min / 13-min audio dispatches and 60s vertical (9:16) TikTok/IG Reels using `format_reel.py` (blur-pad for 16:9 sources + top-left `KIKAO360` safe-zone logo stamp).
+  * **Fact-Check & Research Assistants (2):** Audit claims and Community Tipline submissions against public registries.
+  * **Graphic & Spatial UI Designers (1–2):** Produce shareable WhatsApp/Pinterest infographics and comment-roundup cards.
 
-### 3.3 End-to-End Production & Distribution Workflow (COPE Pipeline)
-Kikao360 uses a **"Create Once, Package Three Ways" (COPE)** workflow on a 48–72 hour cycle (with a <4 hour fast-track for breaking fact-checks):
+### 3.3 Editorial Calendar, Group Meetings & 3-Stage Content Pipelines (d)
+Kikao360 runs a **"Create Once, Package Three Ways" (COPE)** newsroom governed by three weekly syncs (**Mon 08:30 EAT** Pitch & Calendar Sync; **Wed 14:00 EAT** Editorial Review & QA Gate; **Fri 16:00 EAT** Post-Publication Performance & CAC Sync) and three explicit CMS pipelines (`prototype/cms.html`):
 ```text
-[Stage 1: Pitch & Commissioning]
-Correspondent/Editor submits pitch -> Managing Editor approves angle & confirms zero sponsor conflict.
-
-[Stage 2: Field Reporting & Verification]
-Interviews & 4K/mobile footage captured -> Fact-Check Desk audits against Two-Source Rule & Right of Reply.
-
-[Stage 3: Multimodal Packaging (3 Native Assets)]
-  a. Written Longform: 800–1,200 word article + pull-quotes + data infographic.
-  b. Short-Form Video: 60s vertical dispatch (9:16) with captions & watermark.
-  c. Audio Bulletin: 3–5 min daily dispatch (or 13-min weekly deep-dive) for NPR-style audio dock.
-
-[Stage 4: Technical Staging & 3-Gate Sign-Off]
-CTO stages story across Web/Pinterest/3D Sphere -> Final check for mobile speed, audio levels & libel safety.
-
-[Stage 5: Synchronized Omni-Channel Distribution & Telemetry]
-Released at peak EAT windows (07:30 & 13:00 EAT; Tue/Fri Newsletter):
-  - Official WhatsApp Channel (OpenGraph cards)
-  - Web Platform (Guardian Magazine + Pinterest Grid + 3D Sphere)
-  - TikTok & YouTube Shorts (@kikao360) + Substack/Beehiiv Newsletter
-  -> M-Pesa contributions logged & 24-hour analytics fed into next pitch cycle.
+[Pipeline A: Pending Review (Writers -> Fact-Check Desk)]
+  Writer submits 800-1,200w article + hook + sources (or reader submits via Community Tipline)
+  -> Fact-Check Desk verifies EXIF/reverse-image, Two-Source Rule & Right of Reply.
+       │ (Approved at Wed Editorial Review)
+       ▼
+[Pipeline B: Pending Publication (Multimodal Converters -> Content Calendar)]
+  Written bulletin converted into 3 native assets:
+  ├── (1) Web Longform + 9-Beat Category Tag (Magazine, Pinterest Grid & 6-Pillar 3D Sphere)
+  ├── (2) 60s Vertical Video (formatted to 9:16 & stamped via format_reel.py for TikTok/IG Reels)
+  └── (3) Audio Bulletin (3-5 min daily / 13-min weekly MP3 for persistent NPR dock)
+  -> Staged in CMS Content Calendar for peak EAT slots (07:30 & 13:00 EAT; Tue/Fri Newsletter).
+       │ (Published)
+       ▼
+[Pipeline C: Post-Publication Performance & CAC Monitoring (Fri Sync)]
+  Tracks Reach, Impressions, Engagement (Likes/Saves/Algorithm), M-Pesa STK conversions,
+  and Customer Acquisition Cost (CAC = Promo Spend / New Subscribers; target <= KES 3.00).
 ```
 
 ### 3.4 Technology, Equipment & Infrastructure Stack
