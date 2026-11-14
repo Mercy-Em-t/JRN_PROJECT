@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kikao360 — MoSCoW Component Samples & Previews</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #111827;
+      --border: rgba(255, 255, 255, 0.12);
+      --navy: #052962;
+      --wa-green: #00a884;
+      --wa-bubble: #1f2c34;
+      --coral: #f26419;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 1.25rem 4rem;
+      line-height: 1.5;
+    }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .top-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+    }
+    .brand { font-size: 1.4rem; font-weight: 800; letter-spacing: 0.5px; }
+    .brand span { color: var(--coral); }
+    .back-link {
+      color: #fff; background: var(--navy); text-decoration: none;
+      padding: 0.55rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+    }
+    .tier-heading {
+      margin: 2.2rem 0 1rem; display: flex; align-items: center; gap: 0.6rem;
+      font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+    }
+    .tier-badge {
+      font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800;
+    }
+    .must { background: rgba(242, 100, 25, 0.2); color: #fdba74; border: 1px solid var(--coral); }
+    .should { background: rgba(0, 168, 132, 0.2); color: #6ee7b7; border: 1px solid var(--wa-green); }
+    .could { background: rgba(99, 102, 241, 0.2); color: #c7d2fe; border: 1px solid #6366f1; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;
+    }
+    .sample-box {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.15rem; display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .sample-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+
+    /* 1. Category Picker Sample */
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .chip {
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      color: #e2e8f0; padding: 0.4rem 0.75rem; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+    }
+    .chip.active { background: rgba(0,168,132,0.22); border-color: var(--wa-green); color: #fff; }
+
+    /* 2. WhatsApp Card Sample */
+    .wa-card {
+      background: var(--wa-bubble); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .wa-card img { width: 100%; height: 150px; object-fit: cover; display: block; }
+    .wa-card-body { padding: 0.8rem; }
+    .wa-site { font-size: 0.7rem; color: var(--wa-green); font-weight: 700; }
+    .wa-title { font-size: 0.92rem; font-weight: 700; margin: 0.2rem 0; }
+    .wa-desc { font-size: 0.78rem; color: var(--muted); }
+    .wa-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 0.6rem; font-size: 0.72rem; color: #cbd5e1;
+    }
+
+    /* 3. IG Reel & TikTok Side-by-Side */
+    .vertical-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .phone-frame {
+      position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden;
+      background: #000; border: 1px solid rgba(255,255,255,0.18);
+    }
+    .phone-frame video { width: 100%; height: 100%; object-fit: cover; }
+    .phone-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      justify-content: space-between; padding: 0.65rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 45%, rgba(0,0,0,0.4) 100%);
+    }
+    .platform-tag {
+      align-self: flex-start; font-size: 0.65rem; font-weight: 800;
+      padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(0,0,0,0.65);
+    }
+    .video-caption { font-size: 0.72rem; line-height: 1.3; }
+    .video-actions {
+      position: absolute; right: 0.45rem; bottom: 2.6rem;
+      display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.75rem; text-align: center;
+    }
+
+    /* 4. Guardian Magazine Sample */
+    .mag-card {
+      background: #fff; color: #111827; border-radius: 10px; padding: 1rem;
+      border-top: 5px solid var(--navy);
+    }
+    .mag-kicker { color: #c70000; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
+    .mag-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin: 0.3rem 0; line-height: 1.25; }
+    .mag-body { font-family: 'Lora', serif; font-size: 0.82rem; color: #374151; }
+
+    /* 5. Tipline Gate Sample */
+    .gate-pill {
+      padding: 0.45rem 0.7rem; border-radius: 8px; font-size: 0.78rem;
+      background: rgba(255,255,255,0.05); border-left: 3px solid var(--wa-green);
+    }
+
+    /* Should & Could Samples */
+    .audio-pill {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #0f172a; border: 1px solid var(--wa-green); border-radius: 999px;
+      padding: 0.55rem 0.9rem; font-size: 0.8rem;
+    }
+    .mpesa-box {
+      background: #064e3b; border-radius: 10px; padding: 0.85rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .sphere-preview {
+      height: 120px; border-radius: 10px; display: grid; place-items: center; text-align: center;
+      background: radial-gradient(circle at center, #1e3a8a 0%, #090d16 75%);
+      border: 1px solid #6366f1; font-size: 0.85rem; padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <div>
+        <div class="brand">KIKAO<span>360</span> — Component Samples</div>
+        <div style="font-size:0.82rem; color:var(--muted);">Standalone UI Previews (Must / Should / Could Have) before full system assembly</div>
+      </div>
+      <a class="back-link" href="index.html">Launch Full 5-Mode Prototype →</a>
+    </div>
+
+    <!-- MUST HAVE -->
+    <div class="tier-heading"><span class="tier-badge must">Must Have</span> Core MVP Components</div>
+    <div class="grid">
+      <!-- Sample 1: Category Onboarding Picker -->
+      <div class="sample-box" id="onboarding">
+        <div class="sample-label">1. Category Onboarding Picker (9 Beats)</div>
+        <div style="font-size:0.85rem; font-weight:700;">Pick your interests (<span id="pickCount">3</span> selected):</div>
+        <div class="chips" id="sampleChips">
+          <button class="chip active">🏛️ Politics &amp; Current Affairs</button>
+          <button class="chip active">💼 Business &amp; Finance</button>
+          <button class="chip active">💻 Technology</button>
+          <button class="chip">🎬 Entertainment</button>
+          <button class="chip">⚽ Sports</button>
+          <button class="chip">🎨 Art</button>
+          <button class="chip">👗 Fashion</button>
+          <button class="chip">✨ Lifestyle</button>
+          <button class="chip">🎓 Campus &amp; Youth</button>
+        </div>
+        <div style="font-size:0.75rem; color:var(--muted);">Click any chip to toggle. Saves to <code>localStorage</code> in the full app.</div>
+      </div>
+
+      <!-- Sample 2: WhatsApp Channel Card -->
+      <div class="sample-box">
+        <div class="sample-label">2. WhatsApp Channel OpenGraph Card</div>
+        <div class="wa-card">
+          <img src="assets/IMG_093824.jpg" alt="WhatsApp story preview">
+          <div class="wa-card-body">
+            <div class="wa-site">Kikao360 Official ✓ • Business &amp; Tech</div>
+            <div class="wa-title">The M-Pesa API Revolution: How Gen-Z Micro-Merchants Bypass Banks</div>
+            <div class="wa-desc">Daraja API webhooks + TikTok livestreams are powering KES 180k/week campus businesses.</div>
+            <div class="wa-meta">
+              <span>🔥 842  💡 512  ❤️ 1.2K</span>
+              <span>10:30 AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample 3: IG Reel & TikTok Vertical Previews -->
+      <div class="sample-box">
+        <div class="sample-label">3. IG Reel &amp; TikTok 9:16 Previews</div>
+        <div class="vertical-pair">
+          <div class="phone-frame">
+            <video src="assets/VID_094529.mp4" muted loop autoplay playsinline></video>
+            <div class="phone-overlay">
+              <span class="platform-tag">📸 IG Reels</span>
+              <div class="video-actions"><span>❤️<br>1.4K</span><span>💬<br>92</span><span>✈️<br>Share</span></div>
+              <div class="video-caption"><strong>@kikao360</strong><br>eTIMS explained in 60s for student hustlers.</div>
+            </div>
+          </div>
+          <div class="phone-frame">
+            <video src="assets/VID_094701.mp4" muted loop autoplay playsinline></video>
+            <div class="phone-overlay">
+              <span class="platform-tag">🎵 TikTok</span>
+              <div class="video-actions"><span>❤️<br>3.8K</span><span>💬<br>247</span><span>🔖<br>Save</span></div>
+              <div class="video-caption"><strong>@kikao360.ke</strong><br>Who is hacking cold-chain hubs? #KenyaTech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample 4: Guardian Magazine View -->
+      <div class="sample-box">
+        <div class="sample-label">4. Guardian-Style Magazine Card</div>
+        <div class="mag-card">
+          <div class="mag-kicker">Investigative • Read / Watch / Listen</div>
+          <div class="mag-title">Inside Kenya's Youth Economy: Why 7.4M MSMEs Need Actionable Media</div>
+          <p class="mag-body">“We don't need expensive mall leases anymore. Our phone is the cash register and the distribution pipeline.”</p>
+        </div>
+      </div>
+
+      <!-- Sample 5: Community Tipline Verification Gate -->
+      <div class="sample-box">
+        <div class="sample-label">5. Community Tipline 3-Gate Verification</div>
+        <div class="gate-pill"><strong>Gate 1:</strong> EXIF Metadata &amp; Reverse-Image Check</div>
+        <div class="gate-pill"><strong>Gate 2:</strong> Two-Source Rule (Fact-Check Desk)</div>
+        <div class="gate-pill"><strong>Gate 3:</strong> Managing Editor Sign-Off → <em>"Community Dispatch — Verified"</em></div>
+      </div>
+    </div>
+
+    <!-- SHOULD HAVE -->
+    <div class="tier-heading"><span class="tier-badge should">Should Have</span> Engagement &amp; Monetization</div>
+    <div class="grid">
+      <div class="sample-box">
+        <div class="sample-label">6. Persistent NPR-Style Audio Dock</div>
+        <div class="audio-pill">
+          <span>▶ <strong>Kikao360 Bulletin:</strong> M-Pesa &amp; eTIMS</span>
+          <span>1.0x • 03:45</span>
+        </div>
+      </div>
+      <div class="sample-box">
+        <div class="sample-label">7. Lipa na M-Pesa Patronage Prompt</div>
+        <div class="mpesa-box">
+          <div>
+            <div style="font-weight:800; font-size:0.9rem;">Support Independent Journalism</div>
+            <div style="font-size:0.75rem; color:#a7f3d0;">Instant Daraja STK Push (KES 100 – 1,000)</div>
+          </div>
+          <span style="background:#fff; color:#064e3b; padding:0.35rem 0.7rem; border-radius:6px; font-weight:800; font-size:0.78rem;">KES 100</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COULD HAVE -->
+    <div class="tier-heading"><span class="tier-badge could">Could Have</span> Spatial Differentiation</div>
+    <div class="grid">
+      <div class="sample-box">
+        <div class="sample-label">8. Inside-the-Sphere 3D Spatial Room</div>
+        <div class="sphere-preview">
+          <div>
+            <strong>🌐 360° Interactive Newsroom</strong><br>
+            <span style="color:var(--muted); font-size:0.76rem;">CSS 3D cylindrical projection • Drag to orbit • Pinch to switch</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('#sampleChips .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        chip.classList.toggle('active');
+        document.getElementById('pickCount').textContent =
+          document.querySelectorAll('#sampleChips .chip.active').length;
+      });
+    });
+  </script>
+</body>
+</html>
