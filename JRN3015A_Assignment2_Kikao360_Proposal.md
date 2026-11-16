@@ -11,7 +11,7 @@
 
 ## EXECUTIVE SUMMARY
 
-The contemporary media ecosystem in Kenya and the greater East African region is characterized by an acute demographic paradox. Over 70% of Kenya’s population is under the age of 35, consuming information primarily through hyper-fragmented, algorithmic platforms such as WhatsApp, TikTok, Instagram, and X (formerly Twitter). Concurrently, traditional legacy media institutions—such as the Nation Media Group (*Daily Nation*, *Business Daily*), Standard Media Group, and Radio Africa Group—remain tethered to broadcast schedules and legacy print formats, pricing out youth audiences behind rigid digital paywalls while concentrating coverage on corporate conglomerates and macro-policy.
+The contemporary media ecosystem in Kenya and the greater East African region is characterized by an acute demographic paradox. According to the **Kenya National Bureau of Statistics (KNBS, 2019)**, **75.1%** of Kenya’s population (35.7 million of 47.6 million citizens) is under the age of 35, with **77%** of online Kenyans consuming news via social and algorithmic platforms—led by **WhatsApp (60%)**, **YouTube (59%)**, **X/Twitter (37%)**, **TikTok (36%)**, and **Instagram (29%)** (**Reuters Institute, 2024**; **DataReportal, 2025**). Concurrently, traditional legacy media institutions—such as the Nation Media Group (*Daily Nation*, *Business Daily*), Standard Media Group (*The Standard*), and Radio Africa Group (*The Star*)—remain tethered to broadcast schedules and legacy print formats, gating in-depth reporting behind digital paywalls and subscription tiers that price-sensitive youth routinely bypass while concentrating coverage on corporate conglomerates and macro-policy.
 
 To resolve this information deficit, **Kikao360** is engineered as an innovative, student-incubated multimodal media venture. Kikao360 unites the conversational accessibility of **WhatsApp Channels**, the journalistic rigour and editorial prestige of **The Guardian**, the visual discovery mechanics of **Pinterest**, and the spatial immersive depth of **Inside-the-Sphere 3D web curation**. Grounded in a dual-perspective content strategy (*"Read deep-dive investigations, watch 60-second vertical video dispatches, or listen to 13-minute audio bulletins"*), Kikao360 provides actionable journalism on fintech, youth entrepreneurship (MSMEs), campus innovation, and regional security.
 
@@ -305,8 +305,11 @@ In strict accordance with the USIU-Africa School of Communication, Cinematics & 
 ## 8. REFERENCES (APA 7TH EDITION)
 
 * Communications Authority of Kenya. (2025). *Quarterly sector statistics report for the digital economy: Q4 2025/2026*. CAK Nairobi.
+* DataReportal. (2025). *Digital 2025: Kenya*. Kepios. https://datareportal.com/reports/digital-2025-kenya
 * Dennis, A., Wixom, B. H., & Roth, R. M. (2018). *Systems analysis and design* (7th ed.). John Wiley & Sons.
+* Kenya National Bureau of Statistics. (2019). *2019 Kenya population and housing census: Volume III — Distribution of population by age, sex and administrative units*. KNBS Nairobi.
 * Media Council of Kenya. (2025). *State of the media in Kenya 2025: Emerging technologies, consumption shifts, and financial viability*. Media Council of Kenya Publications.
+* Newman, N., Fletcher, R., Robertson, C. T., Arguedas, A. R., & Nielsen, R. K. (2024). *Reuters Institute digital news report 2024*. Reuters Institute for the Study of Journalism, University of Oxford.
 * Owino, R. (2026). *Media management course syllabus and entrepreneurship framework (JRN 3015A)*. School of Communication, Cinematics & Creative Arts, United States International University - Africa.
 * Republic of Kenya. (2019). *The Data Protection Act, 2019 (Act No. 24 of 2019)*. Kenya Gazette Supplement No. 181. Government Printer.
 * Safaricom PLC. (2026). *Daraja 3.0 developer documentation: M-Pesa API integration guidelines and webhooks*. Safaricom Developer Portal.
