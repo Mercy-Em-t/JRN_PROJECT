@@ -71,8 +71,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-canvas);
-  color: var(--wa-text-primary);
+  background-color: #FAF4EC; /* 60% Warm Desert-Sand Paper Canvas */
+  color: #211010;            /* 30% Coffee Bean Primary Text */
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
@@ -1024,53 +1024,53 @@ body {
   color: #ffffff;
 }
 
-/* Landing Page (#viewHome) */
+/* Landing Page (#viewHome) — Strict 60-30-10 Editorial Hierarchy */
 .view-home {
-  padding: 2rem clamp(1rem, 4vw, 3rem) 2rem;
-  max-width: 1240px;
+  padding: 2.25rem clamp(1rem, 4vw, 3rem) 2rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .home-hero {
-  background: linear-gradient(135deg, #2c1616 0%, #211010 65%, #3d120a 100%);
-  border: 1px solid rgba(226, 192, 161, 0.22);
-  border-radius: 20px;
-  padding: clamp(1.75rem, 4vw, 3.25rem);
+  background: #F3E6D8; /* 60% Warm Desert Sand Tint */
+  border: 1px solid rgba(33, 16, 16, 0.12);
+  border-radius: 18px;
+  padding: clamp(1.75rem, 4vw, 3rem);
   display: grid;
   grid-template-columns: 1.35fr 0.9fr;
   gap: 2rem;
   align-items: center;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .home-eyebrow {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--tiger-orange);
-  background: rgba(227, 126, 36, 0.12);
-  border: 1px solid rgba(227, 126, 36, 0.35);
-  padding: 0.3rem 0.75rem;
+  color: #850E05; /* Blood Red on Sand */
+  background: rgba(177, 25, 5, 0.08);
+  border: 1px solid rgba(177, 25, 5, 0.22);
+  padding: 0.28rem 0.75rem;
   border-radius: 999px;
   margin-bottom: 1rem;
 }
 
 .home-hero h1 {
   font-family: var(--font-serif);
-  font-size: clamp(1.85rem, 3.6vw, 3rem);
+  font-size: clamp(1.85rem, 3.6vw, 2.9rem);
   line-height: 1.12;
-  color: #ffffff;
+  color: #211010; /* 30% Coffee Bean */
   margin-bottom: 1rem;
 }
 
 .home-hero p {
-  color: var(--desert-sand);
-  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: #4A2E2A;
+  font-size: clamp(0.95rem, 1.35vw, 1.06rem);
   line-height: 1.65;
   margin-bottom: 1.5rem;
-  max-width: 60ch;
+  max-width: 58ch;
 }
 
 .home-cta-row {
@@ -1080,9 +1080,9 @@ body {
 }
 
 .home-btn-primary {
-  background: var(--oxidized-iron);
+  background: #B11905; /* 10% Oxidized Iron Focal CTA */
   color: #ffffff;
-  border: 1px solid var(--oxidized-iron);
+  border: 1px solid #B11905;
   padding: 0.75rem 1.35rem;
   border-radius: 10px;
   font-weight: 700;
@@ -1092,13 +1092,14 @@ body {
 }
 
 .home-btn-primary:hover {
-  background: var(--blood-red);
+  background: #850E05; /* Blood Red Hover */
+  border-color: #850E05;
 }
 
 .home-btn-secondary {
-  background: rgba(226, 192, 161, 0.1);
-  color: var(--desert-sand);
-  border: 1px solid rgba(226, 192, 161, 0.3);
+  background: #FFFFFF;
+  color: #211010;
+  border: 1px solid rgba(33, 16, 16, 0.2);
   padding: 0.75rem 1.25rem;
   border-radius: 10px;
   font-weight: 600;
@@ -1108,45 +1109,49 @@ body {
 }
 
 .home-btn-secondary:hover {
-  border-color: var(--tiger-orange);
-  color: #ffffff;
+  border-color: #211010;
+  background: #FAF4EC;
 }
 
 .home-hero-card {
-  background: rgba(33, 16, 16, 0.8);
-  border: 1px solid rgba(226, 192, 161, 0.2);
-  border-radius: 16px;
-  padding: 1.35rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 16, 16, 0.1);
+  border-radius: 14px;
+  padding: 1.4rem;
+  box-shadow: 0 6px 20px rgba(33, 16, 16, 0.05);
 }
 
 .home-hero-card h3 {
   font-family: var(--font-serif);
-  color: var(--desert-sand);
+  color: #211010;
   font-size: 1.15rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #B11905;
+  display: inline-block;
 }
 
 .home-stat-list {
   list-style: none;
   display: grid;
-  gap: 0.65rem;
-  font-size: 0.85rem;
-  color: #f7efe7;
+  gap: 0.7rem;
+  font-size: 0.86rem;
+  color: #4A2E2A;
 }
 
 .home-stat-list li strong {
-  color: var(--tiger-orange);
+  color: #211010;
 }
 
 .home-section-title {
   font-family: var(--font-serif);
   font-size: 1.45rem;
-  color: #ffffff;
-  margin-bottom: 0.35rem;
+  color: #211010;
+  margin-bottom: 0.3rem;
 }
 
 .home-section-sub {
-  color: var(--desert-sand);
+  color: #5C3D38;
   font-size: 0.9rem;
   margin-bottom: 1.25rem;
 }
@@ -1155,56 +1160,59 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .eco-card {
-  background: var(--coffee-elevated);
-  border: 1px solid var(--border-subtle);
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 16, 16, 0.1);
   border-radius: 14px;
-  padding: 1.25rem;
+  padding: 1.35rem;
   cursor: pointer;
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 0.75rem;
+  box-shadow: 0 3px 12px rgba(33, 16, 16, 0.04);
 }
 
 .eco-card:hover {
   transform: translateY(-3px);
-  border-color: var(--tiger-orange);
-  background: var(--coffee-soft);
+  border-color: #B11905;
+  box-shadow: 0 10px 24px rgba(33, 16, 16, 0.08);
 }
 
 .eco-card.eco-wa:hover {
-  border-color: var(--wa-teal);
+  border-color: #00a884;
 }
 
 .eco-icon {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
+  margin-bottom: 0.35rem;
 }
 
 .eco-card h3 {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: #ffffff;
+  font-size: 1.12rem;
+  color: #211010;
+  margin-bottom: 0.35rem;
 }
 
 .eco-card p {
-  font-size: 0.84rem;
-  color: var(--desert-sand);
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: #5C3D38;
+  line-height: 1.55;
 }
 
 .eco-link {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--tiger-orange);
+  color: #B11905;
 }
 
 .eco-card.eco-wa .eco-link {
-  color: var(--wa-teal);
+  color: #007a5e;
 }
 
 /* WhatsApp Membership Gate & Incoming Update Pop */
@@ -1282,8 +1290,8 @@ body {
 
 /* Sponsored Card Badge in Story Cards */
 .pin-card.is-sponsored {
-  border: 1px solid rgba(227, 126, 36, 0.55);
-  background: #2c1616;
+  border: 1.5px solid rgba(227, 126, 36, 0.6);
+  background: #FFF9F3;
 }
 
 .pin-badge-sponsored {

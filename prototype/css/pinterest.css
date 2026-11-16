@@ -3,21 +3,20 @@
    ========================================================================== */
 
 .view-pinterest {
-  background-color: #0d1117;
-  color: #ffffff;
-  padding: 1.5rem;
-  min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+  background-color: #FAF4EC;
+  color: #211010;
+  padding: 1.75rem 1.5rem;
 }
 
 .pin-header-bar {
-  max-width: 1360px;
+  max-width: 1200px;
   margin: 0 auto 1.5rem auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(33, 16, 16, 0.12);
   padding-bottom: 1rem;
 }
 
@@ -25,13 +24,13 @@
   font-family: var(--font-serif);
   font-size: 1.8rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #211010;
   margin-bottom: 0.3rem;
 }
 
 .pin-header-left p {
-  font-size: 0.85rem;
-  color: #8b949e;
+  font-size: 0.88rem;
+  color: #5C3D38;
 }
 
 .pin-category-filters {
@@ -41,9 +40,9 @@
 }
 
 .pin-pill {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #c9d1d9;
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 16, 16, 0.16);
+  color: #211010;
   border-radius: 20px;
   padding: 0.4rem 0.9rem;
   font-size: 0.8rem;
@@ -54,10 +53,10 @@
 
 .pin-pill:hover,
 .pin-pill.active {
-  background: #e60023;
+  background: #B11905;
   color: #ffffff;
-  border-color: #e60023;
-  box-shadow: 0 2px 10px rgba(230, 0, 35, 0.4);
+  border-color: #B11905;
+  box-shadow: 0 2px 10px rgba(177, 25, 5, 0.25);
 }
 
 /* Responsive Masonry Layout (CSS Columns) */
@@ -155,20 +154,21 @@
 /* Individual Masonry Card */
 .pin-card {
   break-inside: avoid;
-  background: #161b22;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 16, 16, 0.1);
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 1.2rem;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
+  box-shadow: 0 4px 14px rgba(33, 16, 16, 0.05);
 }
 
 .pin-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(33, 16, 16, 0.1);
+  border-color: #B11905;
 }
 
 .pin-media-wrapper {
@@ -224,7 +224,7 @@
 .pin-card-cat {
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--accent-orange);
+  color: #B11905;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.3rem;
@@ -234,15 +234,15 @@
   font-family: var(--font-serif);
   font-size: 0.98rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #211010;
   line-height: 1.35;
   margin-bottom: 0.45rem;
 }
 
 .pin-card-desc {
   font-size: 0.78rem;
-  color: #8b949e;
-  line-height: 1.4;
+  color: #5C3D38;
+  line-height: 1.45;
   margin-bottom: 0.6rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -254,14 +254,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(33, 16, 16, 0.08);
   padding-top: 0.6rem;
   font-size: 0.72rem;
-  color: #8b949e;
+  color: #5C3D38;
 }
 
 .pin-save-btn {
-  background: #e60023;
+  background: #B11905;
   color: #ffffff;
   border: none;
   border-radius: 14px;
@@ -273,5 +273,5 @@
 }
 
 .pin-save-btn:hover {
-  background: #ad081b;
+  background: #850E05;
 }
