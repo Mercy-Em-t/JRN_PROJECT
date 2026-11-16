@@ -7,13 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b101b;
-      --surface: #121a2b;
-      --border: rgba(255,255,255,0.09);
-      --emerald: #00a884;
-      --coral: #f26419;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
+      --bg: #FAF4EC;
+      --surface: #FFFFFF;
+      --coffee: #211010;
+      --border: rgba(33, 16, 16, 0.12);
+      --emerald: #007a5e;
+      --iron: #B11905;
+      --coral: #E37E24;
+      --text: #211010;
+      --muted: #5C3D38;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -23,47 +25,50 @@
     }
     .wrap { max-width: 1180px; margin: 0 auto; }
     header {
+      background: var(--coffee); color: #FAF4EC;
+      padding: 1rem 1.35rem; border-radius: 14px;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-      padding-bottom: 1rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
     }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: #FFFFFF; }
     .logo span { color: var(--coral); }
     .nav-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
     .nav-btn {
-      text-decoration: none; color: #fff; background: rgba(255,255,255,0.07);
-      border: 1px solid var(--border); padding: 0.45rem 0.9rem; border-radius: 8px;
+      text-decoration: none; color: #E2C0A1; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(226,192,161,0.22); padding: 0.45rem 0.9rem; border-radius: 8px;
       font-size: 0.82rem; font-weight: 600;
     }
-    .nav-btn.primary { background: var(--emerald); border-color: var(--emerald); }
+    .nav-btn.primary { background: var(--iron); border-color: var(--iron); color: #FFFFFF; }
     .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
     .tab-btn {
       background: var(--surface); border: 1px solid var(--border); color: var(--muted);
       padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.84rem; font-weight: 700; cursor: pointer;
     }
-    .tab-btn.active { background: var(--emerald); border-color: var(--emerald); color: #fff; }
+    .tab-btn.active { background: var(--iron); border-color: var(--iron); color: #fff; }
     .panel { display: none; }
     .panel.active { display: block; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem;
+      box-shadow: 0 3px 12px rgba(33,16,16,0.04);
     }
-    .card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.08rem; margin-bottom: 0.5rem; color: var(--coffee); }
     .badge {
       display: inline-block; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.55rem;
-      border-radius: 999px; background: rgba(0,168,132,0.18); color: #6ee7b7; margin-bottom: 0.5rem;
+      border-radius: 999px; background: rgba(0,122,94,0.12); color: #007a5e; margin-bottom: 0.5rem;
     }
-    .badge.pending { background: rgba(242,100,25,0.2); color: #fdba74; }
+    .badge.pending { background: rgba(227,126,36,0.16); color: #9a4b07; }
     .form-row { margin-bottom: 0.75rem; }
     .form-row label { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; font-weight: 600; }
     .input {
       width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px;
-      border: 1px solid var(--border); background: var(--bg); color: #fff; font-size: 0.86rem;
+      border: 1px solid var(--border); background: #FAF4EC; color: var(--coffee); font-size: 0.86rem;
     }
     .btn {
-      background: var(--emerald); color: #fff; border: none; padding: 0.55rem 1rem;
+      background: var(--iron); color: #fff; border: none; padding: 0.55rem 1rem;
       border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer;
     }
-    .btn.subtle { background: rgba(255,255,255,0.08); }
+    .btn.subtle { background: rgba(33,16,16,0.08); color: var(--coffee); }
     table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
     th, td { text-align: left; padding: 0.7rem 0.6rem; border-bottom: 1px solid var(--border); }
     th { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; }
@@ -87,6 +92,7 @@
       <button class="tab-btn" data-tab="composer">✍️ Writer &amp; Converter Desk</button>
       <button class="tab-btn" data-tab="lineup">📅 Content Calendar &amp; Pipelines</button>
       <button class="tab-btn" data-tab="analytics">📊 Post-Pub Performance &amp; CAC</button>
+      <button class="tab-btn" data-tab="radar">📡 Trending Radar &amp; Telemetry</button>
     </div>
 
     <!-- TAB 1: TIPLINE MODERATION -->
@@ -178,6 +184,41 @@
         </table>
       </div>
     </section>
+
+    <!-- TAB 5: TRENDING RADAR & TELEMETRY -->
+    <section class="panel" id="panel-radar">
+      <div class="grid">
+        <div class="card">
+          <span class="badge">LIVE KENYA TRENDING RADAR</span>
+          <h3>High-Velocity Youth &amp; MSME Signals</h3>
+          <table>
+            <thead>
+              <tr><th>Topic / Signal</th><th>Velocity</th><th>Recommended COPE Angle</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>#eTIMS-Freelancers</strong></td><td>🔥 +310%</td><td>3-min checklist + 9:16 TikTok explainer</td></tr>
+              <tr><td><strong>#Daraja3-Grants</strong></td><td>⚡ +215%</td><td>Student developer funding walkthrough</td></tr>
+              <tr><td><strong>#MombasaColdChain</strong></td><td>🚨 +165%</td><td>Agri-export IoT security brief</td></tr>
+              <tr><td><strong>#CampusSideHustles</strong></td><td>📈 +140%</td><td>USIU / UoN founder case study</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <span class="badge">SYSTEM TELEMETRY</span>
+          <h3>Platform Health &amp; Live Dispatch Monitor</h3>
+          <ul style="list-style:none; display:grid; gap:0.6rem; font-size:0.86rem; color:var(--muted); margin-bottom:1rem;">
+            <li><strong style="color:var(--text);">Mobile Load (4G Kenya):</strong> 1.2s (Target &lt; 1.5s)</li>
+            <li><strong style="color:var(--text);">Edge Uptime (Cloudflare):</strong> 99.98%</li>
+            <li><strong style="color:var(--text);">Concurrent Readers:</strong> 1,420 active sessions</li>
+            <li><strong style="color:var(--text);">Blended CAC:</strong> KES 2.85 (Target ≤ KES 3.00)</li>
+            <li><strong style="color:var(--text);">Lipa na M-Pesa Conversion:</strong> 1.4% of MAUs</li>
+          </ul>
+          <div id="liveGoLiveStatus" style="padding:0.75rem; border-radius:10px; background:#FAF4EC; border:1px solid var(--border); font-size:0.82rem;">
+            <strong>Go-Live Queue:</strong> Ready. Click <em>🚀 Publish</em> in Content Calendar to watch live 4-channel propagation.
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script>
@@ -242,7 +283,7 @@
     const defaultLineup = [
       { slot: 'Mon 07:30 EAT', beat: 'Business & Finance', title: 'The M-Pesa API Revolution (Writer: Faith M. | Audio: Brian K.)', channels: 'WhatsApp + Web + Audio', status: 'Published' },
       { slot: 'Mon 13:00 EAT', beat: 'Business & Finance', title: 'Hook: KES 180K/week on WhatsApp (Video: 9:16 Stamped)', channels: 'TikTok + IG Reels (9:16)', status: 'Pending Publication' },
-      { slot: 'Wed 13:00 EAT', beat: 'Technology', title: 'Hook: Cold-Chain IoT Hacking (Writer: Robert B.)', channels: 'TikTok + IG Reels + Web', status: 'Pending Review' }
+      { slot: 'Wed 13:00 EAT', beat: 'Technology', title: 'Hook: Cold-Chain IoT Audits (Writer: Amina H.)', channels: 'TikTok + IG Reels + Web', status: 'Pending Review' }
     ];
     const loadLineup = () => {
       try {

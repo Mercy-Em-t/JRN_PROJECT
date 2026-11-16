@@ -1414,3 +1414,56 @@ body {
     z-index: 1150;
   }
 }
+
+/* Today's Kenya Weather & Newsroom Status Strip */
+.weather-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 16, 16, 0.12);
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  margin-bottom: 2rem;
+  font-size: 0.82rem;
+  color: #4A2E2A;
+}
+
+.weather-cities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.weather-pill strong {
+  color: #211010;
+}
+
+.weather-ops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.weather-status {
+  font-weight: 600;
+  color: #007a5e;
+}
+
+.weather-cms-link {
+  text-decoration: none;
+  font-weight: 700;
+  color: #B11905;
+  background: rgba(177, 25, 5, 0.08);
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid rgba(177, 25, 5, 0.2);
+}
+
+.weather-cms-link:hover {
+  background: #B11905;
+  color: #FFFFFF;
+}
