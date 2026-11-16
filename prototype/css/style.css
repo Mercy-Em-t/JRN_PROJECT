@@ -3,39 +3,47 @@
    ========================================================================== */
 
 :root {
-  /* Cohesive 60-30-10 Kikao360 Editorial Palette */
-  --bg-canvas: #0b101b;          /* 60% Deep Obsidian Ink */
-  --bg-surface: #121a2b;         /* Elevated Card Surface */
-  --bg-surface-hover: #1a243a;
-  --border-subtle: rgba(255, 255, 255, 0.09);
+  /* Unified Kikao360 Palette (Coffee Bean / Desert Sand / Oxidized Iron / Blood Red / Tiger Orange) */
+  --coffee-bean: #211010;
+  --coffee-elevated: #2c1616;
+  --coffee-soft: #3a1e1e;
+  --desert-sand: #E2C0A1;
+  --oxidized-iron: #B11905;
+  --blood-red: #850E05;
+  --tiger-orange: #E37E24;
 
-  /* WhatsApp & Messaging Accents (30% Secondary) */
-  --wa-dark-bg: #0b101b;
-  --wa-chat-bg: #121a2b;
-  --wa-teal: #00a884;            /* Savanna Emerald */
+  --bg-canvas: #211010;          /* Coffee Bean Base */
+  --bg-surface: #2c1616;         /* Elevated Card Surface */
+  --bg-surface-hover: #3a1e1e;
+  --border-subtle: rgba(226, 192, 161, 0.16);
+
+  /* WhatsApp Channel Scoped Accents (Used ONLY inside #viewWhatsapp) */
+  --wa-dark-bg: #0b141a;
+  --wa-chat-bg: #111b21;
+  --wa-teal: #00a884;
   --wa-teal-hover: #05c49a;
-  --wa-green-bubble: #064e3b;
-  --wa-text-primary: #f1f5f9;
-  --wa-text-muted: #94a3b8;
-  --wa-border: rgba(255, 255, 255, 0.09);
+  --wa-green-bubble: #005c4b;
+  --wa-text-primary: #f7efe7;
+  --wa-text-muted: #c9ab91;
+  --wa-border: rgba(226, 192, 161, 0.14);
 
   /* Editorial Magazine Tokens */
-  --gm-navy: #0f294a;
-  --gm-navy-dark: #09182c;
-  --gm-blue-accent: #0284c7;
-  --gm-coral-red: #dc2626;
-  --gm-highlight-yellow: #facc15;
-  --gm-yellow-hover: #eab308;
-  --gm-paper-bg: #faf9f6;        /* Warm Newsprint */
+  --gm-navy: #211010;
+  --gm-navy-dark: #160a0a;
+  --gm-blue-accent: #E37E24;
+  --gm-coral-red: #B11905;
+  --gm-highlight-yellow: #E37E24;
+  --gm-yellow-hover: #c96a18;
+  --gm-paper-bg: #f6ede4;        /* Warm Desert-Sand Paper */
   --gm-paper-card: #ffffff;
-  --gm-dark-card: #121a2b;
-  --gm-text-headline: #0f172a;
-  --gm-text-body: #334155;
+  --gm-dark-card: #2c1616;
+  --gm-text-headline: #211010;
+  --gm-text-body: #3d2420;
 
-  /* 10% Focal Accent */
-  --accent-orange: #f26419;      /* Kenyan Terracotta */
-  --accent-cyan: #38bdf8;
-  --accent-purple: #818cf8;
+  /* Focal Accents */
+  --accent-orange: #E37E24;      /* Tiger Orange */
+  --accent-cyan: #E2C0A1;        /* Desert Sand */
+  --accent-purple: #B11905;      /* Oxidized Iron */
   --mpesa-green: #00a884;
 
   /* Typography Scale & Rhythm */
@@ -958,4 +966,418 @@ body {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-subtle);
   margin-bottom: 0.5rem;
+}
+
+
+/* ==========================================================================
+   UNIFIED PALETTE OVERRIDES, LANDING PAGE, WHATSAPP GATE & EDITORIAL FOOTER
+   ========================================================================== */
+.master-dock {
+  background: rgba(33, 16, 16, 0.94);
+  border-bottom: 1px solid rgba(226, 192, 161, 0.18);
+}
+
+.dock-brand-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+}
+
+.dock-brand-btn:hover .dock-logo {
+  opacity: 0.9;
+}
+
+.mode-btn.active {
+  background: rgba(177, 25, 5, 0.22);
+  border-color: var(--tiger-orange);
+  color: var(--desert-sand);
+}
+
+.gesture-hint-btn {
+  background: rgba(226, 192, 161, 0.08);
+  border-color: rgba(226, 192, 161, 0.2);
+  color: var(--desert-sand);
+}
+
+.gesture-hint-btn:hover {
+  background: rgba(227, 126, 36, 0.2);
+  border-color: var(--tiger-orange);
+  color: #ffffff;
+}
+
+/* Landing Page (#viewHome) */
+.view-home {
+  padding: 2rem clamp(1rem, 4vw, 3rem) 2rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.home-hero {
+  background: linear-gradient(135deg, #2c1616 0%, #211010 65%, #3d120a 100%);
+  border: 1px solid rgba(226, 192, 161, 0.22);
+  border-radius: 20px;
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2.25rem;
+}
+
+.home-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tiger-orange);
+  background: rgba(227, 126, 36, 0.12);
+  border: 1px solid rgba(227, 126, 36, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.home-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3.6vw, 3rem);
+  line-height: 1.12;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.home-hero p {
+  color: var(--desert-sand);
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+.home-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.home-btn-primary {
+  background: var(--oxidized-iron);
+  color: #ffffff;
+  border: 1px solid var(--oxidized-iron);
+  padding: 0.75rem 1.35rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.home-btn-primary:hover {
+  background: var(--blood-red);
+}
+
+.home-btn-secondary {
+  background: rgba(226, 192, 161, 0.1);
+  color: var(--desert-sand);
+  border: 1px solid rgba(226, 192, 161, 0.3);
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.home-btn-secondary:hover {
+  border-color: var(--tiger-orange);
+  color: #ffffff;
+}
+
+.home-hero-card {
+  background: rgba(33, 16, 16, 0.8);
+  border: 1px solid rgba(226, 192, 161, 0.2);
+  border-radius: 16px;
+  padding: 1.35rem;
+}
+
+.home-hero-card h3 {
+  font-family: var(--font-serif);
+  color: var(--desert-sand);
+  font-size: 1.15rem;
+  margin-bottom: 0.65rem;
+}
+
+.home-stat-list {
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: #f7efe7;
+}
+
+.home-stat-list li strong {
+  color: var(--tiger-orange);
+}
+
+.home-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.home-section-sub {
+  color: var(--desert-sand);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.home-ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.eco-card {
+  background: var(--coffee-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.eco-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--tiger-orange);
+  background: var(--coffee-soft);
+}
+
+.eco-card.eco-wa:hover {
+  border-color: var(--wa-teal);
+}
+
+.eco-icon {
+  font-size: 1.5rem;
+}
+
+.eco-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.eco-card p {
+  font-size: 0.84rem;
+  color: var(--desert-sand);
+  line-height: 1.5;
+}
+
+.eco-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--tiger-orange);
+}
+
+.eco-card.eco-wa .eco-link {
+  color: var(--wa-teal);
+}
+
+/* WhatsApp Membership Gate & Incoming Update Pop */
+.wa-member-gate {
+  background: #111b21;
+  border: 1px solid rgba(0, 168, 132, 0.35);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin: 1.25rem;
+}
+
+.wa-member-gate h3 {
+  font-family: var(--font-serif);
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.wa-member-gate p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  max-width: 44ch;
+  margin: 0 auto 1.25rem;
+}
+
+.wa-gate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.wa-btn-green {
+  background: #00a884;
+  color: #0b141a;
+  border: none;
+  padding: 0.7rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.wa-btn-outline {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.7rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.wa-invite-box {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(0, 168, 132, 0.12);
+  border: 1px dashed #00a884;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+}
+
+@keyframes waPopIn {
+  0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.wa-pop-in {
+  animation: waPopIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #00a884 !important;
+}
+
+/* Sponsored Card Badge in Story Cards */
+.pin-card.is-sponsored {
+  border: 1px solid rgba(227, 126, 36, 0.55);
+  background: #2c1616;
+}
+
+.pin-badge-sponsored {
+  background: var(--tiger-orange) !important;
+  color: #211010 !important;
+  font-weight: 800 !important;
+}
+
+/* Structured Editorial Footer (Eliminates Empty Bottom Void) */
+.kikao-footer {
+  background: #180b0b;
+  border-top: 1px solid rgba(226, 192, 161, 0.2);
+  padding: 2.5rem clamp(1rem, 4vw, 3rem) 6.5rem; /* leaves clean clearance above NPR dock */
+  margin-top: 2rem;
+}
+
+.kikao-footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.footer-brand h4 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  color: var(--desert-sand);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-width: 38ch;
+}
+
+.footer-col h5 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tiger-orange);
+  margin-bottom: 0.75rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.footer-links button,
+.footer-links a {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--desert-sand);
+  font-size: 0.84rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.footer-links button:hover,
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-bottom-bar {
+  max-width: 1240px;
+  margin: 1.75rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(226, 192, 161, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  color: rgba(226, 192, 161, 0.75);
+}
+
+/* Floating NPR Dock Palette Sync */
+.npr-player-dock {
+  background: rgba(24, 11, 11, 0.96);
+  border-top: 1px solid rgba(226, 192, 161, 0.22);
+}
+
+.npr-play-btn {
+  background: var(--oxidized-iron);
+}
+
+@media (max-width: 900px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+  .home-ecosystem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .kikao-footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-ecosystem-grid {
+    grid-template-columns: 1fr;
+  }
 }

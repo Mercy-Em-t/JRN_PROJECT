@@ -16,57 +16,47 @@
   <link rel="stylesheet" href="css/guardian.css">
   <link rel="stylesheet" href="css/pinterest.css">
   <link rel="stylesheet" href="css/tiktok.css">
-  <link rel="stylesheet" href="css/sphere.css?v=3">
 </head>
-<body class="theme-dark mode-whatsapp">
+<body class="theme-dark mode-home">
 
   <!-- ========================================================================= -->
-  <!-- FLOATING MASTER VIEW SWITCHER DOCK (Quick Access + Pinch Visual Indicator) -->
+  <!-- CLEAN MASTER NAVIGATION DOCK (Clickable Logo + 5 Unified Views)           -->
   <!-- ========================================================================= -->
   <header class="master-dock" id="masterDock">
-    <div class="dock-brand">
+    <button class="dock-brand-btn" onclick="switchView('home')" title="Return to Kikao360 Home">
       <span class="dock-logo">KIKAO<span class="accent-orange">360</span></span>
-      <span class="dock-tagline">USIU JRN 3015A • Assignment 2 Prototype</span>
-    </div>
+      <span class="dock-tagline">Kenya's Multimodal Newsroom</span>
+    </button>
     
     <nav class="dock-modes" aria-label="View Switcher">
-      <button class="mode-btn active" data-mode="whatsapp" onclick="switchView('whatsapp')" title="WhatsApp Channel View">
-        <span class="mode-icon">💬</span>
-        <span class="mode-label">WhatsApp Channel</span>
+      <button class="mode-btn active" data-mode="home" onclick="switchView('home')" title="Kikao360 Landing Page">
+        <span class="mode-icon">🏠</span>
+        <span class="mode-label">Home</span>
       </button>
-      <button class="mode-btn" data-mode="guardian" onclick="switchView('guardian')" title="Guardian Magazine Editorial">
+      <button class="mode-btn" data-mode="guardian" onclick="switchView('guardian')" title="The Magazine">
         <span class="mode-icon">📰</span>
         <span class="mode-label">The Magazine</span>
       </button>
-      <button class="mode-btn" data-mode="pinterest" onclick="switchView('pinterest')" title="Pinterest Masonry Grid">
-        <span class="mode-icon">📌</span>
-        <span class="mode-label">Pinterest Grid</span>
+      <button class="mode-btn" data-mode="pinterest" onclick="switchView('pinterest')" title="Story Cards &amp; Sponsored Board">
+        <span class="mode-icon">🗂️</span>
+        <span class="mode-label">Story Cards</span>
       </button>
-      <button class="mode-btn" data-mode="tiktok" onclick="switchView('tiktok')" title="TikTok Video Feed">
+      <button class="mode-btn" data-mode="tiktok" onclick="switchView('tiktok')" title="Watch Video Dispatches">
         <span class="mode-icon">🎬</span>
-        <span class="mode-label">Reels / TikTok</span>
+        <span class="mode-label">Watch</span>
       </button>
-      <button class="mode-btn" data-mode="sphere" onclick="switchView('sphere')" title="Inside-the-Sphere 3D Room">
-        <span class="mode-icon">🌐</span>
-        <span class="mode-label">3D Sphere Room</span>
+      <button class="mode-btn" data-mode="whatsapp" onclick="switchView('whatsapp')" title="WhatsApp Channel">
+        <span class="mode-icon">💬</span>
+        <span class="mode-label">WhatsApp</span>
       </button>
     </nav>
     
     <div class="dock-actions">
-      <button class="gesture-hint-btn" id="openOnboardingBtn" onclick="openOnboardingModal()" title="Personalize Your News Categories">
-        <span>🎯 For You</span>
-      </button>
       <button class="gesture-hint-btn" id="openAccountBtn" onclick="openAccountModal()" title="My Account: Saved, Liked & Algorithm">
         <span>👤 Account</span>
       </button>
       <button class="gesture-hint-btn" id="openTiplineBtn" onclick="openTiplineModal()" title="Submit Community News Tip">
         <span>📢 Tip</span>
-      </button>
-      <a class="gesture-hint-btn" href="cms.html" style="text-decoration:none;" title="Owner Content Management System">
-        <span>⚙️ CMS</span>
-      </a>
-      <button class="gesture-hint-btn" id="gestureHelpBtn" title="How Gestures Work">
-        <span>🤏 Pinch to switch</span>
       </button>
     </div>
   </header>
@@ -77,15 +67,84 @@
   <main class="viewport-wrapper" id="viewportWrapper">
 
     <!-- --------------------------------------------------------------------- -->
-    <!-- VIEW 1: WHATSAPP CHANNEL INTERFACE (Authentic Doodle Background + OG Cards) -->
+    <!-- VIEW 0: EDITORIAL LANDING PAGE (Clear Platform Entry Point)           -->
     <!-- --------------------------------------------------------------------- -->
-    <section class="view-panel view-whatsapp active" id="viewWhatsapp">
+    <section class="view-panel view-home active" id="viewHome">
+      <div class="home-hero">
+        <div>
+          <span class="home-eyebrow">OPEN-ACCESS KENYAN JOURNALISM • SOMA. TAZAMA. SIKILIZA.</span>
+          <h1>Comment is free, but truth is multidimensional.</h1>
+          <p>
+            Kikao360 turns verified Kenyan business, fintech, campus, and investigative reporting into stories you can
+            <strong>read</strong> in our digital magazine, <strong>preview</strong> as visual story cards,
+            <strong>watch</strong> in 60-second dispatches, or receive on <strong>WhatsApp</strong>—with zero paywalls.
+          </p>
+          <div class="home-cta-row">
+            <button class="home-btn-primary" onclick="switchView('guardian')">Read The Magazine ❯</button>
+            <button class="home-btn-secondary" onclick="switchView('tiktok')">▶ Watch Dispatches</button>
+            <button class="home-btn-secondary" onclick="openOnboardingModal()">🎯 Personalize Beats</button>
+          </div>
+        </div>
+        <div class="home-hero-card">
+          <h3>Today's Briefing</h3>
+          <ul class="home-stat-list">
+            <li><strong>Lead Investigation:</strong> The M-Pesa API Revolution for Gen-Z Micro-Merchants</li>
+            <li><strong>Security Desk:</strong> Probing Cold-Chain Telemetry on the Mombasa–Nairobi Corridor</li>
+            <li><strong>Audio Dispatch:</strong> 13-min Morning Bulletin ready in the bottom dock</li>
+            <li><strong>Community:</strong> 48.2K+ followers on Kikao360 Official WhatsApp Channel</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="home-section-title">Explore the Kikao360 Ecosystem</h2>
+      <p class="home-section-sub">Choose how you want to experience today's reporting.</p>
+
+      <div class="home-ecosystem-grid">
+        <div class="eco-card" onclick="switchView('guardian')">
+          <div>
+            <div class="eco-icon">📰</div>
+            <h3>The Magazine</h3>
+            <p>Longform 800–1,200w verified dossiers, bylines, pull-quotes, and Lipa na M-Pesa reader patronage.</p>
+          </div>
+          <span class="eco-link">Open Magazine ❯</span>
+        </div>
+        <div class="eco-card" onclick="switchView('pinterest')">
+          <div>
+            <div class="eco-icon">🗂️</div>
+            <h3>Story Cards</h3>
+            <p>Browse verified stories as visual preview cards—tap any card to read, plus curated partner spotlights.</p>
+          </div>
+          <span class="eco-link">Browse Story Cards ❯</span>
+        </div>
+        <div class="eco-card" onclick="switchView('tiktok')">
+          <div>
+            <div class="eco-icon">🎬</div>
+            <h3>Watch</h3>
+            <p>Vertical 9:16 and widescreen field dispatches built for mobile viewing and quick shareable insights.</p>
+          </div>
+          <span class="eco-link">Watch Videos ❯</span>
+        </div>
+        <div class="eco-card eco-wa" onclick="switchView('whatsapp')">
+          <div>
+            <div class="eco-icon">💬</div>
+            <h3>WhatsApp Channel</h3>
+            <p>Check your membership status or join our 07:30 &amp; 13:00 EAT verified briefing channel.</p>
+          </div>
+          <span class="eco-link">Enter WhatsApp Channel ❯</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 1: WHATSAPP CHANNEL INTERFACE (Gate + Green Channel Simulation)  -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="view-panel view-whatsapp" id="viewWhatsapp">
       <div class="wa-screen-frame">
         
         <!-- WhatsApp Top App Bar -->
         <header class="wa-app-bar">
           <div class="wa-bar-left">
-            <button class="wa-back-btn" title="Back">←</button>
+            <button class="wa-back-btn" onclick="switchView('home')" title="Back to Home">←</button>
             <div class="wa-avatar-ring">
               <div class="wa-avatar">K360</div>
             </div>
@@ -98,14 +157,27 @@
             </div>
           </div>
           <div class="wa-bar-right">
+            <button class="wa-action-btn" id="waSimulateMsgBtn" title="Simulate Incoming Breaking Update">⚡ New Update</button>
             <button class="wa-action-btn wa-follow-btn">Following</button>
-            <button class="wa-action-btn" title="Search">🔍</button>
-            <button class="wa-action-btn" title="More Options">⋮</button>
           </div>
         </header>
 
-        <!-- WhatsApp Channel Scroll Canvas (with Doodle Wallpaper) -->
-        <div class="wa-chat-scroll" id="waChatScroll">
+        <!-- Membership Gate (Shown first before revealing channel feed) -->
+        <div class="wa-member-gate" id="waMemberGate">
+          <h3>Are you a member of Kikao360 on WhatsApp?</h3>
+          <p>Our verified WhatsApp Channel delivers 07:30 EAT morning hustle briefings and 13:00 EAT breaking alerts directly to your phone.</p>
+          <div class="wa-gate-actions">
+            <button class="wa-btn-green" id="waYesMemberBtn">Yes, I'm a Member — Open Channel</button>
+            <button class="wa-btn-outline" id="waNoMemberBtn">No — Get Channel Invite Link</button>
+          </div>
+          <div class="wa-invite-box" id="waInviteBox" style="display:none;">
+            <p style="margin-bottom:0.65rem;"><strong>Join Kikao360 Official Channel:</strong><br><code>https://whatsapp.com/channel/kikao360-kenya</code></p>
+            <button class="wa-btn-green" id="waJoinAndEnterBtn">Copy Link &amp; Preview Channel ❯</button>
+          </div>
+        </div>
+
+        <!-- WhatsApp Channel Scroll Canvas (Hidden until gate cleared) -->
+        <div class="wa-chat-scroll" id="waChatScroll" style="display:none;">
           
           <!-- Channel Announcement / Pinned Notice -->
           <div class="wa-date-divider"><span>TODAY</span></div>
@@ -418,31 +490,32 @@
     </section>
 
     <!-- --------------------------------------------------------------------- -->
-    <!-- VIEW 3: PINTEREST-STYLE MASONRY GRID (2-Col Mobile / Responsive Multi-Col) -->
+    <!-- VIEW 3: STORY CARDS BOARD (Preview Cards + Partner Ad Spotlights)     -->
     <!-- --------------------------------------------------------------------- -->
     <section class="view-panel view-pinterest" id="viewPinterest">
       <div class="pin-header-bar">
         <div class="pin-header-left">
-          <h2>Visual Story Board</h2>
-          <p>Browse media cards, TikTok dispatches, and deep-dive articles in dynamic masonry layout.</p>
+          <h2>Story Cards</h2>
+          <p>Preview verified stories as visual cards—tap any card to read the full investigation, or explore partner spotlights.</p>
         </div>
         <div class="pin-category-filters" id="pinFilters">
-          <button class="pin-pill active" data-filter="all">All Stories</button>
+          <button class="pin-pill active" data-filter="all">All Cards</button>
           <button class="pin-pill" data-filter="tech">Tech &amp; Hustle</button>
           <button class="pin-pill" data-filter="investigative">Investigative</button>
           <button class="pin-pill" data-filter="campus">Campus</button>
           <button class="pin-pill" data-filter="lifestyle">Lifestyle</button>
+          <button class="pin-pill" data-filter="sponsored">Sponsored</button>
         </div>
       </div>
 
-      <!-- Masonry Grid Container -->
+      <!-- Story Cards Grid Container -->
       <div class="pin-masonry-canvas" id="pinMasonryCanvas">
-        <!-- Injected dynamically from data.js -->
+        <!-- Injected dynamically from data.js + sponsored partner cards -->
       </div>
     </section>
 
     <!-- --------------------------------------------------------------------- -->
-    <!-- VIEW 4: TIKTOK / REELS VERTICAL VIDEO FEED (Full-Screen Immersive Swipe) -->
+    <!-- VIEW 4: WATCH VIDEO HUB (Vertical & Widescreen Dispatches)            -->
     <!-- --------------------------------------------------------------------- -->
     <section class="view-panel view-tiktok" id="viewTiktok">
       <div class="tt-feed-container" id="ttFeedContainer">
@@ -457,35 +530,41 @@
     </section>
 
     <!-- --------------------------------------------------------------------- -->
-    <!-- VIEW 5: INSIDE-THE-SPHERE 3D PANORAMIC ROOM (CSS 3D Curvature & Orbit) -->
+    <!-- STRUCTURED EDITORIAL FOOTER (Eliminates Empty Bottom Space)           -->
     <!-- --------------------------------------------------------------------- -->
-    <section class="view-panel view-sphere" id="viewSphere">
-      <div class="sphere-viewport" id="sphereViewport">
-        
-        <!-- HUD Controls & Orientation Gauge -->
-        <div class="sphere-hud">
-          <div class="hud-left">
-            <span class="hud-badge">SPATIAL 3D CANVAS</span>
-            <div class="hud-coords" id="hudCoords">RotX: -10° | RotY: 0° | Zoom: 1.0x</div>
-          </div>
-          <div class="hud-instructions">
-            <span>🖱️ Click &amp; Drag to Rotate 360° • Scroll / Pinch to Zoom • Click Card to Open</span>
-          </div>
-          <div class="hud-controls">
-            <button class="hud-btn" id="sphereResetBtn">Reset View</button>
-            <button class="hud-btn" id="sphereAutoRotateBtn">Auto-Orbit: ON</button>
-          </div>
+    <footer class="kikao-footer">
+      <div class="kikao-footer-inner">
+        <div class="footer-brand">
+          <h4>KIKAO<span class="accent-orange">360</span></h4>
+          <p>"Comment is free, but truth is multidimensional." Open-access Kenyan business, fintech, campus, and investigative journalism—built to read, watch, or listen.</p>
         </div>
-
-        <!-- 3D World Stage -->
-        <div class="sphere-world-stage">
-          <div class="sphere-room" id="sphereRoom">
-            <!-- 3D Cylinder / Spherical Cards dynamically anchored in 3D Space -->
-          </div>
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><button onclick="switchView('home')">Home Landing</button></li>
+            <li><button onclick="switchView('guardian')">The Magazine</button></li>
+            <li><button onclick="switchView('pinterest')">Story Cards</button></li>
+            <li><button onclick="switchView('tiktok')">Watch Dispatches</button></li>
+            <li><button onclick="switchView('whatsapp')">WhatsApp Channel</button></li>
+          </ul>
         </div>
-
+        <div class="footer-col">
+          <h5>Newsroom &amp; Governance</h5>
+          <ul class="footer-links">
+            <li><button onclick="openOnboardingModal()">Personalize 9 Beats</button></li>
+            <li><button onclick="openTiplineModal()">Submit Community Tip</button></li>
+            <li><button onclick="openMpesaModal()">Support via Lipa na M-Pesa</button></li>
+            <li><a href="cms.html">Owner CMS &amp; Pipelines</a></li>
+            <li><a href="samples.html">Client &amp; Sponsor Samples</a></li>
+            <li><button onclick="openPitchDeck()">Investor Pitch Deck</button></li>
+          </ul>
+        </div>
       </div>
-    </section>
+      <div class="footer-bottom-bar">
+        <span>MCK Code of Conduct • Kenya Data Protection Act (2019) • Two-Source Rule</span>
+        <span>© 2026 Kikao360 Media • USIU-Africa JRN 3015A</span>
+      </div>
+    </footer>
 
   </main>
 
@@ -727,7 +806,6 @@
 
   <!-- Script Files -->
   <script src="js/data.js"></script>
-  <script src="js/sphere.js?v=4"></script>
   <script src="js/gestures.js"></script>
   <script src="js/app.js"></script>
 </body>

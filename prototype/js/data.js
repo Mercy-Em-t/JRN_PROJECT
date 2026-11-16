@@ -1,4 +1,4 @@
-// Kikao360 / PulseWire - Core Story Dataset
+// Kikao360 — Core Multimodal Kenyan Story Dataset
 const STORIES = [
   {
     id: "story-1",
@@ -36,16 +36,16 @@ const STORIES = [
     pillar: "investigative",
     category: "Cybercrime & Security",
     badge: "Investigation",
-    title: "Who Is Hacking Cold-Chain Infrastructure Across Regional Logistics Hubs?",
-    subdeck: "Following European supermarket freezer disruptions, cybersecurity agencies warn logistics networks across Nairobi and Mombasa to patch IoT vulnerabilities.",
-    bulletLink: "Supermarket fridges and freezers across 7 nations remotely spiked to 50°C",
-    author: "Robert Booth and Miatta Mbriwa",
+    title: "Who Is Probing Cold-Chain Telemetry Across Mombasa–Nairobi Logistics Hubs?",
+    subdeck: "Cybersecurity agencies warn Kenyan agri-export and pharmaceutical warehouses to patch legacy IoT refrigeration controllers before peak harvest.",
+    bulletLink: "Inside the Mombasa–Nairobi cold-chain security audit for Kenyan exporters",
+    author: "Amina Hassan and Brian Kipchumba",
     date: "Mon 9 Nov 2026 19.07 EAT",
     readTime: "5 min read",
     videoDuration: "1:45",
     videoSrc: "assets/VID_094701.mp4",
-    poster: "assets/Screenshot_092825.jpg",
-    tags: ["Cybercrime", "IoT Security", "Retail", "Supply Chain", "Critical Infrastructure"],
+    poster: "assets/IMG_094519.jpg",
+    tags: ["Cybercrime", "IoT Security", "Agri-Tech", "Mombasa Corridor", "Critical Infrastructure"],
     stats: {
       views: "24.1K",
       reactions: "🚨 1.1K  ⚡ 430  👀 2.8K",
@@ -53,14 +53,14 @@ const STORIES = [
     },
     ogData: {
       siteName: "Kikao360 | Security Bureau",
-      headline: "Cyber Attackers Target Critical Food Cold-Chain Controllers",
-      description: "Automated thermostats cranked up in the middle of the night, spoiling millions in perishables. Is East Africa vulnerable?",
+      headline: "Cyber Audits Target Kenyan Cold-Chain & Agri-Export Controllers",
+      description: "Legacy Wi-Fi thermostats in Nairobi and Mombasa warehouses face remote tampering risks. Here is how MSMEs are patching.",
       channelTime: "08:15 AM"
     },
-    leadParagraph: "Commercial refrigerators and pharmaceutical chilling warehouses across regional supply corridors have reported automated thermostat tampering. Digital forensics teams identified firmware exploits targeting industrial refrigeration controllers—a chilling parallel to the recent wave of retail attacks across Europe.",
-    quote: "When critical cold-chain sensors are manipulated remotely, food security and medicine distribution become weaponized overnight.",
-    quoteAuthor: "National Cybersecurity Coordination Bureau",
-    secondaryParagraph: "Private supermarket chains in Nairobi are now conducting emergency audits of smart telemetry hubs, replacing legacy Wi-Fi thermostats with air-gapped cellular bridges."
+    leadParagraph: "Commercial refrigerators and horticultural chilling warehouses along the Mombasa–Nairobi corridor have begun emergency firmware audits after security researchers flagged exposed IoT telemetry controllers.",
+    quote: "When cold-chain sensors are manipulated remotely, Kenya's flower exports and medicine distribution face immediate disruption.",
+    quoteAuthor: "East Africa Cybersecurity & Logistics Forum",
+    secondaryParagraph: "Logistics operators in Industrial Area and Naivasha are now replacing legacy Wi-Fi thermostats with air-gapped cellular bridges and two-factor telemetry alerts."
   },
   {
     id: "story-3",

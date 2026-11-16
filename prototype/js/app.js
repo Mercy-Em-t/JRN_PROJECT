@@ -4,7 +4,7 @@
 
 class KikaoApp {
   constructor() {
-    this.currentMode = "whatsapp";
+    this.currentMode = "home";
     this.currentStory = STORIES[0];
     this.audioPlaying = false;
     this.audioSpeed = 1.0;
@@ -18,12 +18,12 @@ class KikaoApp {
     this.renderLeaderboard();
     this.renderPinterestGrid();
     this.renderTikTokFeed();
-    
-    // Initialize 3D Sphere & Gestures
-    this.sphereRoom = new SphericalRoom("sphereRoom", "hudCoords");
-    this.gestureCtrl = new GestureController(this);
+
+    // Initialize Gesture Controller (guard sphere-free navigation)
+    this.gestureCtrl = typeof GestureController !== "undefined" ? new GestureController(this) : null;
 
     this.bindDockNavigation();
+    this.bindWhatsAppGate();
     this.bindGuardianInteractions();
     this.bindAudioPlayer();
     this.bindModals();
@@ -82,6 +82,57 @@ class KikaoApp {
         alert("✨ Multimodal Navigation Gestures:\n\n• Pinch IN (two fingers together): Zooms out from Magazine to Pinterest Grid or 3D Sphere.\n• Pinch OUT (spread fingers): Zooms in to the Editorial Magazine.\n• Inside 3D Sphere: Click & drag to rotate 360°, scroll to zoom, click cards to open.\n• Ctrl + Mouse Wheel (Desktop): Simulates pinch-in and pinch-out!");
       });
     }
+  }
+
+  // ==========================================================================
+  // WHATSAPP MEMBERSHIP GATE & LIVE UPDATE SIMULATION
+  // ==========================================================================
+  bindWhatsAppGate() {
+    const gate = document.getElementById("waMemberGate");
+    const chat = document.getElementById("waChatScroll");
+    const yesBtn = document.getElementById("waYesMemberBtn");
+    const noBtn = document.getElementById("waNoMemberBtn");
+    const inviteBox = document.getElementById("waInviteBox");
+    const joinEnterBtn = document.getElementById("waJoinAndEnterBtn");
+    const simBtn = document.getElementById("waSimulateMsgBtn");
+
+    const openChannel = () => {
+      if (gate) gate.style.display = "none";
+      if (chat) chat.style.display = "block";
+    };
+
+    yesBtn?.addEventListener("click", openChannel);
+    noBtn?.addEventListener("click", () => {
+      if (inviteBox) inviteBox.style.display = "block";
+    });
+    joinEnterBtn?.addEventListener("click", () => {
+      navigator.clipboard?.writeText("https://whatsapp.com/channel/kikao360-kenya").catch(() => {});
+      openChannel();
+    });
+
+    simBtn?.addEventListener("click", () => {
+      openChannel();
+      const list = document.getElementById("waFeedList");
+      if (!list) return;
+      const incoming = document.createElement("div");
+      incoming.className = "wa-msg-card wa-pop-in";
+      incoming.innerHTML = `
+        <div class="wa-og-box">
+          <div class="wa-og-site" style="color:#00a884; font-weight:800;">⚡ BREAKING DISPATCH • JUST NOW</div>
+          <div class="wa-og-title">KRA Updates eTIMS Micro-Merchant Thresholds: What Campus Sellers Need to Know</div>
+          <div class="wa-og-desc">Tap to read the 3-minute verified checklist or listen in the audio dock—no paywall.</div>
+        </div>
+        <div class="wa-msg-footer">
+          <span class="wa-reactions">🔥 142  💡 89</span>
+          <span class="wa-time">Just now ✓✓</span>
+        </div>
+      `;
+      incoming.addEventListener("click", () => {
+        this.loadStory(STORIES[0].id);
+        this.switchView("guardian");
+      });
+      list.prepend(incoming);
+    });
   }
 
   // ==========================================================================
@@ -313,6 +364,49 @@ class KikaoApp {
       });
 
       canvas.appendChild(card);
+    });
+
+    // Inject 2 Dedicated Sponsored / Partner Ad Cards into Story Cards
+    const sponsoredCards = [
+      {
+        category: "Sponsored • Fintech Partner",
+        title: "Build With Safaricom Daraja 3.0: Apply for the Q4 Student API Grant",
+        desc: "Up to KES 250,000 in sandbox credits & mentorship for Kenyan university founders automating M-Pesa checkouts.",
+        cta: "Explore Partner Offer ❯",
+        img: "assets/IMG_093824.jpg",
+      },
+      {
+        category: "Sponsored • Campus Spotlight",
+        title: "USIU-Africa Media & Tech Innovation Week 2026 — Register Your Team",
+        desc: "Pitch your digital media or MSME venture at the Week 11 Investors' Boardroom.",
+        cta: "View Event Brief ❯",
+        img: "assets/IMG_094519.jpg",
+      },
+    ];
+
+    sponsoredCards.forEach((ad) => {
+      const adCard = document.createElement("div");
+      adCard.className = "pin-card is-sponsored";
+      adCard.setAttribute("data-category", "sponsored");
+      adCard.innerHTML = `
+        <div class="pin-media-wrapper">
+          <img src="${ad.img}" alt="${ad.title}" loading="lazy">
+          <span class="pin-badge-float pin-badge-sponsored">Sponsored</span>
+        </div>
+        <div class="pin-card-body">
+          <div class="pin-card-cat" style="color:#E37E24;">${ad.category}</div>
+          <h3 class="pin-card-title">${ad.title}</h3>
+          <p class="pin-card-desc">${ad.desc}</p>
+          <div class="pin-card-footer">
+            <span style="color:#E2C0A1;">Partner Placement</span>
+            <button class="pin-save-btn">${ad.cta}</button>
+          </div>
+        </div>
+      `;
+      adCard.addEventListener("click", () => {
+        window.open("samples.html", "_blank");
+      });
+      canvas.appendChild(adCard);
     });
 
     // Filter pills
