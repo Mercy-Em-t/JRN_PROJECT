@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+  min-height: auto;
   padding: 1.5rem 1rem;
 }
 
@@ -15,7 +15,7 @@
   .view-whatsapp {
     padding: 0;
     width: 100%;
-    min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+    min-height: auto;
   }
 
   .wa-screen-frame {
@@ -23,7 +23,7 @@
     border-radius: 0;
     border: none;
     box-shadow: none;
-    min-height: calc(100vh - var(--dock-height) - var(--npr-dock-height));
+    min-height: auto;
   }
 
   .wa-app-bar {
