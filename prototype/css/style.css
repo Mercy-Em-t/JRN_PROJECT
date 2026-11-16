@@ -366,6 +366,10 @@ body {
   height: auto;
 }
 
+.view-panel:not(.active) {
+  display: none !important;
+}
+
 .view-panel.active {
   display: block;
   position: relative;
