@@ -8,28 +8,26 @@
 - **Brief / AI Disclosure Statement:** ✅ Present
 
 ## 2. Word (.docx) Formatting Check
-- **Inspected `.docx`:** `JRN3015A_Assignment2_Task3_Kikao360.docx` (948 words, ~3.0 pages)
-- **Font = Times New Roman:** ✅ PASS (Detected: Times New Roman)
-- **Font Size = 12pt:** ✅ PASS (Detected: 11.0, 12.0, 13.0, 14.0)
-- **Line Spacing = 1.5:** ✅ PASS (Detected: 1.5)
+- **Inspected `.docx`:** `JRN3015A_Assignment2_Kikao360_Full_Proposal.docx` (4180 words, ~13.3 pages)
+- **Font = Times New Roman:** ✅ PASS (Detected: Consolas, Times New Roman)
+- **Font Size = 12pt:** ✅ PASS (Detected: 11.0, 11.5, 12.0, 13.5)
+- **Line Spacing = 1.5:** ✅ PASS (Detected: 1.15, 1.25, 1.5)
 
 ## 3. APA 7th Edition Citations & AI Tool Gate
 - **Inline Citations Found:** `1` | **Reference List Entries:** `10` — **❌ Needs more APA citations**
 - **AI Assistance Declared:** `30%` (Limit: ≤ 30% AI / ≥ 70% human) — **✅ PASS**
 
 ## 4. Originality & Coherence Audit
-- **Originality & Coherence Score:** **`60 / 100`**
+- **Originality & Coherence Score:** **`80 / 100`**
 - **Flags to Clean Up Before Final Export:**
-  - ⚠️ Old brand 'PulseWire' in data.js
-  - ⚠️ Leftover Guardian byline 'Robert Booth' in data.js
   - ⚠️ Uncited '84%' MCK stat in Proposal
   - ⚠️ Break-even 'Month 4' vs 'Month 3' mismatch in Exec Summary
 
 ## 5. Required Submission Bundle Checklist
 - **Written Proposal (Markdown):** ✅ Present
-- **Full Written Proposal (`.docx`):** ❌ Missing (Need to export full `JRN3015A_Assignment2_Kikao360_Proposal.docx`)
+- **Full Written Proposal (`.docx`):** ✅ Present
 - **Task Deliverables 2–6 (`task2-6deliverable.md`):** ✅ All Present
 - **Financial Budget (KES CAPEX/OPEX/6M):** ✅ Present
 - **Product Prototype (`prototype/index.html`):** ✅ Present
-- **Investor Pitch Slides (`.pptx` / `.pdf`):** ❌ Missing (Need standalone `.pptx`/`.pdf` deck)
+- **Investor Pitch Slides (`.pptx` / `.pdf`):** ✅ Present
 - **Brief / AI Statement:** ✅ Present
