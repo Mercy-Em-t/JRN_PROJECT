@@ -5,10 +5,98 @@
 .view-whatsapp {
   background-color: var(--bg-canvas);
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   min-height: auto;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 6rem;
+}
+
+/* Kikao365 Context Bridge above WhatsApp Simulator */
+.wa-context-bridge {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto 1.5rem auto !important;
+  background: #141b26 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-left: 4px solid #00a884 !important;
+  border-radius: 14px;
+  padding: 1.15rem 1.35rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.wa-bridge-badge {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #00a884 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.wa-bridge-badge .bridge-sep { color: rgba(255,255,255,0.3); }
+
+.wa-bridge-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.wa-bridge-title-row h2 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #ffffff !important;
+  margin: 0;
+  font-weight: 800;
+}
+
+.wa-bridge-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bridge-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #FAF4EC !important;
+  padding: 0.4rem 0.85rem !important;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bridge-btn:hover {
+  background: #E37E24 !important;
+  color: #ffffff !important;
+  border-color: #E37E24 !important;
+}
+
+.wa-bridge-desc {
+  font-size: 0.84rem;
+  color: #cbd5e1 !important;
+  line-height: 1.5;
+  margin-top: 0.4rem;
+}
+
+/* Smartphone Device Mockup Frame (Desktop) */
+.wa-screen-frame {
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto 3rem auto !important;
+  background: #0b141a;
+  border-radius: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 168, 132, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
 @media (max-width: 600px) {
@@ -16,6 +104,10 @@
     padding: 0;
     width: 100%;
     min-height: auto;
+  }
+
+  .wa-context-bridge {
+    display: none; /* Hide explanatory bridge on small mobile screens to maximize chat feed */
   }
 
   .wa-screen-frame {
@@ -100,7 +192,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00a884, #052962);
+  background: linear-gradient(135deg, #00a884, #064e3b);
   display: flex;
   align-items: center;
   justify-content: center;

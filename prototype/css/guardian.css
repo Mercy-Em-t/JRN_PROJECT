@@ -1,6 +1,16 @@
 /* ==========================================================================
    THE GUARDIAN-STYLE MAGAZINE EDITORIAL STYLES (VIEW 2)
+   Strictly aligned to Kikao365 60-30-10 Palette:
+   60% Desert Sand (#FAF4EC), 30% Coffee Bean (#211010), 10% Oxidized Iron (#B11905)
    ========================================================================== */
+
+:root {
+  --gm-navy: #211010;          /* Coffee Bean (Replaces legacy navy) */
+  --gm-navy-dark: #160a0a;     /* Deep Coffee Roast */
+  --gm-blue-accent: #E37E24;   /* Tiger Orange (Alert/Discovery) */
+  --gm-coral-red: #B11905;     /* Oxidized Iron Red (Investigative Accent) */
+  --gm-sand: #FAF4EC;          /* Desert Sand Canvas */
+}
 
 .view-guardian {
   background-color: #f6f6f6;
@@ -190,8 +200,8 @@
 
 /* Secondary Sub-Navigation Bar */
 .gm-subnav-bar {
-  background: #001e4a;
-  border-bottom: 1px solid #dcdcdc;
+  background: #211010;
+  border-bottom: 1px solid rgba(226, 192, 161, 0.2);
   overflow-x: auto;
 }
 
@@ -223,9 +233,9 @@
 /* Mega-Menu Drawer (Guardian Reference: IMG_100242.jpg) */
 .gm-megamenu-drawer {
   display: none;
-  background: #001a40;
-  color: #ffffff;
-  border-bottom: 4px solid var(--gm-coral-red);
+  background: #211010;
+  color: #FAF4EC;
+  border-bottom: 4px solid var(--iron-10, #B11905);
   padding: 2rem 1.5rem;
 }
 
@@ -851,11 +861,11 @@
 
 /* Campus Ad Banner */
 .gm-campus-ad-card {
-  background: linear-gradient(135deg, #052962, #001233);
-  color: #ffffff;
+  background: linear-gradient(135deg, #211010, #381a1a);
+  color: #FAF4EC;
   padding: 1.2rem;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(227, 126, 36, 0.3);
 }
 
 .gm-campus-ad-card .card-tag {

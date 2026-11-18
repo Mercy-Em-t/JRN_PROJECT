@@ -275,3 +275,18 @@
 .pin-save-btn:hover {
   background: #850E05;
 }
+
+/* Dedicated Sponsor / Advertising Chip */
+.pin-pill.pin-sponsor-pill {
+  border: 1px solid rgba(227, 126, 36, 0.6);
+  color: #fdba74;
+  background: rgba(227, 126, 36, 0.12);
+  font-weight: 700;
+}
+
+.pin-pill.pin-sponsor-pill.active,
+.pin-pill.pin-sponsor-pill:hover {
+  background: #E37E24;
+  color: #ffffff;
+  border-color: #E37E24;
+}

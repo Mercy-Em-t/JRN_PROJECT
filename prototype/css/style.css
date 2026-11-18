@@ -304,10 +304,10 @@ body {
 }
 
 .mode-btn[data-mode="guardian"].active {
-  background: #052962;
-  color: #ffffff;
-  box-shadow: 0 2px 12px rgba(5, 41, 98, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #B11905;
+  color: #FAF4EC;
+  box-shadow: 0 2px 12px rgba(177, 25, 5, 0.5);
+  border: 1px solid rgba(250, 244, 236, 0.4);
 }
 
 .mode-btn[data-mode="pinterest"].active {
@@ -1306,10 +1306,10 @@ body {
 
 /* Structured Editorial Footer (Eliminates Empty Bottom Void) */
 .kikao-footer {
-  background: #180b0b;
-  border-top: 1px solid rgba(226, 192, 161, 0.2);
-  padding: 2.5rem clamp(1rem, 4vw, 3rem) 6.5rem; /* leaves clean clearance above NPR dock */
-  margin-top: 2rem;
+  background: #111622;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3rem clamp(1rem, 4vw, 3rem) 7rem; /* leaves clean clearance above NPR dock */
+  margin-top: 3rem;
 }
 
 .kikao-footer-inner {
@@ -1317,35 +1317,44 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .footer-brand h4 {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #ffffff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.5px;
+}
+
+.footer-brand h4 span {
+  color: #B11905;
 }
 
 .footer-brand p {
-  color: var(--desert-sand);
-  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-size: 0.86rem;
   line-height: 1.6;
   max-width: 38ch;
 }
 
 .footer-col h5 {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--tiger-orange);
-  margin-bottom: 0.75rem;
+  color: #FAF4EC;
+  font-weight: 800;
+  border-bottom: 2px solid #B11905;
+  padding-bottom: 4px;
+  display: inline-block;
+  margin-bottom: 0.9rem;
 }
 
 .footer-links {
   list-style: none;
   display: grid;
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 
 .footer-links button,
@@ -1353,31 +1362,56 @@ body {
   background: none;
   border: none;
   padding: 0;
-  color: var(--desert-sand);
-  font-size: 0.84rem;
+  color: #e2e8f0;
+  font-size: 0.86rem;
   text-decoration: none;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
+  transition: all 0.2s ease;
 }
 
 .footer-links button:hover,
 .footer-links a:hover {
-  color: #ffffff;
-  text-decoration: underline;
+  color: var(--tiger-orange);
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
+.footer-trust-strip {
+  max-width: 1240px;
+  margin: 2rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.footer-trust-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(227, 126, 36, 0.45);
+  color: #FFFFFF !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  letter-spacing: 0.3px;
 }
 
 .footer-bottom-bar {
   max-width: 1240px;
-  margin: 1.75rem auto 0;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(226, 192, 161, 0.12);
+  margin: 1rem auto 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.75rem;
   font-size: 0.78rem;
-  color: rgba(226, 192, 161, 0.75);
+  color: #94a3b8;
 }
 
 /* Floating NPR Dock Palette Sync */

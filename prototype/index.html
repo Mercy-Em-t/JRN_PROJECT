@@ -10,12 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
   
-  <!-- CSS Stylesheets (cache-busted) -->
-  <link rel="stylesheet" href="css/style.css?v=20261116g">
-  <link rel="stylesheet" href="css/whatsapp.css?v=20261116d">
-  <link rel="stylesheet" href="css/guardian.css?v=20261116">
-  <link rel="stylesheet" href="css/pinterest.css?v=20261116e">
-  <link rel="stylesheet" href="css/tiktok.css?v=20261116">
+  <!-- CSS Stylesheets (cache-busted with unique timestamp) -->
+  <link rel="stylesheet" href="css/style.css?v=20261118_v3">
+  <link rel="stylesheet" href="css/whatsapp.css?v=20261118_v3">
+  <link rel="stylesheet" href="css/guardian.css?v=20261118_v3">
+  <link rel="stylesheet" href="css/pinterest.css?v=20261118_v3">
+  <link rel="stylesheet" href="css/tiktok.css?v=20261118_v3">
 </head>
 <body class="theme-dark mode-home">
 
@@ -24,7 +24,7 @@
   <!-- ========================================================================= -->
   <header class="master-dock" id="masterDock">
     <button class="dock-brand-btn" onclick="switchView('home')" title="Return to Kikao365 Home">
-      <span class="dock-logo">KIKAO<span class="accent-orange">360</span></span>
+      <span class="dock-logo">KIKAO<span class="accent-orange" style="color:var(--iron-10, #B11905);">365</span></span>
       <span class="dock-tagline">Kenya's Multimodal Newsroom</span>
     </button>
     
@@ -160,6 +160,26 @@
     <!-- VIEW 1: WHATSAPP CHANNEL INTERFACE (Gate + Green Channel Simulation)  -->
     <!-- --------------------------------------------------------------------- -->
     <section class="view-panel view-whatsapp" id="viewWhatsapp">
+      
+      <!-- Architectural Context Bridge (Connecting WhatsApp to Kikao365 Ecosystem) -->
+      <div class="wa-context-bridge">
+        <div class="wa-bridge-badge">
+          <span>KIKAO<strong style="color:var(--iron-10, #B11905);">365</strong> ECOSYSTEM</span>
+          <span class="bridge-sep">•</span>
+          <span>TOP-OF-FUNNEL DISTRIBUTION (48.2K SUBSCRIBERS)</span>
+        </div>
+        <div class="wa-bridge-title-row">
+          <h2>Official WhatsApp Channel Gateway</h2>
+          <div class="wa-bridge-actions">
+            <button class="bridge-btn" onclick="switchView('guardian')">📰 Read Magazine</button>
+            <button class="bridge-btn" onclick="switchView('home')">🏠 Return Home</button>
+          </div>
+        </div>
+        <p class="wa-bridge-desc">
+          How Kikao365 reaches 60% of Kenyan mobile news consumers directly inside their daily messaging workflow—delivering verified 07:30 EAT morning dispatches and 13:00 EAT alerts with zero paywalls.
+        </p>
+      </div>
+
       <div class="wa-screen-frame">
         
         <!-- WhatsApp Top App Bar -->
@@ -167,7 +187,7 @@
           <div class="wa-bar-left">
             <button class="wa-back-btn" onclick="switchView('home')" title="Back to Home">←</button>
             <div class="wa-avatar-ring">
-              <div class="wa-avatar">K360</div>
+              <div class="wa-avatar">K365</div>
             </div>
             <div class="wa-channel-info">
               <div class="wa-channel-title">
@@ -192,7 +212,7 @@
             <button class="wa-btn-outline" id="waNoMemberBtn">No — Get Channel Invite Link</button>
           </div>
           <div class="wa-invite-box" id="waInviteBox" style="display:none;">
-            <p style="margin-bottom:0.65rem;"><strong>Join Kikao365 Official Channel:</strong><br><code>https://whatsapp.com/channel/kikao360-kenya</code></p>
+            <p style="margin-bottom:0.65rem;"><strong>Join Kikao365 Official Channel:</strong><br><code>https://whatsapp.com/channel/kikao365-kenya</code></p>
             <button class="wa-btn-green" id="waJoinAndEnterBtn">Copy Link &amp; Preview Channel ❯</button>
           </div>
         </div>
@@ -288,6 +308,7 @@
           <a href="#sub5">Sheng Culture</a>
           <a href="#sub6">Gig Economy</a>
           <a href="#sub7">Policy Tracker</a>
+          <a href="samples.html#b2b-sample" target="_blank" style="color:var(--tiger-orange); font-weight:700;">📢 Partner Spotlights (B2B)</a>
         </div>
       </nav>
 
@@ -525,7 +546,7 @@
           <button class="pin-pill" data-filter="investigative">Investigative</button>
           <button class="pin-pill" data-filter="campus">Campus</button>
           <button class="pin-pill" data-filter="lifestyle">Lifestyle</button>
-          <button class="pin-pill" data-filter="sponsored">Sponsored</button>
+          <button class="pin-pill pin-sponsor-pill" data-filter="sponsored">📢 Partner Spotlights (B2B Ads)</button>
         </div>
       </div>
 
@@ -556,7 +577,7 @@
     <footer class="kikao-footer">
       <div class="kikao-footer-inner">
         <div class="footer-brand">
-          <h4>KIKAO<span class="accent-orange">360</span></h4>
+          <h4>KIKAO<span class="accent-orange" style="color:var(--iron-10, #B11905);">365</span></h4>
           <p>"Comment is free, but truth is multidimensional." Open-access Kenyan business, fintech, campus, and investigative journalism—built to read, watch, or listen.</p>
         </div>
         <div class="footer-col">
@@ -581,9 +602,18 @@
           </ul>
         </div>
       </div>
+      
+      <!-- Trust & Verification Strip -->
+      <div class="footer-trust-strip">
+        <span class="footer-trust-pill">🛡️ Media Council of Kenya (MCK) Accredited</span>
+        <span class="footer-trust-pill">🔒 Data Protection Act (ODPC) Compliant</span>
+        <span class="footer-trust-pill">🎓 USIU-Africa CCCA Incubated</span>
+        <span class="footer-trust-pill">⚖️ Two-Source Verification Firewall</span>
+      </div>
+
       <div class="footer-bottom-bar">
         <span>MCK Code of Conduct • Kenya Data Protection Act (2019) • Two-Source Rule</span>
-        <span>© 2026 Kikao365 Media • USIU-Africa JRN 3015A</span>
+        <span>© 2026 Kikao365 Media Enterprise • USIU-Africa JRN 3015A</span>
       </div>
     </footer>
 
@@ -604,7 +634,7 @@
           <span></span><span></span><span></span><span></span><span></span>
         </div>
         <div class="npr-meta">
-          <div class="npr-eyebrow">KIKAO360 AUDIO DISPATCH • ON AIR NOW</div>
+          <div class="npr-eyebrow">KIKAO365 AUDIO DISPATCH • ON AIR NOW</div>
           <div class="npr-headline" id="nprHeadline">The M-Pesa API Revolution: Audio Briefing (13 mins)</div>
         </div>
       </div>
