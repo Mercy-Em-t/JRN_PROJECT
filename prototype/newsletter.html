@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kikao360 Morning Dispatch — Email Newsletter Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Email-safe and responsive styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #FAF4EC;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      color: #211010;
+      -webkit-font-smoothing: antialiased;
+    }
+    table { border-collapse: collapse; }
+    img { border: 0; outline: none; text-decoration: none; display: block; max-width: 100%; }
+    
+    .email-container {
+      max-width: 640px;
+      margin: 20px auto;
+      background: #ffffff;
+      border: 1px solid #ebd9c5;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(33, 16, 16, 0.06);
+    }
+
+    /* Top Utility Bar */
+    .utility-bar {
+      background: #211010;
+      color: #FAF4EC;
+      padding: 8px 20px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .utility-bar a { color: #E37E24; text-decoration: none; }
+
+    /* Masthead */
+    .masthead {
+      padding: 28px 24px 18px;
+      text-align: center;
+      background: #ffffff;
+      border-bottom: 2px solid #211010;
+    }
+    .brand-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: #211010;
+      letter-spacing: -0.5px;
+      margin: 0;
+      line-height: 1;
+    }
+    .brand-logo span { color: #B11905; }
+    .tagline {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+    .sub-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 8px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+    }
+
+    /* Live Telemetry / Weather Banner */
+    .telemetry-banner {
+      background: #FAF4EC;
+      border-bottom: 1px solid #ebd9c5;
+      padding: 10px 24px;
+      font-size: 12px;
+      color: #211010;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pulse-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00A884;
+      margin-right: 4px;
+    }
+
+    /* Story Section */
+    .content-pad {
+      padding: 24px;
+    }
+    .kicker {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #B11905;
+      margin-bottom: 6px;
+    }
+    .headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #211010;
+      margin: 0 0 10px;
+    }
+    .byline-bar {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .verified-badge {
+      background: rgba(0, 168, 132, 0.12);
+      color: #047857;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .lead-paragraph {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #334155;
+      margin: 0 0 14px;
+    }
+    .pullquote {
+      background: #FAF4EC;
+      border-left: 4px solid #B11905;
+      padding: 12px 18px;
+      margin: 18px 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 16px;
+      color: #211010;
+      line-height: 1.45;
+    }
+
+    /* 60-Second Flash Radar */
+    .radar-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 20px 0;
+    }
+    .radar-header {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #052962;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .radar-item {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      padding-left: 14px;
+      position: relative;
+    }
+    .radar-item:last-child { margin-bottom: 0; }
+    .radar-item::before {
+      content: "•";
+      color: #E37E24;
+      font-size: 18px;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+    .radar-item strong { color: #0f172a; }
+
+    /* Audio Dispatch Embed Box */
+    .audio-embed-box {
+      background: linear-gradient(135deg, #052962 0%, #1e293b 100%);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .audio-text h4 { margin: 0 0 4px; font-size: 14px; font-weight: 800; }
+    .audio-text p { margin: 0; font-size: 12px; color: #94a3b8; }
+    .audio-play-btn {
+      background: #00A884;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Native Partner Spotlight */
+    .partner-card {
+      border: 1px dashed #cbd5e1;
+      background: #fdfbf7;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 22px 0;
+    }
+    .partner-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .partner-body {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #334155;
+    }
+    .partner-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #B11905;
+      text-decoration: none;
+    }
+
+    /* M-Pesa Tip Box */
+    .patronage-box {
+      background: #FAF4EC;
+      border: 1px solid #ebd9c5;
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+      margin: 24px 0 10px;
+    }
+    .patronage-box h4 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #211010;
+    }
+    .patronage-box p {
+      margin: 0 0 12px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+    .tip-pills {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .tip-pill {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #211010;
+      text-decoration: none;
+    }
+    .tip-pill.featured {
+      background: #047857;
+      color: #ffffff;
+      border-color: #047857;
+    }
+
+    /* Footer */
+    .email-footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 24px;
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .email-footer a { color: #64748b; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden Preview Preheader Text -->
+  <div style="display:none; font-size:1px; color:#333; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
+    The M-Pesa API revolution for Gen-Z merchants, Nairobi cold-chain IoT telemetry, and today's weather radar.
+  </div>
+
+  <div class="email-container">
+    
+    <!-- Top Utility Bar -->
+    <div class="utility-bar">
+      <span>Kikao360 Official Newsletter</span>
+      <a href="index.html" target="_blank">View on Web →</a>
+    </div>
+
+    <!-- Masthead -->
+    <header class="masthead">
+      <h1 class="brand-logo">KIKAO<span>360</span></h1>
+      <div class="tagline">Comment is free, but truth is multidimensional</div>
+      <div class="sub-meta">
+        <span>Issue #42 • Tuesday Morning Dispatch</span>
+        <span>5-Min Read • Nairobi, Kenya</span>
+        <span>Soma. Tazama. Sikiliza.</span>
+      </div>
+    </header>
+
+    <!-- Weather & Market Telemetry -->
+    <div class="telemetry-banner">
+      <div>🌦️ <strong>Nairobi:</strong> 19°C (Overcast)</div>
+      <div><span class="pulse-dot"></span><strong>M-Pesa Daraja:</strong> 100% Uptime</div>
+      <div><strong>USD/KES:</strong> 129.40</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="content-pad">
+      
+      <!-- Lead Story -->
+      <article>
+        <div class="kicker">Lead Investigation • Tech &amp; Hustle</div>
+        <h2 class="headline">The M-Pesa API Revolution: How 7.4M Micro-Merchants Bypass Traditional Banking</h2>
+        <div class="byline-bar">
+          <span>By <strong>Faith Mwende</strong></span>
+          <span>•</span>
+          <span class="verified-badge">✓ Two-Source Verified</span>
+          <span>•</span>
+          <span>4 min read</span>
+        </div>
+        <p class="lead-paragraph">
+          Across Kenyan university corridors and peri-urban commercial hubs, a quiet financial restructuring is taking place. Final-year students, thrift apparel vendors, and freelance designers are turning their backs on traditional merchant bank accounts. Instead, they are connecting <strong>Safaricom's Daraja 3.0 STK Push APIs</strong> directly to automated Telegram bots and TikTok livestreams.
+        </p>
+        <div class="pullquote">
+          “Our smartphone is no longer just a communication device; it is our credit ledger, our storefront, and our primary media terminal.”
+        </div>
+        <p class="lead-paragraph">
+          With over <strong>KES 180,000 processed weekly</strong> across active student micro-merchants, the immediate challenge is tax literacy under KRA eTIMS. Kikao360’s campus desk compiled a step-by-step compliance checklist to keep informal businesses penalty-free without slowing down daily transactions.
+        </p>
+      </article>
+
+      <!-- The 60-Second Flash Radar -->
+      <section class="radar-card">
+        <div class="radar-header">
+          <span>⚡</span> The 60-Second Radar (What to Watch Today)
+        </div>
+        <div class="radar-item">
+          <strong>Cold-Chain Telemetry:</strong> An IoT sensor probe on the Mombasa-Nairobi corridor uncovered a 14% telemetry failure rate in transit perishable freight.
+        </div>
+        <div class="radar-item">
+          <strong>Campus eTIMS Grace Period:</strong> KRA extends onboarding support for student startups grossing under KES 5M annually.
+        </div>
+        <div class="radar-item">
+          <strong>Venture Funding:</strong> Two student-incubated agritech startups secure $25,000 non-dilutive grants at the East Africa Youth Summit.
+        </div>
+      </section>
+
+      <!-- Audio Bulletin Commute Embed -->
+      <section class="audio-embed-box">
+        <div class="audio-text">
+          <h4>🎧 Morning Matatu Commute Edition</h4>
+          <p>13-min audio dispatch anchored by Brian Ochieng</p>
+        </div>
+        <a class="audio-play-btn" href="index.html">▶ Play Bulletin (13:14)</a>
+      </section>
+
+      <!-- Native Partner Spotlight (Client Deliverable) -->
+      <section class="partner-card">
+        <div class="partner-label">
+          <span>Verified Partner Spotlight</span>
+          <span>Editorial–Commercial Firewall Active</span>
+        </div>
+        <div class="partner-body">
+          <strong>Safaricom Daraja 3.0 Developer Sandbox:</strong> Scaffold your first automated M-Pesa payment webhook in 20 minutes with zero gateway fees for student developers.
+        </div>
+        <a class="partner-link" href="https://developer.safaricom.co.ke" target="_blank" rel="noopener">
+          Explore Developer Docs &amp; Sandbox →
+        </a>
+      </section>
+
+      <!-- Reader Micro-Patronage Prompt -->
+      <section class="patronage-box">
+        <h4>Support Open-Access Journalism</h4>
+        <p>Kikao360 does not hide investigative reporting behind hard paywalls. Support student reporters via Lipa na M-Pesa micro-patronage.</p>
+        <div class="tip-pills">
+          <a class="tip-pill" href="#">KES 50</a>
+          <a class="tip-pill featured" href="#">KES 100</a>
+          <a class="tip-pill" href="#">KES 250</a>
+          <a class="tip-pill" href="#">KES 500</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Email Footer -->
+    <footer class="email-footer">
+      <p>You received this briefing because you subscribed to the Kikao360 Morning Dispatch at <strong>kikao360.co.ke</strong>.</p>
+      <p>© 2026 Kikao360 Media Enterprise. Incubated at USIU-Africa, Nairobi, Kenya.</p>
+      <p>Accredited under Media Council of Kenya (MCK) Guidelines • Data Protection Act (ODPC) Compliant.</p>
+      <p style="margin-top:10px;">
+        <a href="#">Manage Email Preferences</a> • <a href="#">Forward to a Classmate</a> • <a href="#">Unsubscribe</a>
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

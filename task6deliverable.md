@@ -8,10 +8,10 @@
 | Rubric Option | Applies? | Kikao360 Deliverable & Evidence |
 | :--- | :---: | :--- |
 | **a. 2–3 min podcast or video pilot** | ✅ **Yes** | Persistent NPR-style audio dock + planned 2–3 min flagship Kikao360 Pilot Explainer (*"Soma. Tazama. Sikiliza."*) introducing a real Kenyan MSME/eTIMS story. |
-| **b. Sample digital magazine or newsletter** | ✅ **Yes** | Guardian-style Magazine view (`prototype/index.html`) + Tuesday/Friday Email Newsletter preview sample (`prototype/samples.html`). |
+| **b. Sample digital magazine or newsletter** | ✅ **Yes** | Guardian-style Magazine view (`prototype/index.html`) + full responsive **Tuesday/Friday Email Newsletter Issue #42** (`prototype/newsletter.html` and embedded in `prototype/samples.html`). |
 | **c. Wireframe or interactive mock-up of a media app** | ✅ **Yes** | Full 5-mode interactive web app (`whatsapp`, `guardian`, `pinterest`, `tiktok`, `sphere`) + Category Onboarding Picker + User Account Space (`Saved`, `Liked`, `My Algorithm`) + 3-Gate Tipline + Lipa na M-Pesa STK Push. |
-| **d. Sample website or news platform** | ✅ **Yes** | Live multi-page web platform (`prototype/index.html`, `prototype/cms.html`, `prototype/samples.html`). |
-| **e. Media service portfolio with sample client deliverables** | ✅ **Yes** | Sponsor/Client Deliverable Showcase in `prototype/samples.html` + `format_reel.py` stamped 9:16 video (`sample_VID_094529_reels.mp4`) + `CONTENT_LINEUP.md`. |
+| **d. Sample website or news platform** | ✅ **Yes** | Live multi-page web platform (`prototype/index.html`, `prototype/cms.html`, `prototype/samples.html`, `prototype/newsletter.html`). |
+| **e. Media service portfolio with sample client deliverables** | ✅ **Yes** | **B2B Native Sponsor Content Package & Intelligence Dossier** in `prototype/samples.html` (1,200w Whitepaper + 60s Reel + WhatsApp push slot @ KES 80k) + `format_reel.py` stamped 9:16 video (`sample_VID_094529_reels.mp4`). |
 | **f. Demonstration of a proposed media technology solution** | ✅ **Yes** | **Inside-the-Sphere 3D Room** (6 vertical 3-tier pillars = 18 cards), **Pinch-to-Switch** gesture controller, **`format_reel.py`** auto-formatter, and **Owner CMS (`cms.html`)** with 3-stage pipeline & CAC tracker. |
 | **g. Core features & user experience (Mandatory)** | ✅ **Required** | End-to-end user journey demonstrated live alongside the 10–15 minute Investor Pitch. |
 
@@ -28,7 +28,12 @@
   5. **3D Sphere Room:** 6 vertical 3-tier pillars (18 cards) inside a draggable, zoomable 360° spatial room.
 * **Personalization & Trust Loops:** Category Onboarding Picker, User Account Space (`Saved`, `Liked`, `My Algorithm`), and 3-Gate Community Tipline Modal.
 * **Owner Operations CMS (`prototype/cms.html`):** Editorial Calendar, 3-stage pipeline (`Pending Review` → `Pending Publication` → `Published`), and Post-Publication Performance & CAC Dashboard (`CAC ≤ KES 3.00`).
-* **Client & Format Showcase (`prototype/samples.html`):** Sample deliverables for sponsors, newsletters, and multi-format packaging.
+* **Client & Format Showcase (`prototype/samples.html`):** Architectural distinction between:
+  1. **📰 Finished Editorial & Commercial Product Deliverables (Options b & e):**
+     * **Full Email Newsletter Template (`prototype/newsletter.html`):** Responsive HTML Morning Dispatch (Issue #42) featuring masthead, Nairobi weather/Daraja uptime telemetry strip, lead M-Pesa API investigation, 60-Second Flash Radar, audio commute player embed, native Safaricom sponsor spotlight, and Lipa na M-Pesa micro-patronage prompt.
+     * **B2B Native Sponsor Deliverable Dossier:** Co-branded fintech package (1,200w dossier + 60s Reel + WhatsApp telemetry) demonstrating compliance with the Editorial–Commercial Firewall.
+  2. **🧩 Atomic UI & Interaction Components (Options c & f):**
+     * Category Onboarding Picker (9 beats), WhatsApp OG rich preview card, 9:16 vertical video frame, Guardian editorial spread, 3-gate tipline verification, persistent audio dock pill, Lipa na M-Pesa STK modal, and Inside-the-Sphere 3D spatial room.
 
 ---
 

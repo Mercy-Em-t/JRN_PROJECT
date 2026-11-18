@@ -3,271 +3,1116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kikao360 — MoSCoW Component Samples & Previews</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Kikao360 — Design System: UI Components vs. Product Deliverables</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b1120;
-      --card: #111827;
-      --border: rgba(255, 255, 255, 0.12);
-      --navy: #052962;
-      --wa-green: #00a884;
-      --wa-bubble: #1f2c34;
-      --coral: #f26419;
-      --text: #f8fafc;
-      --muted: #94a3b8;
+      /* Kikao360 60-30-10 Palette */
+      --bg-canvas: #0c1017;
+      --card-bg: #131a26;
+      --card-inner: #1a2334;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(227, 126, 36, 0.5);
+      
+      --sand-60: #FAF4EC;
+      --coffee-30: #211010;
+      --navy-dark: #052962;
+      --iron-10: #B11905;
+      --tiger-orange: #E37E24;
+      --wa-emerald: #00A884;
+      --wa-dark-bubble: #1f2c34;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dark: #211010;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-canvas);
+      color: var(--text-main);
+      padding: 1.5rem 1rem 4rem;
+      line-height: 1.55;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* TOP HEADER & NAVIGATION */
+    .top-header {
+      background: linear-gradient(135deg, rgba(5,41,98,0.4) 0%, rgba(19,26,38,0.8) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand-title span { color: var(--tiger-orange); }
+
+    .brand-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      max-width: 700px;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: var(--navy-dark);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-action:hover {
+      background: var(--tiger-orange);
+      color: #fff;
+      border-color: var(--tiger-orange);
+    }
+    .btn-action.secondary {
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* DISTINCTION BANNER */
+    .distinction-banner {
+      background: rgba(242, 100, 25, 0.08);
+      border-left: 4px solid var(--tiger-orange);
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .distinction-icon { font-size: 1.75rem; line-height: 1; }
+    .distinction-text h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--tiger-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+    .distinction-text p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    /* FILTER TABS */
+    .view-filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.75rem;
+      overflow-x: auto;
+    }
+    .filter-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .filter-tab:hover {
+      color: var(--text-main);
+      background: rgba(255,255,255,0.04);
+    }
+    .filter-tab.active {
+      background: rgba(227, 126, 36, 0.15);
+      border-color: var(--tiger-orange);
+      color: var(--tiger-orange);
+    }
+    .filter-tab .badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .filter-tab.active .badge {
+      background: var(--tiger-orange);
+      color: #fff;
+    }
+
+    /* SECTION HEADERS */
+    .section-head {
+      margin: 2.5rem 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .tag-product {
+      background: rgba(0, 168, 132, 0.18);
+      color: #6ee7b7;
+      border: 1px solid var(--wa-emerald);
+    }
+    .tag-component {
+      background: rgba(99, 102, 241, 0.18);
+      color: #c7d2fe;
+      border: 1px solid #6366f1;
+    }
+
+    /* ==========================================================================
+       PRODUCT DELIVERABLE 1: FULL NEWSLETTER TEMPLATE (OPTION b)
+       ========================================================================== */
+    .email-client-frame {
+      background: #ffffff;
+      color: var(--coffee-30);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Email App Window Header */
+    .email-client-header {
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    .email-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .email-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+    .email-dot.red { background: #ef4444; }
+    .email-dot.yellow { background: #f59e0b; }
+    .email-dot.green { background: #10b981; }
+
+    .email-meta-bar {
+      background: #f8fafc;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .email-meta-bar strong { color: #0f172a; }
+    .email-subject {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 0.35rem;
+    }
+
+    /* Newsletter Body Canvas */
+    .newsletter-canvas {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3.5rem;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      padding: 2rem 1.25rem 4rem;
+    }
+
+    .nl-masthead {
+      text-align: center;
+      border-bottom: 3px solid var(--coffee-30);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .nl-brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--coffee-30);
+    }
+    .nl-brand-title span { color: var(--iron-10); }
+    .nl-tagline {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #64748b;
+      margin-top: 0.2rem;
+      font-weight: 700;
+    }
+    .nl-issue-strip {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 0.85rem;
+      padding-top: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+    }
+
+    /* Weather & Market Telemetry Strip */
+    .nl-telemetry-bar {
+      background: #faf4ec;
+      border: 1px solid #ebd9c5;
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      margin-bottom: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--coffee-30);
+      font-weight: 600;
+    }
+    .telemetry-item { display: flex; align-items: center; gap: 0.4rem; }
+    .telemetry-pulse {
+      width: 7px; height: 7px; border-radius: 50%; background: #10b981;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Lead Story */
+    .nl-lead-section { margin-bottom: 2rem; }
+    .nl-kicker {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--iron-10);
+      letter-spacing: 0.8px;
+    }
+    .nl-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--coffee-30);
+      margin: 0.35rem 0 0.75rem;
+    }
+    .nl-byline {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nl-verified-pill {
+      background: rgba(0, 168, 132, 0.12);
+      color: #047857;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+    }
+    .nl-prose {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #334155;
+      margin-bottom: 1.25rem;
+    }
+    .nl-pullquote {
+      border-left: 3px solid var(--iron-10);
+      padding: 0.75rem 1.25rem;
+      background: #faf4ec;
+      border-radius: 0 8px 8px 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--coffee-30);
+      margin: 1.25rem 0;
+    }
+
+    /* The 60-Second Flash Radar */
+    .nl-radar-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .nl-radar-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--navy-dark);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .radar-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .radar-item {
+      font-size: 0.88rem;
       line-height: 1.5;
+      color: #334155;
+      padding-left: 1.25rem;
+      position: relative;
     }
-    .container { max-width: 1180px; margin: 0 auto; }
-    .top-bar {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
-      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+    .radar-item::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--tiger-orange);
+      font-size: 1.2rem;
+      line-height: 1;
+      top: -1px;
     }
-    .brand { font-size: 1.4rem; font-weight: 800; letter-spacing: 0.5px; }
-    .brand span { color: var(--coral); }
-    .back-link {
-      color: #fff; background: var(--navy); text-decoration: none;
-      padding: 0.55rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
-    }
-    .tier-heading {
-      margin: 2.2rem 0 1rem; display: flex; align-items: center; gap: 0.6rem;
-      font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
-    }
-    .tier-badge {
-      font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800;
-    }
-    .must { background: rgba(242, 100, 25, 0.2); color: #fdba74; border: 1px solid var(--coral); }
-    .should { background: rgba(0, 168, 132, 0.2); color: #6ee7b7; border: 1px solid var(--wa-green); }
-    .could { background: rgba(99, 102, 241, 0.2); color: #c7d2fe; border: 1px solid #6366f1; }
+    .radar-item strong { color: #0f172a; }
 
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;
+    /* Audio Bulletin Embed */
+    .nl-audio-card {
+      background: linear-gradient(135deg, #052962 0%, #0f172a 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
-    .sample-box {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 1.15rem; display: flex; flex-direction: column; gap: 0.85rem;
+    .nl-audio-info h4 { font-size: 0.92rem; font-weight: 800; }
+    .nl-audio-info p { font-size: 0.78rem; color: #94a3b8; }
+    .nl-audio-btn {
+      background: var(--wa-emerald);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .sample-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; }
 
-    /* 1. Category Picker Sample */
+    /* Native Sponsor Showcase Box */
+    .nl-sponsor-box {
+      border: 1px dashed #cbd5e1;
+      background: #fdfbf7;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .nl-sponsor-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .nl-sponsor-content {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #334155;
+    }
+    .nl-sponsor-content strong { color: #0f172a; }
+    .nl-sponsor-cta {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--iron-10);
+      text-decoration: none;
+    }
+    .nl-sponsor-cta:hover { text-decoration: underline; }
+
+    /* Micro-Tip Box */
+    .nl-tip-prompt {
+      background: #faf4ec;
+      border: 1px solid #e7d8c5;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .nl-tip-prompt h4 { font-size: 0.95rem; font-weight: 800; color: var(--coffee-30); }
+    .nl-tip-prompt p { font-size: 0.82rem; color: #64748b; margin: 0.35rem 0 0.85rem; }
+    .nl-tip-chips { display: flex; justify-content: center; gap: 0.5rem; }
+    .nl-tip-chip {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--coffee-30);
+      cursor: pointer;
+    }
+    .nl-tip-chip.active {
+      background: #047857;
+      color: #fff;
+      border-color: #047857;
+    }
+
+    /* Newsletter Footer */
+    .nl-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .nl-footer a { color: #64748b; text-decoration: underline; }
+
+    /* ==========================================================================
+       PRODUCT DELIVERABLE 2: B2B SPONSOR PACKAGE / DOSSIER (OPTION e)
+       ========================================================================== */
+    .b2b-package-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .b2b-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .b2b-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--sand-60);
+    }
+    .b2b-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .b2b-spec-box {
+      background: var(--card-inner);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .b2b-spec-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--tiger-orange);
+      margin-bottom: 0.3rem;
+    }
+    .b2b-spec-val { font-size: 0.88rem; color: #e2e8f0; font-weight: 600; }
+    .b2b-spec-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* ==========================================================================
+       SECTION 2: UI & INTERACTION COMPONENTS (OPTIONS c, f)
+       ========================================================================== */
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .comp-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .comp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .comp-num {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--tiger-orange);
+    }
+    .comp-tier {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+    .comp-tier.must { background: rgba(227, 126, 36, 0.2); color: #fdba74; }
+    .comp-tier.should { background: rgba(0, 168, 132, 0.2); color: #6ee7b7; }
+    .comp-tier.could { background: rgba(99, 102, 241, 0.2); color: #c7d2fe; }
+
+    /* Chips component */
     .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .chip {
-      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle);
       color: #e2e8f0; padding: 0.4rem 0.75rem; border-radius: 999px;
       font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      transition: all 0.15s ease;
     }
-    .chip.active { background: rgba(0,168,132,0.22); border-color: var(--wa-green); color: #fff; }
+    .chip:hover { background: rgba(255,255,255,0.12); }
+    .chip.active { background: rgba(0,168,132,0.25); border-color: var(--wa-emerald); color: #fff; }
 
-    /* 2. WhatsApp Card Sample */
+    /* WhatsApp Card */
     .wa-card {
-      background: var(--wa-bubble); border-radius: 12px; overflow: hidden;
+      background: var(--wa-dark-bubble); border-radius: 12px; overflow: hidden;
       border: 1px solid rgba(255,255,255,0.08);
     }
-    .wa-card img { width: 100%; height: 150px; object-fit: cover; display: block; }
-    .wa-card-body { padding: 0.8rem; }
-    .wa-site { font-size: 0.7rem; color: var(--wa-green); font-weight: 700; }
-    .wa-title { font-size: 0.92rem; font-weight: 700; margin: 0.2rem 0; }
-    .wa-desc { font-size: 0.78rem; color: var(--muted); }
+    .wa-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .wa-card-body { padding: 0.85rem; }
+    .wa-site { font-size: 0.7rem; color: var(--wa-emerald); font-weight: 700; }
+    .wa-title { font-size: 0.92rem; font-weight: 700; margin: 0.25rem 0; line-height: 1.3; }
+    .wa-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
     .wa-meta {
       display: flex; justify-content: space-between; align-items: center;
-      margin-top: 0.6rem; font-size: 0.72rem; color: #cbd5e1;
+      margin-top: 0.65rem; font-size: 0.72rem; color: #cbd5e1;
     }
 
-    /* 3. IG Reel & TikTok Side-by-Side */
+    /* 9:16 Video Pair */
     .vertical-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .phone-frame {
-      position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden;
+      position: relative; aspect-ratio: 9 / 16; border-radius: 12px; overflow: hidden;
       background: #000; border: 1px solid rgba(255,255,255,0.18);
     }
     .phone-frame video { width: 100%; height: 100%; object-fit: cover; }
     .phone-overlay {
       position: absolute; inset: 0; display: flex; flex-direction: column;
-      justify-content: space-between; padding: 0.65rem;
+      justify-content: space-between; padding: 0.6rem;
       background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 45%, rgba(0,0,0,0.4) 100%);
     }
     .platform-tag {
       align-self: flex-start; font-size: 0.65rem; font-weight: 800;
-      padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(0,0,0,0.65);
+      padding: 0.2rem 0.45rem; border-radius: 6px; background: rgba(0,0,0,0.7);
     }
-    .video-caption { font-size: 0.72rem; line-height: 1.3; }
     .video-actions {
       position: absolute; right: 0.45rem; bottom: 2.6rem;
-      display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.75rem; text-align: center;
+      display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.72rem; text-align: center;
     }
+    .video-caption { font-size: 0.7rem; line-height: 1.25; }
 
-    /* 4. Guardian Magazine Sample */
-    .mag-card {
-      background: #fff; color: #111827; border-radius: 10px; padding: 1rem;
-      border-top: 5px solid var(--navy);
+    /* Guardian Spread Card */
+    .mag-sample {
+      background: #fff; color: var(--coffee-30); border-radius: 10px; padding: 1.15rem;
+      border-top: 4px solid var(--navy-dark);
     }
-    .mag-kicker { color: #c70000; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
+    .mag-kicker { color: var(--iron-10); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
     .mag-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin: 0.3rem 0; line-height: 1.25; }
-    .mag-body { font-family: 'Lora', serif; font-size: 0.82rem; color: #374151; }
+    .mag-body { font-family: 'Lora', serif; font-size: 0.84rem; color: #374151; line-height: 1.5; }
 
-    /* 5. Tipline Gate Sample */
+    /* Tipline Gates */
     .gate-pill {
-      padding: 0.45rem 0.7rem; border-radius: 8px; font-size: 0.78rem;
-      background: rgba(255,255,255,0.05); border-left: 3px solid var(--wa-green);
+      padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.78rem;
+      background: rgba(255,255,255,0.04); border-left: 3px solid var(--wa-emerald);
+      margin-bottom: 0.4rem;
     }
 
-    /* Should & Could Samples */
-    .audio-pill {
-      display: flex; align-items: center; justify-content: space-between;
-      background: #0f172a; border: 1px solid var(--wa-green); border-radius: 999px;
-      padding: 0.55rem 0.9rem; font-size: 0.8rem;
-    }
-    .mpesa-box {
-      background: #064e3b; border-radius: 10px; padding: 0.85rem;
+    /* M-Pesa Patronage Box */
+    .mpesa-sample {
+      background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+      border-radius: 10px; padding: 1rem;
       display: flex; justify-content: space-between; align-items: center;
+      border: 1px solid rgba(0, 168, 132, 0.4);
     }
-    .sphere-preview {
-      height: 120px; border-radius: 10px; display: grid; place-items: center; text-align: center;
-      background: radial-gradient(circle at center, #1e3a8a 0%, #090d16 75%);
+
+    /* 3D Sphere Preview Box */
+    .sphere-sample {
+      height: 130px; border-radius: 10px; display: grid; place-items: center; text-align: center;
+      background: radial-gradient(circle at center, #1e3a8a 0%, #090d16 80%);
       border: 1px solid #6366f1; font-size: 0.85rem; padding: 1rem;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .top-header { flex-direction: column; align-items: flex-start; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .nl-headline { font-size: 1.35rem; }
+      .nl-brand-title { font-size: 1.9rem; }
+      .nl-issue-strip { flex-direction: column; gap: 0.25rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="top-bar">
+    
+    <!-- TOP HEADER -->
+    <header class="top-header">
       <div>
-        <div class="brand">KIKAO<span>360</span> — Component Samples</div>
-        <div style="font-size:0.82rem; color:var(--muted);">Standalone UI Previews (Must / Should / Could Have) before full system assembly</div>
-      </div>
-      <a class="back-link" href="index.html">Launch Full 5-Mode Prototype →</a>
-    </div>
-
-    <!-- MUST HAVE -->
-    <div class="tier-heading"><span class="tier-badge must">Must Have</span> Core MVP Components</div>
-    <div class="grid">
-      <!-- Sample 1: Category Onboarding Picker -->
-      <div class="sample-box" id="onboarding">
-        <div class="sample-label">1. Category Onboarding Picker (9 Beats)</div>
-        <div style="font-size:0.85rem; font-weight:700;">Pick your interests (<span id="pickCount">3</span> selected):</div>
-        <div class="chips" id="sampleChips">
-          <button class="chip active">🏛️ Politics &amp; Current Affairs</button>
-          <button class="chip active">💼 Business &amp; Finance</button>
-          <button class="chip active">💻 Technology</button>
-          <button class="chip">🎬 Entertainment</button>
-          <button class="chip">⚽ Sports</button>
-          <button class="chip">🎨 Art</button>
-          <button class="chip">👗 Fashion</button>
-          <button class="chip">✨ Lifestyle</button>
-          <button class="chip">🎓 Campus &amp; Youth</button>
+        <div class="brand-title">
+          KIKAO<span>360</span> — Design System &amp; Deliverables Showcase
         </div>
-        <div style="font-size:0.75rem; color:var(--muted);">Click any chip to toggle. Saves to <code>localStorage</code> in the full app.</div>
+        <p class="brand-desc">
+          Architecture &amp; Rubric Alignment for <strong>Task 6 (Options a–g)</strong>: Distinguishing atomic <strong>UI &amp; Interaction Components</strong> from finished <strong>Editorial &amp; Commercial Product Deliverables</strong>.
+        </p>
+      </div>
+      <div class="nav-actions">
+        <a class="btn-action" href="index.html">🚀 Full 5-Mode Prototype</a>
+        <a class="btn-action secondary" href="cms.html">⚙️ Owner CMS</a>
+      </div>
+    </header>
+
+    <!-- ARCHITECTURAL DISTINCTION BANNER -->
+    <aside class="distinction-banner">
+      <div class="distinction-icon">💡</div>
+      <div class="distinction-text">
+        <h3>Architecture Clarification: UI Components vs. Product Deliverables</h3>
+        <p>
+          <strong>UI Components (Options c, f)</strong> are atomic, modular interface controls (category chips, video player frames, M-Pesa STK modals, 3-gate tipline pills).<br>
+          <strong>Product Deliverables (Options a, b, e)</strong> are complete, monetizable media assets shipped to readers and partners—including our <strong>Tuesday/Friday Email Newsletter</strong>, <strong>B2B Native Sponsor Intelligence Dossier</strong>, and <strong>13-Minute Audio Commute Dispatch</strong>.
+        </p>
+      </div>
+    </aside>
+
+    <!-- FILTER / VIEW SWITCHER TABS -->
+    <nav class="view-filter-bar" id="viewFilterBar">
+      <button class="filter-tab active" data-filter="all">
+        🌐 Show All Samples <span class="badge">10</span>
+      </button>
+      <button class="filter-tab" data-filter="product">
+        📰 Product Deliverable Samples (Option b &amp; e) <span class="badge">2</span>
+      </button>
+      <button class="filter-tab" data-filter="component">
+        🧩 UI &amp; Interaction Components (Option c &amp; f) <span class="badge">8</span>
+      </button>
+    </nav>
+
+    <!-- ====================================================================
+         SECTION 1: PRODUCT DELIVERABLES
+         ==================================================================== -->
+    <section class="deliverable-section" id="productSection">
+      <div class="section-head">
+        <div class="section-title">
+          <span>📰</span> Finished Editorial &amp; Commercial Product Samples
+        </div>
+        <span class="section-tag tag-product">Task 6 — Options b &amp; e</span>
       </div>
 
-      <!-- Sample 2: WhatsApp Channel Card -->
-      <div class="sample-box">
-        <div class="sample-label">2. WhatsApp Channel OpenGraph Card</div>
-        <div class="wa-card">
-          <img src="assets/IMG_093824.jpg" alt="WhatsApp story preview">
-          <div class="wa-card-body">
-            <div class="wa-site">Kikao360 Official ✓ • Business &amp; Tech</div>
-            <div class="wa-title">The M-Pesa API Revolution: How Gen-Z Micro-Merchants Bypass Banks</div>
-            <div class="wa-desc">Daraja API webhooks + TikTok livestreams are powering KES 180k/week campus businesses.</div>
-            <div class="wa-meta">
-              <span>🔥 842  💡 512  ❤️ 1.2K</span>
-              <span>10:30 AM</span>
-            </div>
+      <!-- PRODUCT 1: FULL INTERACTIVE NEWSLETTER (OPTION b) -->
+      <article class="email-client-frame" id="newsletter-sample">
+        <div class="email-client-header">
+          <div class="email-dots">
+            <div class="email-dot red"></div>
+            <div class="email-dot yellow"></div>
+            <div class="email-dot green"></div>
+          </div>
+          <div>Kikao360 Mail Engine • Previewing Responsive HTML Newsletter</div>
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <span>Tuesday, 07:30 EAT</span>
+            <a href="newsletter.html" target="_blank" style="color:var(--iron-10); font-weight:800; text-decoration:none; background:#fff; padding:0.2rem 0.6rem; border-radius:4px; font-size:0.75rem; border:1px solid #cbd5e1;">Open Full HTML ↗</a>
           </div>
         </div>
-      </div>
 
-      <!-- Sample 3: IG Reel & TikTok Vertical Previews -->
-      <div class="sample-box">
-        <div class="sample-label">3. IG Reel &amp; TikTok 9:16 Previews</div>
-        <div class="vertical-pair">
-          <div class="phone-frame">
-            <video src="assets/VID_094529.mp4" muted loop autoplay playsinline></video>
-            <div class="phone-overlay">
-              <span class="platform-tag">📸 IG Reels</span>
-              <div class="video-actions"><span>❤️<br>1.4K</span><span>💬<br>92</span><span>✈️<br>Share</span></div>
-              <div class="video-caption"><strong>@kikao360</strong><br>eTIMS explained in 60s for student hustlers.</div>
+        <div class="email-meta-bar">
+          <div><strong>From:</strong> Kikao360 Editorial Desk &lt;briefing@kikao360.co.ke&gt;</div>
+          <div><strong>To:</strong> Amina Wanjiku &lt;amina.wanjiku@usiu.ac.ke&gt; (Subscriber #4,812)</div>
+          <div class="email-subject">☕ Kikao360 Dispatch #42: The M-Pesa API Revolution for Gen-Z Hustlers + Nairobi Weather &amp; Tech Radar</div>
+        </div>
+
+        <!-- Inner Newsletter Document -->
+        <div class="newsletter-canvas">
+          <!-- Masthead -->
+          <div class="nl-masthead">
+            <div class="nl-brand-title">KIKAO<span>360</span></div>
+            <div class="nl-tagline">Comment is free, but truth is multidimensional</div>
+            <div class="nl-issue-strip">
+              <span>Issue #42 • Tuesday Morning Dispatch</span>
+              <span>5-Min Read • Nairobi, Kenya</span>
+              <span>Soma. Tazama. Sikiliza.</span>
             </div>
           </div>
-          <div class="phone-frame">
-            <video src="assets/VID_094701.mp4" muted loop autoplay playsinline></video>
-            <div class="phone-overlay">
-              <span class="platform-tag">🎵 TikTok</span>
-              <div class="video-actions"><span>❤️<br>3.8K</span><span>💬<br>247</span><span>🔖<br>Save</span></div>
-              <div class="video-caption"><strong>@kikao360.ke</strong><br>Who is hacking cold-chain hubs? #KenyaTech</div>
+
+          <!-- Weather & Market Telemetry Strip -->
+          <div class="nl-telemetry-bar">
+            <div class="telemetry-item">
+              <span>🌦️ Nairobi: 19°C (Overcast, PM Showers)</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-pulse"></span>
+              <span>M-Pesa Daraja: 100% Uptime</span>
+            </div>
+            <div class="telemetry-item">
+              <span>USD/KES: 129.40</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Sample 4: Guardian Magazine View -->
-      <div class="sample-box">
-        <div class="sample-label">4. Guardian-Style Magazine Card</div>
-        <div class="mag-card">
-          <div class="mag-kicker">Investigative • Read / Watch / Listen</div>
-          <div class="mag-title">Inside Kenya's Youth Economy: Why 7.4M MSMEs Need Actionable Media</div>
-          <p class="mag-body">“We don't need expensive mall leases anymore. Our phone is the cash register and the distribution pipeline.”</p>
-        </div>
-      </div>
+          <!-- Lead Investigation Story -->
+          <div class="nl-lead-section">
+            <div class="nl-kicker">Lead Investigation • Tech &amp; Hustle</div>
+            <h2 class="nl-headline">The M-Pesa API Revolution: How 7.4M Micro-Merchants Bypass Traditional Banking</h2>
+            <div class="nl-byline">
+              <span>By <strong>Faith Mwende</strong> (Campus Desk)</span>
+              <span>•</span>
+              <span class="nl-verified-pill">✓ Verified by Fact Desk</span>
+              <span>•</span>
+              <span>4 min read</span>
+            </div>
+            <p class="nl-prose">
+              Across Kenyan university corridors and peri-urban markets, a silent financial restructuring is underway. Final-year students and early-stage gig workers are bypassing traditional merchant bank accounts in favor of <strong>Safaricom's Daraja 3.0 STK Push APIs</strong> linked directly to automated Telegram and TikTok ordering bots.
+            </p>
+            <div class="nl-pullquote">
+              “Our smartphone is no longer just a communication device; it is our credit ledger, our storefront, and our primary media terminal.”
+            </div>
+            <p class="nl-prose">
+              With over <strong>KES 180,000 processed weekly</strong> through un-registered micro-merchant setups, the new challenge lies in KRA eTIMS compliance—a friction point that Kikao360's investigative desk unpacks in today's interactive step-by-step checklist.
+            </p>
+          </div>
 
-      <!-- Sample 5: Community Tipline Verification Gate -->
-      <div class="sample-box">
-        <div class="sample-label">5. Community Tipline 3-Gate Verification</div>
-        <div class="gate-pill"><strong>Gate 1:</strong> EXIF Metadata &amp; Reverse-Image Check</div>
-        <div class="gate-pill"><strong>Gate 2:</strong> Two-Source Rule (Fact-Check Desk)</div>
-        <div class="gate-pill"><strong>Gate 3:</strong> Managing Editor Sign-Off → <em>"Community Dispatch — Verified"</em></div>
-      </div>
-    </div>
+          <!-- The 60-Second Flash Radar -->
+          <div class="nl-radar-box">
+            <div class="nl-radar-title">
+              <span>⚡</span> The 60-Second Radar (What to Watch Today)
+            </div>
+            <ul class="radar-list">
+              <li class="radar-item">
+                <strong>Cold-Chain Security:</strong> IoT sensor probe along the Mombasa-Nairobi logistics corridor reveals a 14% telemetry failure in perishable freight.
+              </li>
+              <li class="radar-item">
+                <strong>Campus MSME Tax Alert:</strong> KRA extends the onboarding grace period for micro-businesses grossing under KES 5M annually.
+              </li>
+              <li class="radar-item">
+                <strong>Venture Funding:</strong> Two Kenyan student-founded agritech teams secure $25k non-dilutive grants at the East Africa Youth Summit.
+              </li>
+            </ul>
+          </div>
 
-    <!-- SHOULD HAVE -->
-    <div class="tier-heading"><span class="tier-badge should">Should Have</span> Engagement &amp; Monetization</div>
-    <div class="grid">
-      <div class="sample-box">
-        <div class="sample-label">6. Persistent NPR-Style Audio Dock</div>
-        <div class="audio-pill">
-          <span>▶ <strong>Kikao360 Bulletin:</strong> M-Pesa &amp; eTIMS</span>
-          <span>1.0x • 03:45</span>
+          <!-- Audio Bulletin Embed -->
+          <div class="nl-audio-card">
+            <div class="nl-audio-info">
+              <h4>🎧 Listen on Your Commute: The 13-Min Morning Bulletin</h4>
+              <p>Anchored by Brian Ochieng • High-density audio briefing for the Matatu ride</p>
+            </div>
+            <button class="nl-audio-btn" onclick="alert('Playing 13-min Audio Bulletin sample from persistent audio dock!')">
+              ▶ Listen Now (13:14)
+            </button>
+          </div>
+
+          <!-- Native Partner Spotlight (Client Deliverable) -->
+          <div class="nl-sponsor-box">
+            <div class="nl-sponsor-label">
+              <span>Verified Partner Spotlight</span>
+              <span>Editorial–Commercial Firewall Maintained</span>
+            </div>
+            <div class="nl-sponsor-content">
+              <strong>Safaricom Daraja 3.0:</strong> Building a student venture or fintech side-hustle? Deploy automated STK Push webhooks in under 20 minutes using the official developer sandbox with zero gateway fees for student accounts.
+            </div>
+            <a class="nl-sponsor-cta" href="https://developer.safaricom.co.ke" target="_blank" rel="noopener">
+              Explore Developer Sandbox &amp; Documentation →
+            </a>
+          </div>
+
+          <!-- Reader Micro-Patronage Prompt -->
+          <div class="nl-tip-prompt">
+            <h4>Support Independent Campus Journalism</h4>
+            <p>Kikao360 operates without hard paywalls. Help keep our investigative reporting 100% open-access via Lipa na M-Pesa micro-patronage.</p>
+            <div class="nl-tip-chips">
+              <button class="nl-tip-chip">KES 50</button>
+              <button class="nl-tip-chip active">KES 100</button>
+              <button class="nl-tip-chip">KES 250</button>
+              <button class="nl-tip-chip">KES 500</button>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <footer class="nl-footer">
+            <p>© 2026 Kikao360 Media Enterprise. Published from USIU-Africa Innovation Hub, Nairobi, Kenya.</p>
+            <p>Accredited under Media Council of Kenya (MCK) Standards • ODPC Compliant.</p>
+            <p style="margin-top:0.4rem;">
+              <a href="#">Manage Email Preferences</a> • <a href="#">Forward to a Classmate</a> • <a href="#">Unsubscribe</a>
+            </p>
+          </footer>
         </div>
-      </div>
-      <div class="sample-box">
-        <div class="sample-label">7. Lipa na M-Pesa Patronage Prompt</div>
-        <div class="mpesa-box">
+      </article>
+
+      <!-- PRODUCT 2: B2B SPONSOR INTELLIGENCE PACKAGE (OPTION e) -->
+      <article class="b2b-package-card" id="b2b-sample">
+        <div class="b2b-head">
           <div>
-            <div style="font-weight:800; font-size:0.9rem;">Support Independent Journalism</div>
-            <div style="font-size:0.75rem; color:#a7f3d0;">Instant Daraja STK Push (KES 100 – 1,000)</div>
+            <div style="font-size:0.75rem; text-transform:uppercase; color:var(--tiger-orange); font-weight:800; letter-spacing:0.8px;">
+              Media Service Portfolio • Client Deliverable Sample
+            </div>
+            <h3 class="b2b-title">B2B Native Sponsor Intelligence Dossier (Fintech / Enterprise Tier)</h3>
           </div>
-          <span style="background:#fff; color:#064e3b; padding:0.35rem 0.7rem; border-radius:6px; font-weight:800; font-size:0.78rem;">KES 100</span>
+          <span style="background:rgba(227, 126, 36, 0.2); color:#fdba74; padding:0.3rem 0.75rem; border-radius:6px; font-weight:800; font-size:0.8rem;">
+            KES 80,000 / Campaign
+          </span>
         </div>
-      </div>
-    </div>
+        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">
+          Demonstration of how Kikao360 packages sponsored partner content with strict adherence to the <strong>Editorial–Commercial Firewall</strong>. Partners co-sponsor practical educational series without influencing journalistic conclusions.
+        </p>
 
-    <!-- COULD HAVE -->
-    <div class="tier-heading"><span class="tier-badge could">Could Have</span> Spatial Differentiation</div>
-    <div class="grid">
-      <div class="sample-box">
-        <div class="sample-label">8. Inside-the-Sphere 3D Spatial Room</div>
-        <div class="sphere-preview">
-          <div>
-            <strong>🌐 360° Interactive Newsroom</strong><br>
-            <span style="color:var(--muted); font-size:0.76rem;">CSS 3D cylindrical projection • Drag to orbit • Pinch to switch</span>
+        <div class="b2b-spec-grid">
+          <div class="b2b-spec-box">
+            <div class="b2b-spec-label">Deliverable 1: Written Dossier</div>
+            <div class="b2b-spec-val">1,200-Word Whitepaper</div>
+            <div class="b2b-spec-desc">Published in The Magazine with interactive chart embeds and verified data sourcing.</div>
+          </div>
+          <div class="b2b-spec-box">
+            <div class="b2b-spec-label">Deliverable 2: Vertical Video</div>
+            <div class="b2b-spec-val">60s Stamped 9:16 Reel</div>
+            <div class="b2b-spec-desc">Distributed to 15.1M TikTok &amp; IG audience with auto-captioning via <code>format_reel.py</code>.</div>
+          </div>
+          <div class="b2b-spec-box">
+            <div class="b2b-spec-label">Deliverable 3: Push Telemetry</div>
+            <div class="b2b-spec-val">WhatsApp &amp; Newsletter Slot</div>
+            <div class="b2b-spec-desc">Dispatched to 50,000+ verified subscribers with click tracking and CAC telemetry.</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: UI & INTERACTION COMPONENTS
+         ==================================================================== -->
+    <section class="deliverable-section" id="componentSection">
+      <div class="section-head">
+        <div class="section-title">
+          <span>🧩</span> Atomic UI &amp; Interaction Components
+        </div>
+        <span class="section-tag tag-component">Task 6 — Options c &amp; f</span>
+      </div>
+
+      <div class="components-grid">
+        <!-- Comp 1: Category Chips -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">1. Category Onboarding Picker</span>
+            <span class="comp-tier must">Must Have</span>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);">
+            9-beat personalizer for first-time visitors. Click chips to toggle:
+          </p>
+          <div class="chips" id="sampleChips">
+            <button class="chip active">🏛️ Politics</button>
+            <button class="chip active">💼 Business</button>
+            <button class="chip active">💻 Tech</button>
+            <button class="chip">🎬 Media</button>
+            <button class="chip">⚽ Sports</button>
+            <button class="chip">🎨 Art</button>
+            <button class="chip">👗 Fashion</button>
+            <button class="chip">✨ Lifestyle</button>
+            <button class="chip active">🎓 Campus</button>
+          </div>
+          <div style="font-size:0.75rem; color:var(--text-muted);">
+            Active beats: <strong id="activeChipCount" style="color:var(--tiger-orange);">4</strong> of 9 selected.
+          </div>
+        </div>
+
+        <!-- Comp 2: WhatsApp OG Card -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">2. WhatsApp Channel OG Card</span>
+            <span class="comp-tier must">Must Have</span>
+          </div>
+          <div class="wa-card">
+            <img src="assets/IMG_093824.jpg" alt="WhatsApp story preview">
+            <div class="wa-card-body">
+              <div class="wa-site">Kikao360 Official ✓ • Business &amp; Tech</div>
+              <div class="wa-title">The M-Pesa API Revolution: How Gen-Z Micro-Merchants Bypass Banks</div>
+              <div class="wa-desc">Daraja API webhooks + TikTok livestreams are powering KES 180k/week campus businesses.</div>
+              <div class="wa-meta">
+                <span>🔥 842 &nbsp;💡 512 &nbsp;❤️ 1.2K</span>
+                <span>10:30 AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comp 3: Vertical 9:16 Video Pair -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">3. IG Reel &amp; TikTok 9:16 Frame</span>
+            <span class="comp-tier must">Must Have</span>
+          </div>
+          <div class="vertical-pair">
+            <div class="phone-frame">
+              <video src="assets/VID_094529.mp4" muted loop autoplay playsinline></video>
+              <div class="phone-overlay">
+                <span class="platform-tag">📸 IG Reels</span>
+                <div class="video-actions"><span>❤️<br>1.4K</span><span>💬<br>92</span><span>✈️<br>Share</span></div>
+                <div class="video-caption"><strong>@kikao360</strong><br>eTIMS in 60s for student hustlers.</div>
+              </div>
+            </div>
+            <div class="phone-frame">
+              <video src="assets/VID_094701.mp4" muted loop autoplay playsinline></video>
+              <div class="phone-overlay">
+                <span class="platform-tag">🎵 TikTok</span>
+                <div class="video-actions"><span>❤️<br>3.8K</span><span>💬<br>247</span><span>🔖<br>Save</span></div>
+                <div class="video-caption"><strong>@kikao360.ke</strong><br>Hacking cold-chain hubs? #KenyaTech</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comp 4: Guardian Spread -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">4. Guardian-Style Editorial Spread</span>
+            <span class="comp-tier must">Must Have</span>
+          </div>
+          <div class="mag-sample">
+            <div class="mag-kicker">Investigative • Read / Watch / Listen</div>
+            <div class="mag-title">Inside Kenya's Youth Economy: Why 7.4M MSMEs Need Actionable Media</div>
+            <p class="mag-body">“We don't need expensive mall leases anymore. Our phone is the cash register and the distribution pipeline.”</p>
+          </div>
+        </div>
+
+        <!-- Comp 5: 3-Gate Tipline -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">5. 3-Gate Tipline Verification</span>
+            <span class="comp-tier must">Must Have</span>
+          </div>
+          <div class="gate-pill"><strong>Gate 1:</strong> EXIF Metadata &amp; Reverse-Image Check</div>
+          <div class="gate-pill"><strong>Gate 2:</strong> Two-Source Rule (Fact-Check Desk)</div>
+          <div class="gate-pill"><strong>Gate 3:</strong> Managing Editor Sign-Off → <em>"Community Dispatch — Verified"</em></div>
+        </div>
+
+        <!-- Comp 6: Persistent Audio Dock -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">6. NPR-Style Audio Commute Dock</span>
+            <span class="comp-tier should">Should Have</span>
+          </div>
+          <div style="background:#0f172a; border:1px solid var(--wa-emerald); border-radius:999px; padding:0.6rem 1rem; display:flex; justify-content:space-between; align-items:center; font-size:0.8rem;">
+            <span>▶ <strong>Kikao360 Bulletin:</strong> M-Pesa &amp; eTIMS</span>
+            <span style="color:#94a3b8;">1.0x • 03:45</span>
+          </div>
+        </div>
+
+        <!-- Comp 7: Lipa na M-Pesa Prompt -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">7. Lipa na M-Pesa Patronage Modal</span>
+            <span class="comp-tier should">Should Have</span>
+          </div>
+          <div class="mpesa-sample">
+            <div>
+              <div style="font-weight:800; font-size:0.88rem;">Support Independent Journalism</div>
+              <div style="font-size:0.75rem; color:#a7f3d0;">Instant Daraja STK Push (KES 50 – 1,000)</div>
+            </div>
+            <span style="background:#fff; color:#064e3b; padding:0.35rem 0.75rem; border-radius:6px; font-weight:800; font-size:0.8rem;">
+              KES 100
+            </span>
+          </div>
+        </div>
+
+        <!-- Comp 8: Inside-the-Sphere 3D Room -->
+        <div class="comp-box">
+          <div class="comp-header">
+            <span class="comp-num">8. Inside-the-Sphere 3D Spatial Room</span>
+            <span class="comp-tier could">Could Have</span>
+          </div>
+          <div class="sphere-sample">
+            <div>
+              <strong>🌐 360° Interactive Spatial Newsroom</strong><br>
+              <span style="color:var(--text-muted); font-size:0.75rem;">
+                CSS 3D cylindrical projection • 18 cards across 6 pillars • Drag to orbit
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
   </div>
 
   <script>
-    document.querySelectorAll('#sampleChips .chip').forEach(chip => {
+    // 1. Filter Tab Controller
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const productSec = document.getElementById('productSection');
+    const compSec = document.getElementById('componentSection');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+
+        if (filter === 'all') {
+          productSec.style.display = 'block';
+          compSec.style.display = 'block';
+        } else if (filter === 'product') {
+          productSec.style.display = 'block';
+          compSec.style.display = 'none';
+        } else if (filter === 'component') {
+          productSec.style.display = 'none';
+          compSec.style.display = 'block';
+        }
+      });
+    });
+
+    // 2. Chip Personalizer Toggle
+    const chips = document.querySelectorAll('#sampleChips .chip');
+    const countBadge = document.getElementById('activeChipCount');
+    chips.forEach(chip => {
       chip.addEventListener('click', () => {
         chip.classList.toggle('active');
-        document.getElementById('pickCount').textContent =
-          document.querySelectorAll('#sampleChips .chip.active').length;
+        const count = document.querySelectorAll('#sampleChips .chip.active').length;
+        if (countBadge) countBadge.textContent = count;
       });
     });
   </script>
